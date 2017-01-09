@@ -11,13 +11,16 @@
     <canvas id="hockey" width="500" height="300" style="border:5px solid yellow; background:black"></canvas>
 
     <script>
-        function drawHockey() {
+        // Draw center line
+        function centerLine() {
             var hockeyCanvas = document.getElementById("hockey");
             var hockeyContext = hockeyCanvas.getContext("2d");
             hockeyContext.fillStyle="white";
             hockeyContext.fillRect(248, 0, 4, 300);
         }
-        drawHockey();
+        centerLine();
+
+        
     </script>
 
 </body>
