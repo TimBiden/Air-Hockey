@@ -8,19 +8,29 @@
 </head>
 
 <body>
-    <canvas id="hockey" width="500" height="300" style="border:5px solid yellow; background:black"></canvas>
+    <canvas id="hockey" width="500" height="300" style="border:5px solid #FFD500; background:white"></canvas>
 
     <script>
         // Draw center line
         function centerLine() {
             var hockeyCanvas = document.getElementById("hockey");
             var hockeyContext = hockeyCanvas.getContext("2d");
-            hockeyContext.fillStyle="white";
+            hockeyContext.fillStyle="black";
             hockeyContext.fillRect(248, 0, 4, 300);
         }
         centerLine();
 
-        
+        // Draw Goal line
+        function goalLine(xAxis) {
+            var hockeyCanvas = document.getElementById("hockey");
+            var hockeyContext = hockeyCanvas.getContext("2d");
+            hockeyContext.fillStyle="#3B14AF";
+            hockeyContext.fillRect(xAxis, 110, 8, 80);
+        }
+        goalLine(0);
+        goalLine(492);
+
+
     </script>
 
 </body>
