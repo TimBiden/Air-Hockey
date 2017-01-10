@@ -19,13 +19,6 @@
             hockeyContext.fillRect(xPoint, yPoint, wide, high);
         }
 
-        // Call separate rectangles
-        centerLine = new rectangle("#000000", 248, 0, 4, 300);
-        computerGoal = new rectangle("#3B14AF", 0, 110, 8, 80);
-        playerGoal = new rectangle("#3B14AF", 492, 110, 8, 80);
-        player = new rectangle("#FF0700", 10, 125, 15, 50);
-        computer = new rectangle("#00C90D", 475, 125, 15, 50);
-
         // draw puck
         function puck(x, y) {
             // variables
@@ -45,7 +38,14 @@
             context.strokeStyle = 'black';
             context.stroke();
         }
-        puck(100, 150);
+
+        // Call functions
+        centerLine = new rectangle("#000000", 248, 0, 4, 300);
+        computerGoal = new rectangle("#3B14AF", 0, 110, 8, 80);
+        playerGoal = new rectangle("#3B14AF", 492, 110, 8, 80);
+        player = new rectangle("#FF0700", 10, 125, 15, 50);
+        computer = new rectangle("#00C90D", 475, 125, 15, 50);
+        puck(100, 250);
     </script>
 
 </body>
