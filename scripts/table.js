@@ -1,15 +1,16 @@
 // Create the paddles...
-var Paddle = function() {
-    this.x = 0;
-    this.y = 120;
-};
+function Paddle(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+}
+
+var player = new Paddle(10, y, "#FF0700");
+var computer = new Paddle(475, y, "#00C90D");
 
 Paddle.prototype.render = function() {
     // What in the world goes here?
 };
-
-var player = new Paddle();
-var computer = new Paddle();
 
 // Create Center Line
 function centerLine(color, xPoint, yPoint, wide, high) {
