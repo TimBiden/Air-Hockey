@@ -1,3 +1,6 @@
+var hockeyCanvas = document.getElementById("hockey");
+var hockeyContext = hockeyCanvas.getContext("2d");
+
 // Create the paddles...
 function Paddle(x, y, color) {
     // Values
@@ -10,8 +13,6 @@ function Paddle(x, y, color) {
 
 Paddle.prototype.render = function(x, y, color) {
     // Make Paddles
-    var hockeyCanvas = document.getElementById("hockey");
-    var hockeyContext = hockeyCanvas.getContext("2d");
     hockeyContext.fillStyle = color;
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
 };
@@ -37,16 +38,12 @@ Computer.prototype.render = function() {
 
 // Create Center Line
 function centerLine(color, xPoint, yPoint, wide, high) {
-    var hockeyCanvas = document.getElementById("hockey");
-    var hockeyContext = hockeyCanvas.getContext("2d");
     hockeyContext.fillStyle = "black";
     hockeyContext.fillRect(248, 0, 4, 300);
 }
 
 // Create Goals
 function Goal(xPoint) {
-    var hockeyCanvas = document.getElementById("hockey");
-    var hockeyContext = hockeyCanvas.getContext("2d");
     hockeyContext.fillStyle = "#3B14AF";
     hockeyContext.fillRect(xPoint, 110, 8, 80);
 }
