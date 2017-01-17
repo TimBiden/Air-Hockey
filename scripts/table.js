@@ -8,11 +8,6 @@ function Paddle(x, y, color) {
     this.width = 15;
 }
 
-y = 125;
-
-// var player = new Paddle(10, y, "#FF0700");
-// var computer = new Paddle(475, y, "#00C90D");
-
 Paddle.prototype.render = function(x, y, color) {
     // Make Paddles
     var hockeyCanvas = document.getElementById("hockey");
@@ -25,11 +20,11 @@ var player = new Player();
 var computer = new Computer();
 
 function Player() {
-    this.paddle = new Paddle(10, y, "#FF0700");
+    this.paddle = new Paddle(10, 125, "#FF0700");
 }
 
 function Computer() {
-    this.paddle = new Paddle(475, y, "#00C90D");
+    this.paddle = new Paddle(475, 125, "#00C90D");
 }
 
 Player.prototype.render = function() {
