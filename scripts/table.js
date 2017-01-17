@@ -6,20 +6,39 @@ function Paddle(x, y, color) {
     this.color = color;
     this.height = 50;
     this.width = 15;
+}
 
+y = 125;
+
+// var player = new Paddle(10, y, "#FF0700");
+// var computer = new Paddle(475, y, "#00C90D");
+
+Paddle.prototype.render = function(x, y, color) {
     // Make Paddles
     var hockeyCanvas = document.getElementById("hockey");
     var hockeyContext = hockeyCanvas.getContext("2d");
     hockeyContext.fillStyle = color;
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
+};
+
+var player = new Player();
+var computer = new Computer();
+
+function Player() {
+    this.paddle = new Paddle(10, y, "#FF0700");
 }
 
-y = 125;
+function Computer() {
+    this.paddle = new Paddle(475, y, "#00C90D");
+}
 
-var player = new Paddle(10, y, "#FF0700");
-var computer = new Paddle(475, y, "#00C90D");
+Player.prototype.render = function() {
+    this.paddle.render();
+};
 
-Paddle.prototype.render = function() {};
+Computer.prototype.render = function() {
+    this.paddle.render();
+};
 
 // Create Center Line
 function centerLine(color, xPoint, yPoint, wide, high) {
@@ -56,13 +75,15 @@ var Puck = function(x, y) {
     context.stroke();
 };
 
-function render() {
+var render = function() {
+    player.render();
+    computer.render();
     centerLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
     Puck(250, 150);
 }
 
-window.onload = function(){
+window.onload = function() {
     render();
 };
