@@ -28,12 +28,12 @@ function Computer() {
     this.paddle = new Paddle(475, 125, "#00C90D");
 }
 
-Player.prototype.render = function() {
-    this.paddle.render();
+Player.prototype.render = function(x, y, color) {
+    this.paddle.render(x, y, color);
 };
 
-Computer.prototype.render = function() {
-    this.paddle.render();
+Computer.prototype.render = function(x, y, color) {
+    this.paddle.render(x, y, color);
 };
 
 // Create Center Line
@@ -68,13 +68,13 @@ var Puck = function(x, y) {
 };
 
 var render = function() {
-    player.render();
-    computer.render();
+    player.render(10, 125, "#FF0700");
+    computer.render(475, 125, "#00C90D");
     centerLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
     Puck(250, 150);
-}
+};
 
 window.onload = function() {
     render();
