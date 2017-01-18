@@ -49,18 +49,18 @@ window.onload = function() {
     render();
 };
 
-// // Create Center Line
-// function centerLine(color, xPoint, yPoint, wide, high) {
-//     hockeyContext.fillStyle = "black";
-//     hockeyContext.fillRect(248, 0, 4, 300);
-// }
-//
-// // Create Goals
-// function Goal(xPoint) {
-//     hockeyContext.fillStyle = "#3B14AF";
-//     hockeyContext.fillRect(xPoint, 110, 8, 80);
-// }
-//
+// Create Center Line
+function centerLine(color, xPoint, yPoint, wide, high) {
+    hockeyContext.fillStyle = "black";
+    hockeyContext.fillRect(248, 0, 4, 300);
+}
+
+// Create Goals
+function Goal(xPoint) {
+    hockeyContext.fillStyle = "#3B14AF";
+    hockeyContext.fillRect(xPoint, 110, 8, 80);
+}
+
 // var Puck = function(x, y) {
 //     // variables
 //     var canvas = document.getElementById('hockey');

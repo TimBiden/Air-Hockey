@@ -39,6 +39,25 @@ Computer.prototype.render = function(x, y, color){
     this.paddle.render(x, y, color);
 };
 
+// Create Puck
+function Puck(x, y) {
+    // Puck values
+    this.radius = 8;
+    this.startAngle = 0;
+    this.endAngle = 2 * Math.PI;
+    this.counterClockwise = false;
+}
+
+// Puck prototype
+Puck.prototype.render = function(x, y){
+    hockeyContext.strokeStyle = "black";
+    hockeyContext.stroke();
+    hockeyContext.beginPath();
+    hockeyContext.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
+};
+
+var puck = new Puck();
+
 // Create non-moving parts //
 //
 // Create Center Line
@@ -57,6 +76,7 @@ function Goal(xPoint) {
 var render = function(){
     player.render(10, 125, "#FF0700");
     computer.render(475, 125, "#00C90D");
+    puck.render(250,150);
     centerLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
