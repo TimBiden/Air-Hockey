@@ -1,2 +1,50 @@
+// Allow drawing on canvas
 var hockeyCanvas = document.getElementById("hockey");
 var hockeyContext = hockeyCanvas.getContext("2d");
+
+// Paddle values
+function Paddle(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.height = 50;
+    this.width = 15;
+}
+
+// Paddle prototype
+Paddle.prototype.render = function(x, y, color){
+    hockeyContext.fillStyle = color;
+    hockeyContext.fillRect(this.x, this.y, this.width, this.height);
+};
+
+// Create Paddle functions for Player and Computer
+function Player() {
+    this.paddle = new Paddle(10, 125, "#FF0700");
+}
+
+function Computer() {
+    this.paddle = new Paddle(475, 125, "#00C90D");
+}
+
+// Create new variable versions of Player and Computer
+var player = new Player();
+var computer = new Computer();
+
+// Render prototypes of Player and Computer
+Player.prototype.render = function(x, y, color){
+    this.paddle.render(x, y, color);
+};
+
+Computer.prototype.render = function(x, y, color){
+    this.paddle.render(x, y, color);
+};
+
+// Render created items
+var render = function(){
+    player.render(10, 125, "#FF0700");
+    computer.render(475, 125, "#00C90D");
+};
+
+window.onload = function(){
+    render();
+};
