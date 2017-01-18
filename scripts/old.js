@@ -1,41 +1,81 @@
-// Draw rectangles
-function rectangle(color, xPoint, yPoint, wide, high) {
-    var hockeyCanvas = document.getElementById("hockey");
-    var hockeyContext = hockeyCanvas.getContext("2d");
+var hockeyCanvas = document.getElementById("hockey");
+var hockeyContext = hockeyCanvas.getContext("2d");
+
+// Create the paddles...
+function Paddle(x, y, color) {
+    // Values
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.height = 50;
+    this.width = 15;
+}
+
+Paddle.prototype.render = function(x, y, color) {
+    // Make Paddles
     hockeyContext.fillStyle = color;
-    hockeyContext.fillRect(xPoint, yPoint, wide, high);
+    hockeyContext.fillRect(this.x, this.y, this.width, this.height);
+};
+
+var player = new Player();
+var computer = new Computer();
+
+function Player() {
+    this.paddle = new Paddle(10, 125, "#FF0700");
 }
 
-// draw puck
-function puck(x, y) {
-    // variables
-    var canvas = document.getElementById('hockey');
-    var context = canvas.getContext('2d');
-    var radius = 8;
-    var startAngle = 0 * Math.PI;
-    var endAngle = 2 * Math.PI;
-    var counterClockwise = false;
-
-    // Call it all
-    context.beginPath();
-    context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
-    context.lineWidth = 15;
-
-    // line color
-    context.strokeStyle = 'black';
-    context.stroke();
+function Computer() {
+    this.paddle = new Paddle(475, 125, "#00C90D");
 }
 
-function render() {
-    // Call functions
-    // centerLine = new rectangle("#000000", 248, 0, 4, 300);
-    // computerGoal = new rectangle("#3B14AF", 0, 110, 8, 80);
-    // playerGoal = new rectangle("#3B14AF", 492, 110, 8, 80);
-    player = new rectangle("#FF0700", 10, 125, 15, 50);
-    computer = new rectangle("#00C90D", 475, 125, 15, 50);
-    puck(100, 250);
-}
+Player.prototype.render = function(x, y, color) {
+    this.paddle.render(x, y, color);
+};
+
+Computer.prototype.render = function(x, y, color) {
+    this.paddle.render(x, y, color);
+};
+
+var render = function() {
+    player.render(10, 125, "#FF0700");
+    computer.render(475, 125, "#00C90D");
+    centerLine();
+    computerGoal = new Goal(0);
+    playerGoal = new Goal(492);
+    Puck(250, 150);
+};
 
 window.onload = function() {
     render();
 };
+
+// // Create Center Line
+// function centerLine(color, xPoint, yPoint, wide, high) {
+//     hockeyContext.fillStyle = "black";
+//     hockeyContext.fillRect(248, 0, 4, 300);
+// }
+//
+// // Create Goals
+// function Goal(xPoint) {
+//     hockeyContext.fillStyle = "#3B14AF";
+//     hockeyContext.fillRect(xPoint, 110, 8, 80);
+// }
+//
+// var Puck = function(x, y) {
+//     // variables
+//     var canvas = document.getElementById('hockey');
+//     var context = canvas.getContext('2d');
+//     var radius = 8;
+//     var startAngle = 0 * Math.PI;
+//     var endAngle = 2 * Math.PI;
+//     var counterClockwise = false;
+//
+//     // Call it all
+//     context.beginPath();
+//     context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+//     context.lineWidth = 15;
+//
+//     // line color
+//     context.strokeStyle = 'black';
+//     context.stroke();
+// };
