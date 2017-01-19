@@ -56,11 +56,7 @@ Puck.prototype.render = function(x, y){
     hockeyContext.lineWidth = 15;
     hockeyContext.stroke();
 };
-//
-// function HockeyPuck() {
-//     this.puck = new Puck (250, 150);
-// }
-//
+
 var puck = new Puck();
 
 // Create non-moving parts //
