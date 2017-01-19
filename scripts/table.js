@@ -51,9 +51,10 @@ function Puck(x, y) {
 // Puck prototype
 Puck.prototype.render = function(x, y){
     hockeyContext.strokeStyle = "black";
-    hockeyContext.stroke();
     hockeyContext.beginPath();
-    hockeyContext.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
+    hockeyContext.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
+    hockeyContext.lineWidth = 15;
+    hockeyContext.stroke();
 };
 //
 // function HockeyPuck() {
