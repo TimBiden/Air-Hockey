@@ -39,7 +39,7 @@ Computer.prototype.render = function(x, y, color){
     this.paddle.render(x, y, color);
 };
 
-// Create Puck
+// Puck values
 function Puck(x, y) {
     // Puck values
     this.radius = 8;
@@ -55,12 +55,12 @@ Puck.prototype.render = function(x, y){
     hockeyContext.beginPath();
     hockeyContext.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
 };
-
-function HockeyPuck() {
-    this.puck = new Puck (250, 150);
-}
-
-var hockeyPuck = new HockeyPuck();
+//
+// function HockeyPuck() {
+//     this.puck = new Puck (250, 150);
+// }
+//
+var puck = new Puck();
 
 // Create non-moving parts //
 //
