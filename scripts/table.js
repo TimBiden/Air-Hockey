@@ -81,17 +81,26 @@ var render = function(){
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
     puck.render(250, 150);
+    animate();
 };
 
+// Original loading of the screen
 window.onload = function(){
     render();
 };
 
+// Select animation method
 var animate = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame ||
     window.oRequestAnimationFrame ||
     window.msRequestAnimationFrame ||
-    function(callback) {
-        window.setTimeout(callback, 1000 / 60);
+    // Otherwise set refresh rate to every 16.667 ms
+    function(step) {
+        window.setTimeout(step, 1000 / 60);
     };
+
+// Call render to refresh
+function step() {
+    render();
+}
