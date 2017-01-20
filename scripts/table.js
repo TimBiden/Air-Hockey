@@ -115,16 +115,16 @@ var animate = window.requestAnimationFrame ||
     };
 
 // Call render to refresh
-var step = function(){
+var step = function() {
     render();
     // animate(step);
 };
 
 // Listen for arrow-keys to be released.
 window.addEventListener("keydown", function(event) {
-    if (event.keyCode === 37 || event.keyCode === 40){
-            console.log("Down.");
-        } else if (event.keyCode === 38 || event.keyCode === 39) {
-            console.log("Up.");
-        }
+    if (event.keyCode === 37 || event.keyCode === 40) {
+        console.log("Down.");
+    } else if (event.keyCode === 38 || event.keyCode === 39) {
+        console.log("Up.");
+    }
 });
