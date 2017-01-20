@@ -117,7 +117,7 @@ var animate = window.requestAnimationFrame ||
 // Call render to refresh
 var step = function(){
     render();
-    animate(step);
+    // animate(step);
 };
 
 // Listen for arrow-keys to be released.
