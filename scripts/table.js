@@ -1,6 +1,7 @@
 // Allow drawing on canvas
 var hockeyCanvas = document.getElementById("hockey");
 var hockeyContext = hockeyCanvas.getContext("2d");
+var movement = null;
 
 // Paddle values
 function Paddle(x, y, color) {
@@ -17,18 +18,6 @@ function Paddle(x, y, color) {
 Paddle.prototype.render = function(x, y, color) {
     hockeyContext.fillStyle = color;
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
-};
-
-// Move prototype
-Paddle.prototype.move = function(x, y) {
-    this.x += x;
-    this.y += y;
-
-    if (this.y < 0) {
-        this.y = 0;
-    } else if (this.y > 250) {
-        this.y = 250;
-    }
 };
 
 // Create Paddle functions for Player and Computer
@@ -117,14 +106,48 @@ var animate = window.requestAnimationFrame ||
 // Call render to refresh
 var step = function() {
     render();
+    update();
     // animate(step);
 };
 
 // Listen for arrow-keys to be released.
 window.addEventListener("keydown", function(event) {
-    if (event.keyCode === 37 || event.keyCode === 40) {
-        console.log("Down.");
-    } else if (event.keyCode === 38 || event.keyCode === 39) {
+    if (event.keyCode === 38 || event.keyCode === 39) {
         console.log("Up.");
+        movement = "up";
+    } else if (event.keyCode === 37 || event.keyCode === 40) {
+        console.log("Down.");
+        movement = "down";
+    } else {
+        console.log("Don't do nuthin'.");
+        movement = null;
     }
 });
+
+// Move prototype
+Paddle.prototype.move = function(x, y) {
+    this.x += x;
+    this.y += y;
+
+    if (this.y < 0) {
+        this.y = 0;
+    } else if (this.y > 250) {
+        this.y = 250;
+    }
+};
+
+// Make Player move
+Player.prototype.update = function(y) {
+    if (movement === "up") {
+        this.y -= this.paddle.speed;
+    } else if (movement === "down") {
+        this.y += this.paddle.speed;
+    } else {
+        this.y = this.y;
+    }
+};
+
+// Make update
+function update() {
+    Player.update();
+}
