@@ -9,12 +9,26 @@ function Paddle(x, y, color) {
     this.color = color;
     this.height = 50;
     this.width = 15;
+    this.speed = 15;
 }
 
-// Paddle prototype
-Paddle.prototype.render = function(x, y, color){
+// Paddle prototypes //
+// Render prototype
+Paddle.prototype.render = function(x, y, color) {
     hockeyContext.fillStyle = color;
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
+};
+
+// Move prototype
+Paddle.prototype.move = function(x, y) {
+    this.x += x;
+    this.y += y;
+
+    if (this.y < 0) {
+        this.y = 0;
+    } else if (this.y > 250) {
+        this.y = 250;
+    }
 };
 
 // Create Paddle functions for Player and Computer
@@ -31,11 +45,11 @@ var player = new Player();
 var computer = new Computer();
 
 // Render prototypes of Player and Computer
-Player.prototype.render = function(x, y, color){
+Player.prototype.render = function(x, y, color) {
     this.paddle.render(x, y, color);
 };
 
-Computer.prototype.render = function(x, y, color){
+Computer.prototype.render = function(x, y, color) {
     this.paddle.render(x, y, color);
 };
 
@@ -49,7 +63,7 @@ function Puck(x, y) {
 }
 
 // Puck prototype
-Puck.prototype.render = function(x, y){
+Puck.prototype.render = function(x, y) {
     hockeyContext.strokeStyle = "black";
     hockeyContext.beginPath();
     hockeyContext.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
@@ -74,19 +88,19 @@ function Goal(xPoint) {
 }
 
 // Render created items
-var render = function(){
+var render = function() {
     player.render(10, 125, "#FF0700");
     computer.render(475, 125, "#00C90D");
     centerLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
     puck.render(250, 150);
-    animate();
+    animate(step);
 };
 
 // Original loading of the screen
-window.onload = function(){
-    render();
+window.onload = function() {
+    animate(step);
 };
 
 // Select animation method
@@ -101,6 +115,7 @@ var animate = window.requestAnimationFrame ||
     };
 
 // Call render to refresh
-function step() {
+var step = function(){
     render();
-}
+    animate(step);
+};
