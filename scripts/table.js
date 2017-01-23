@@ -65,6 +65,7 @@ Player.prototype.update = function() {
 
 // Listen for arrow-keys to be released.
 window.addEventListener("keydown", function(event) {
+    console.log("Hola Mike!");
     if (event.keyCode === 38 || event.keyCode === 39) {
         movement = true;
         console.log(movement);
