@@ -55,11 +55,13 @@ Computer.prototype.render = function(x, y, color) {
 
 // Make Player move
 Player.prototype.update = function() {
+    console.log(this.y);
     if (movement === true) {
         this.y -= this.speed;
     } else if (movement === false) {
         this.y += this.speed;
     }
+        console.log(this.y);
     movement = null;
 };
 
