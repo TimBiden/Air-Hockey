@@ -2,6 +2,9 @@
 var hockeyCanvas = document.getElementById("hockey");
 var hockeyContext = hockeyCanvas.getContext("2d");
 var movement = null;
+y = 125; // Paddle height begin
+var player = new Player();
+var computer = new Computer();
 
 // Paddle values
 function Paddle(x, y, color) {
@@ -20,18 +23,26 @@ Paddle.prototype.render = function(x, y, color) {
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
 };
 
+// Move prototype
+Paddle.prototype.move = function(x, y) {
+    this.x += x;
+    this.y += y;
+
+    if (this.y < 0) {
+        this.y = 0;
+    } else if (this.y > 250) {
+        this.y = 250;
+    }
+};
+
 // Create Paddle functions for Player and Computer
 function Player() {
-    this.paddle = new Paddle(10, 125, "#FF0700");
+    this.paddle = new Paddle(10, y, "#FF0700");
 }
 
 function Computer() {
-    this.paddle = new Paddle(475, 125, "#00C90D");
+    this.paddle = new Paddle(475, y, "#00C90D");
 }
-
-// Create new variable versions of Player and Computer
-var player = new Player();
-var computer = new Computer();
 
 // Render prototypes of Player and Computer
 Player.prototype.render = function(x, y, color) {
@@ -41,6 +52,32 @@ Player.prototype.render = function(x, y, color) {
 Computer.prototype.render = function(x, y, color) {
     this.paddle.render(x, y, color);
 };
+
+// Make Player move
+Player.prototype.update = function() {
+    if (movement === true) {
+        this.y -= this.speed;
+    } else if (movement === false) {
+        this.y += this.speed;
+    }
+    movement = null;
+};
+
+// Listen for arrow-keys to be released.
+window.addEventListener("keydown", function(event) {
+    if (event.keyCode === 38 || event.keyCode === 39) {
+        movement = true;
+    } else if (event.keyCode === 37 || event.keyCode === 40) {
+        movement = false;
+    } else {
+        movement = null;
+    }
+});
+
+// Make update
+function update() {
+    player.update(this.y);
+}
 
 // Puck values
 function Puck(x, y) {
@@ -78,8 +115,8 @@ function Goal(xPoint) {
 
 // Render created items
 var render = function() {
-    player.render(10, 125, "#FF0700");
-    computer.render(475, 125, "#00C90D");
+    player.render(10, this.y, "#FF0700");
+    computer.render(475, this.y, "#00C90D");
     centerLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
@@ -105,49 +142,7 @@ var animate = window.requestAnimationFrame ||
 
 // Call render to refresh
 var step = function() {
-    render();
     update();
+    render();
     // animate(step);
 };
-
-// Listen for arrow-keys to be released.
-window.addEventListener("keydown", function(event) {
-    if (event.keyCode === 38 || event.keyCode === 39) {
-        console.log("Up.");
-        movement = "up";
-    } else if (event.keyCode === 37 || event.keyCode === 40) {
-        console.log("Down.");
-        movement = "down";
-    } else {
-        console.log("Don't do nuthin'.");
-        movement = null;
-    }
-});
-
-// Move prototype
-Paddle.prototype.move = function(x, y) {
-    this.x += x;
-    this.y += y;
-
-    if (this.y < 0) {
-        this.y = 0;
-    } else if (this.y > 250) {
-        this.y = 250;
-    }
-};
-
-// Make Player move
-Player.prototype.update = function(y) {
-    if (movement === "up") {
-        this.y -= this.paddle.speed;
-    } else if (movement === "down") {
-        this.y += this.paddle.speed;
-    } else {
-        this.y = this.y;
-    }
-};
-
-// Make update
-function update() {
-    Player.update();
-}
