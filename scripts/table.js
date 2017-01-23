@@ -55,13 +55,11 @@ Computer.prototype.render = function(x, y, color) {
 
 // Make Player move
 Player.prototype.update = function() {
-    console.log(this.y);
     if (movement === true) {
-        this.y -= this.speed;
+        this.paddle.y -= this.paddle.speed;
     } else if (movement === false) {
-        this.y += this.speed;
+        this.paddle.y += this.paddle.speed;
     }
-        console.log(this.y);
     movement = null;
 };
 
@@ -69,10 +67,13 @@ Player.prototype.update = function() {
 window.addEventListener("keydown", function(event) {
     if (event.keyCode === 38 || event.keyCode === 39) {
         movement = true;
+        console.log(movement);
     } else if (event.keyCode === 37 || event.keyCode === 40) {
         movement = false;
+        console.log(movement);
     } else {
         movement = null;
+        console.log(movement);
     }
 });
 
@@ -144,7 +145,8 @@ var animate = window.requestAnimationFrame ||
 
 // Call render to refresh
 var step = function() {
+    // console.log("hiya mike!");
     update();
     render();
-    // animate(step);
+    animate(step);
 };
