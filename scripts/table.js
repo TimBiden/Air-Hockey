@@ -53,12 +53,6 @@ Computer.prototype.render = function(x, y, color) {
     this.paddle.render(x, y, color);
 };
 
-// Make Player move
-Player.prototype.update = function() {
-    this.paddle.y += movement * this.paddle.speed;
-    movement = null;
-};
-
 // Listen for arrow-keys to be released.
 window.addEventListener("keydown", function(event) {
     if (event.keyCode === 38 || event.keyCode === 39) {
@@ -72,6 +66,12 @@ window.addEventListener("keydown", function(event) {
         console.log("No movement.");
     }
 });
+
+// Make Player move
+Player.prototype.update = function() {
+    this.paddle.y += movement * this.paddle.speed;
+    movement = null;
+};
 
 // Make update
 function update() {
