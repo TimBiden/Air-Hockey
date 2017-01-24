@@ -37,11 +37,11 @@ Paddle.prototype.move = function(x, y) {
 
 // Create Paddle functions for Player and Computer
 function Player() {
-    this.paddle = new Paddle(10, y, "#FF0700");
+    this.paddle = new Paddle(475, y, "#00C90D");
 }
 
 function Computer() {
-    this.paddle = new Paddle(475, y, "#00C90D");
+    this.paddle = new Paddle(10, y, "#FF0700");
 }
 
 // Render prototypes of Player and Computer
@@ -114,8 +114,8 @@ function Goal(xPoint) {
 
 // Render created items
 var render = function() {
-    player.render(10, this.y, "#FF0700");
-    computer.render(475, this.y, "#00C90D");
+    player.render(475, this.y, "#00C90D");
+    computer.render(10, this.y, "#FF0700");
     centerLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
