@@ -70,7 +70,7 @@ window.addEventListener("keydown", function(event) {
 // Make Player move
 Player.prototype.update = function() {
     this.paddle.y += movement * this.paddle.speed;
-    movement = null;
+    movement = 0;
 };
 
 // Make update
@@ -120,7 +120,6 @@ var render = function() {
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
     puck.render(250, 150);
-    animate(step);
 };
 
 // Original loading of the screen
@@ -144,5 +143,5 @@ var step = function() {
     // console.log("hiya mike!");
     update();
     render();
-    // animate(step);
+    animate(step);
 };
