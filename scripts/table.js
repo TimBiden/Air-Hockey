@@ -1,7 +1,7 @@
 // Allow drawing on canvas
 var hockeyCanvas = document.getElementById("hockey");
 var hockeyContext = hockeyCanvas.getContext("2d");
-var movement = null;
+var movement = 0;
 y = 125; // Paddle height begin
 var player = new Player();
 var computer = new Computer();
@@ -55,26 +55,21 @@ Computer.prototype.render = function(x, y, color) {
 
 // Make Player move
 Player.prototype.update = function() {
-    if (movement === true) {
-        this.paddle.y -= this.paddle.speed;
-    } else if (movement === false) {
-        this.paddle.y += this.paddle.speed;
-    }
+    this.paddle.y += movement * this.paddle.speed;
     movement = null;
 };
 
 // Listen for arrow-keys to be released.
 window.addEventListener("keydown", function(event) {
-    console.log("Hola Mike!");
     if (event.keyCode === 38 || event.keyCode === 39) {
-        movement = true;
-        console.log(movement);
+        movement = -1;
+        console.log("Up.");
     } else if (event.keyCode === 37 || event.keyCode === 40) {
-        movement = false;
-        console.log(movement);
+        movement = 1;
+        console.log("Down.");
     } else {
-        movement = null;
-        console.log(movement);
+        movement = 0;
+        console.log("No movement.");
     }
 });
 
@@ -149,5 +144,5 @@ var step = function() {
     // console.log("hiya mike!");
     update();
     render();
-    animate(step);
+    // animate(step);
 };
