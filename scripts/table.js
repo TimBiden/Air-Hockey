@@ -8,6 +8,16 @@
 // Put all of your `function Foo() {}` object constructor and prototype method
 // definitions here.
 
+// Paddle values
+function Paddle(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.height = 50;
+    this.width = 15;
+    this.speed = 15;
+}
+
 // Render Paddle prototype
 Paddle.prototype.render = function(x, y, color) {
     hockeyContext.fillStyle = color;
@@ -23,6 +33,24 @@ Computer.prototype.render = function(x, y, color) {
     this.paddle.render(x, y, color);
 };
 
+// Create Paddle functions for Player and Computer
+function Player() {
+    this.paddle = new Paddle(475, y, "#00C90D");
+}
+
+function Computer() {
+    this.paddle = new Paddle(10, y, "#FF0700");
+}
+
+// Puck values
+function Puck(x, y) {
+    // Puck values
+    this.radius = 8;
+    this.startAngle = 0 * Math.PI;
+    this.endAngle = 2 * Math.PI;
+    this.counterClockwise = false;
+}
+
 // Puck prototype
 Puck.prototype.render = function(x, y) {
     hockeyContext.strokeStyle = "black";
@@ -30,16 +58,6 @@ Puck.prototype.render = function(x, y) {
     hockeyContext.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
     hockeyContext.lineWidth = 15;
     hockeyContext.stroke();
-};// Make Player move
-Player.prototype.update = function() {
-    this.paddle.y += movement * this.paddle.speed;
-    movement = 0;
-
-    if (this.paddle.y < 0){
-        this.paddle.y = 0
-    } else if (this.paddle.y > 250) {
-        this.paddle.y = 250
-    }
 };
 
 // Create Goals
@@ -53,7 +71,6 @@ function centerLine() {
     hockeyContext.fillStyle = "black";
     hockeyContext.fillRect(248, 0, 4, 300);
 }
-
 
 // =============================================================================
 //
@@ -74,6 +91,14 @@ var render = function() {
     puck.render(250, 150);
 };
 
+// Call render to refresh
+var step = function() {
+    hockeyContext.clearRect(0, 0, 500, 300);
+    update();
+    render();
+    animate(step);
+};
+
 // Select animation method
 var animate = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -85,45 +110,21 @@ var animate = window.requestAnimationFrame ||
         window.setTimeout(step, 1000 / 60);
     };
 
-// Call render to refresh
-var step = function() {
-    hockeyContext.clearRect(0, 0, 500, 300);
-    update();
-    render();
-    animate(step);
+// Make Player move
+Player.prototype.update = function() {
+    this.paddle.y += movement * this.paddle.speed;
+    movement = 0;
+
+    if (this.paddle.y < 0) {
+        this.paddle.y = 0
+    } else if (this.paddle.y > 250) {
+        this.paddle.y = 250
+    }
 };
-
-// Paddle values
-function Paddle(x, y, color) {
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    this.height = 50;
-    this.width = 15;
-    this.speed = 15;
-}
-
-// Create Paddle functions for Player and Computer
-function Player() {
-    this.paddle = new Paddle(475, y, "#00C90D");
-}
-
-function Computer() {
-    this.paddle = new Paddle(10, y, "#FF0700");
-}
 
 // Make Player paddle update
 function update() {
     player.update(this.y);
-}
-
-// Puck values
-function Puck(x, y) {
-    // Puck values
-    this.radius = 8;
-    this.startAngle = 0 * Math.PI;
-    this.endAngle = 2 * Math.PI;
-    this.counterClockwise = false;
 }
 
 // =============================================================================
