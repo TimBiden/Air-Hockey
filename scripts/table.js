@@ -71,6 +71,12 @@ window.addEventListener("keydown", function(event) {
 Player.prototype.update = function() {
     this.paddle.y += movement * this.paddle.speed;
     movement = 0;
+
+    if (this.paddle.y < 0){
+        this.paddle.y = 0
+    } else if (this.paddle.y > 250) {
+        this.paddle.y = 250
+    }
 };
 
 // Make update
@@ -140,7 +146,7 @@ var animate = window.requestAnimationFrame ||
 
 // Call render to refresh
 var step = function() {
-    // console.log("hiya mike!");
+    hockeyContext.clearRect(0, 0, 500, 300);
     update();
     render();
     animate(step);
