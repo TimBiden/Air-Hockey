@@ -23,18 +23,6 @@ Paddle.prototype.render = function(x, y, color) {
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
 };
 
-// Move prototype
-Paddle.prototype.move = function(x, y) {
-    this.x += x;
-    this.y += y;
-
-    if (this.y < 0) {
-        this.y = 0;
-    } else if (this.y > 250) {
-        this.y = 250;
-    }
-};
-
 // Create Paddle functions for Player and Computer
 function Player() {
     this.paddle = new Paddle(475, y, "#00C90D");
