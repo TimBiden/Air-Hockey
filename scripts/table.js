@@ -168,6 +168,9 @@ window.addEventListener("keydown", function(event) {
     } else if (event.keyCode === 37 || event.keyCode === 40) {
         movement = 1;
         console.log("Down.");
+    } else if (event.keyCode === 32) {
+        // puckDrop;
+        console.log("Center Ice. Puck Drop!!!");
     } else {
         movement = 0;
         console.log("No movement.");
