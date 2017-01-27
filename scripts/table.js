@@ -24,23 +24,23 @@ Paddle.prototype.render = function(x, y, color) {
     hockeyContext.fillRect(this.x, this.y, this.width, this.height);
 };
 
+// Create Player and Computer functions
 // Render prototypes of Player and Computer
-Player.prototype.render = function(x, y, color) {
-    this.paddle.render(x, y, color);
-};
-
-Computer.prototype.render = function(x, y, color) {
-    this.paddle.render(x, y, color);
-};
-
-// Create Paddle functions for Player and Computer
 function Player() {
     this.paddle = new Paddle(475, y, "#00C90D");
 }
 
+Player.prototype.render = function(x, y, color) {
+    this.paddle.render(x, y, color);
+};
+
 function Computer() {
     this.paddle = new Paddle(10, y, "#FF0700");
 }
+
+Computer.prototype.render = function(x, y, color) {
+    this.paddle.render(x, y, color);
+};
 
 // Puck values
 function Puck(x, y) {
@@ -67,7 +67,7 @@ function Goal(xPoint) {
 }
 
 // Create Center Line
-function centerLine() {
+function CenterLine() {
     hockeyContext.fillStyle = "black";
     hockeyContext.fillRect(248, 0, 4, 300);
 }
@@ -81,23 +81,29 @@ function centerLine() {
 
 // Put all of your `function bar() {}` helper function definitions here.
 
+
+// Make Player paddle update
+function update() {
+    player.update();
+}
+
 // Render created items
-var render = function() {
+function render() {
     player.render(475, this.y, "#00C90D");
     computer.render(10, this.y, "#FF0700");
-    centerLine();
+    CenterLine();
     computerGoal = new Goal(0);
     playerGoal = new Goal(492);
     puck.render(250, 150);
-};
+}
 
 // Call render to refresh
-var step = function() {
+function step() {
     hockeyContext.clearRect(0, 0, 500, 300);
     update();
     render();
     animate(step);
-};
+}
 
 // Select animation method
 var animate = window.requestAnimationFrame ||
@@ -116,16 +122,11 @@ Player.prototype.update = function() {
     movement = 0;
 
     if (this.paddle.y < 0) {
-        this.paddle.y = 0
+        this.paddle.y = 0;
     } else if (this.paddle.y > 250) {
-        this.paddle.y = 250
+        this.paddle.y = 250;
     }
 };
-
-// Make Player paddle update
-function update() {
-    player.update(this.y);
-}
 
 // =============================================================================
 //
@@ -142,7 +143,7 @@ var hockeyContext = hockeyCanvas.getContext("2d");
 
 // General variables
 var movement = 0;
-y = 125; // Paddle height begin
+var y = 125; // Paddle height begin
 
 // New object instances
 var player = new Player();
