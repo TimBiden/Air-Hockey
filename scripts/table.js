@@ -162,7 +162,7 @@ Puck.prototype.move = function puckMove() {};
  * @returns {void}
  */
 function puckDrop() {
-  const angle = (Math.floor(Math.random() * 120) + 30); // Randomized angle in degrees
+  const angle = (Math.floor(Math.random() * 120) + 120); // Randomized angle in degrees
   const angleRad = angle * (Math.PI / 180); // angle in radians
   this.x = ((this.x + this.speed) * Math.cos(angleRad));
   this.y = ((this.y + this.speed) * Math.sin(angleRad));
