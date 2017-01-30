@@ -46,24 +46,45 @@ function Player() {
   this.paddle = new Paddle(475, y, '#00C90D');
 }
 
+/**
+ * Render Player prototype
+ * @param {int} x X Coordinate.
+ * @param {int} y Y Coordinate.
+ * @param {string} color Sets color for Player.
+ * @returns {void}
+ */
 Player.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
 };
 
+/**
+ * Create Computer function
+ * @returns {void}
+ */
 function Computer() {
   this.paddle = new Paddle(10, y, '#FF0700');
 }
 
+/**
+ * Render Computer prototype
+ * @param {int} x X Coordinate.
+ * @param {int} y Y Coordinate.
+ * @param {string} color Sets color for Computer.
+ * @returns {void}
+ */
 Computer.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
 };
 
 /**
  * Puck values
+ * @param {int} x X Coordinate.
+ * @param {int} y Y Coordinate.
  * @returns {void}
  */
-function Puck() {
-  // Puck values
+function Puck(x, y) {
+  this.x = x;
+  this.y = y;
   this.radius = 8;
   this.startAngle = 0 * Math.PI;
   this.endAngle = 2 * Math.PI;
@@ -186,13 +207,13 @@ function puckDrop() {
 // Put all of your `var foo = bar;` setup here.
 
 // Allow drawing on canvas
-let hockeyCanvas = document.getElementById('hockey');
-let hockeyContext = hockeyCanvas.getContext('2d');
+const hockeyCanvas = document.getElementById('hockey');
+const hockeyContext = hockeyCanvas.getContext('2d');
 
 // General variables
-let movement = 0;
-let y = 125; // Paddle height begin
-let inPlay = false;
+const y = 125; // Paddle height begin
+let movement = 0; // Move by speed * movement
+let inPlay = false; // Sets ability to puckDrop
 
 // New object instances
 const player = new Player();
