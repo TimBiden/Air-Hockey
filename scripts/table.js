@@ -92,7 +92,12 @@ function Puck(x, y) {
   this.speed = 25;
 }
 
-// Puck prototype
+/**
+ * Render Puck prototype
+ * @param {int} x X Coordinate.
+ * @param {int} y Y Coordinate.
+ * @returns {void}
+ */
 Puck.prototype.render = function(x, y) {
   hockeyContext.strokeStyle = 'black';
   hockeyContext.beginPath();
@@ -101,13 +106,20 @@ Puck.prototype.render = function(x, y) {
   hockeyContext.stroke();
 };
 
-// Create Goals
+/**
+ * Create Goal functions
+ * @param {int} xPoint X Coordinate.
+ * @returns {void}
+ */
 function Goal(xPoint) {
   hockeyContext.fillStyle = '#3B14AF';
   hockeyContext.fillRect(xPoint, 110, 8, 80);
 }
 
-// Create Center Line
+/**
+ * Create Center Line
+ * @returns {void}
+ */
 function CenterLine() {
   hockeyContext.fillStyle = 'black';
   hockeyContext.fillRect(248, 0, 4, 300);
@@ -234,8 +246,10 @@ const puck = new Puck();
 window.addEventListener('keydown', function(event) {
   if (event.keyCode === 38 || event.keyCode === 39) {
     movement = -1;
+    console.log("Up.");
   } else if (event.keyCode === 37 || event.keyCode === 40) {
     movement = 1;
+    console.log("Down.");
   } else if (event.keyCode === 32) {
     if (inPlay === true) {
       console.log(' ');
