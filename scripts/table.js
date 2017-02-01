@@ -87,7 +87,7 @@ function Puck(x, y) {
   this.startAngle = 0 * Math.PI;
   this.endAngle = 2 * Math.PI;
   this.counterClockwise = false;
-  this.speed = 25;
+  this.speed = 0;
 }
 
 /**
@@ -186,8 +186,16 @@ Player.prototype.update = function() {
  * @returns {void}
  */
 Puck.prototype.update = function(angleRad) {
-  this.x = ((this.x + this.speed) * Math.cos(angleRad));
-  this.y = ((this.y + this.speed) * Math.sin(angleRad));
+  if (inPlay === true) {
+    this.x += puckSpeed;
+    this.y += puckSpeed;
+  } else {
+    this.x = 250;
+    this.y = 125;
+  }
+  console.log(' ');
+  console.log(`Puck x coordinate = ${this.x}`);
+  console.log(`Puck y coordinate = ${this.y}`);
 };
 
 /**
@@ -197,14 +205,13 @@ Puck.prototype.update = function(angleRad) {
  */
 function puckDrop() {
   const angle = (Math.floor(Math.random() * 120) + 120); // Randomized angle in degrees
-  angleRad = angle * (Math.PI / 180); // angle in radians
-  const speed = (Math.floor(Math.random() * 15) + 10); // Randomized speed of puck.
+  puckSpeed = (Math.floor(Math.random() * 5) + 5); // Randomized speed of puck.
 
   inPlay = true;
 
   console.log(' ');
   console.log('Angle is ' + angle);
-  console.log('Puck speed is ' + speed);
+  console.log('Puck speed is ' + puckSpeed);
 }
 
 // =============================================================================
@@ -222,9 +229,9 @@ const context = hockeyCanvas.getContext('2d');
 
 // General variables
 const y = 125; // Paddle height begin
-let movement = 0; // Move by speed * movement
+let movement = 0; // Move paddles by speed * movement
 let inPlay = false; // Sets ability to puckDrop
-let angleRad = 0;
+let puckSpeed = 0; // Set initial speed of puck before puckDrop
 
 // New object instances
 const player = new Player();
