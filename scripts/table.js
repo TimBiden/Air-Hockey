@@ -32,12 +32,10 @@ function Paddle(x, y, color) {
  * @returns {void}
  */
 Paddle.prototype.render = function(x, y, color) {
-  hockeyContext.fillStyle = color;
-  hockeyContext.fillRect(this.x, this.y, this.width, this.height);
+  context.fillStyle = color;
+  context.fillRect(this.x, this.y, this.width, this.height);
 };
 
-// Create Player and Computer functions
-// Render prototypes of Player and Computer
 /**
  * Create Player function
  * @returns {void}
@@ -99,11 +97,11 @@ function Puck(x, y) {
  * @returns {void}
  */
 Puck.prototype.render = function(x, y) {
-  hockeyContext.strokeStyle = 'black';
-  hockeyContext.beginPath();
-  hockeyContext.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
-  hockeyContext.lineWidth = 15;
-  hockeyContext.stroke();
+  context.strokeStyle = 'black';
+  context.beginPath();
+  context.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
+  context.lineWidth = 15;
+  context.stroke();
 };
 
 /**
@@ -112,8 +110,8 @@ Puck.prototype.render = function(x, y) {
  * @returns {void}
  */
 function Goal(xPoint) {
-  hockeyContext.fillStyle = '#3B14AF';
-  hockeyContext.fillRect(xPoint, 110, 8, 80);
+  context.fillStyle = '#3B14AF';
+  context.fillRect(xPoint, 110, 8, 80);
 }
 
 /**
@@ -121,8 +119,8 @@ function Goal(xPoint) {
  * @returns {void}
  */
 function CenterLine() {
-  hockeyContext.fillStyle = 'black';
-  hockeyContext.fillRect(248, 0, 4, 300);
+  context.fillStyle = 'black';
+  context.fillRect(248, 0, 4, 300);
 }
 
 // =============================================================================
@@ -138,6 +136,7 @@ function CenterLine() {
 // Make Player paddle update
 function update() {
   player.update();
+  hockeyPuck.update();
 }
 
 // Render created items
@@ -147,12 +146,12 @@ function render() {
   CenterLine();
   computerGoal = new Goal(0);
   playerGoal = new Goal(492);
-  puck.render(250, 150);
+  hockeyPuck.render(250, 150);
 }
 
 // Call render to refresh
 function step() {
-  hockeyContext.clearRect(0, 0, 500, 300);
+  context.clearRect(0, 0, 500, 300);
   update();
   render();
   animate(step);
@@ -183,11 +182,13 @@ Player.prototype.update = function() {
 
 /**
  * Make the puck move.
+ * @param {int} angleRad Angle in radians.
  * @returns {void}
  */
-Puck.prototype.move = function puckMove() {};
-
-// Left off here. Creating puckDrop.
+Puck.prototype.update = function(angleRad) {
+  this.x = ((this.x + this.speed) * Math.cos(angleRad));
+  this.y = ((this.y + this.speed) * Math.sin(angleRad));
+};
 
 /**
  * Randomizes both puck direction and speed.
@@ -196,10 +197,7 @@ Puck.prototype.move = function puckMove() {};
  */
 function puckDrop() {
   const angle = (Math.floor(Math.random() * 120) + 120); // Randomized angle in degrees
-  const angleRad = angle * (Math.PI / 180); // angle in radians
-  this.x = ((this.x + this.speed) * Math.cos(angleRad));
-  this.y = ((this.y + this.speed) * Math.sin(angleRad));
-
+  angleRad = angle * (Math.PI / 180); // angle in radians
   const speed = (Math.floor(Math.random() * 15) + 10); // Randomized speed of puck.
 
   inPlay = true;
@@ -220,17 +218,18 @@ function puckDrop() {
 
 // Allow drawing on canvas
 const hockeyCanvas = document.getElementById('hockey');
-const hockeyContext = hockeyCanvas.getContext('2d');
+const context = hockeyCanvas.getContext('2d');
 
 // General variables
 const y = 125; // Paddle height begin
 let movement = 0; // Move by speed * movement
 let inPlay = false; // Sets ability to puckDrop
+let angleRad = 0;
 
 // New object instances
 const player = new Player();
 const computer = new Computer();
-const puck = new Puck();
+const hockeyPuck = new Puck();
 
 // =============================================================================
 //
