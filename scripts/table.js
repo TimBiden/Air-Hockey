@@ -185,10 +185,9 @@ Player.prototype.update = function() {
  * @param {int} angleRad Angle in radians.
  * @returns {void}
  */
-Puck.prototype.update = function(angleRad) {
+Puck.prototype.update = function () {
   if (inPlay === true) {
-    this.x += puckSpeed;
-    this.y += puckSpeed;
+    console.log('In Play!'); 
   } else {
     this.x = 250;
     this.y = 125;
@@ -212,6 +211,18 @@ function puckDrop() {
   console.log(' ');
   console.log('Angle is ' + angle);
   console.log('Puck speed is ' + puckSpeed);
+}
+
+function puckAngle() {
+  const rads = angle * Math.PI / 180;
+  const xCoordinate = Math.cos(rads) * speed;
+  const yCoordinate = Math.sin(rads) * speed;
+
+  this.x = xCoordinate;
+  this.y = yCoordinate;
+
+  console.log(`xCoordinate = ${xCoordinate}`);
+  console.log(`yCoordinate = ${yCoordinate}`);
 }
 
 // =============================================================================
