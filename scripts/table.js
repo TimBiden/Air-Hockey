@@ -102,6 +102,8 @@ Puck.prototype.render = function(x, y) {
   context.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
   context.lineWidth = 15;
   context.stroke();
+  this.x += xCoordinate;
+  this.y += yCoordinate;
 };
 
 /**
@@ -146,7 +148,7 @@ function render() {
   CenterLine();
   computerGoal = new Goal(0);
   playerGoal = new Goal(492);
-  hockeyPuck.render(250, 150);
+  hockeyPuck.render(this.x, this.y);
 }
 
 // Call render to refresh
@@ -187,7 +189,10 @@ Player.prototype.update = function() {
  */
 Puck.prototype.update = function () {
   if (inPlay === true) {
-    console.log('In Play!'); 
+    puckAngle();
+    this.x += xCoordinate;
+    this.y += yCoordinate;
+    console.log('In Play!');
   } else {
     this.x = 250;
     this.y = 125;
@@ -203,7 +208,7 @@ Puck.prototype.update = function () {
  * @returns {void}
  */
 function puckDrop() {
-  const angle = (Math.floor(Math.random() * 120) + 120); // Randomized angle in degrees
+  angle = (Math.floor(Math.random() * 120) + 120); // Randomized angle in degrees
   puckSpeed = (Math.floor(Math.random() * 5) + 5); // Randomized speed of puck.
 
   inPlay = true;
@@ -215,14 +220,8 @@ function puckDrop() {
 
 function puckAngle() {
   const rads = angle * Math.PI / 180;
-  const xCoordinate = Math.cos(rads) * speed;
-  const yCoordinate = Math.sin(rads) * speed;
-
-  this.x = xCoordinate;
-  this.y = yCoordinate;
-
-  console.log(`xCoordinate = ${xCoordinate}`);
-  console.log(`yCoordinate = ${yCoordinate}`);
+  xCoordinate = Math.cos(rads) * puckSpeed;
+  yCoordinate = Math.sin(rads) * puckSpeed;
 }
 
 // =============================================================================
@@ -243,6 +242,9 @@ const y = 125; // Paddle height begin
 let movement = 0; // Move paddles by speed * movement
 let inPlay = false; // Sets ability to puckDrop
 let puckSpeed = 0; // Set initial speed of puck before puckDrop
+let xCoordinate = 0;
+let yCoordinate = 0;
+let angle = 0;
 
 // New object instances
 const player = new Player();
@@ -263,13 +265,10 @@ const hockeyPuck = new Puck();
 window.addEventListener('keydown', function(event) {
   if (event.keyCode === 38 || event.keyCode === 39) {
     movement = -1;
-    console.log("Up.");
   } else if (event.keyCode === 37 || event.keyCode === 40) {
     movement = 1;
-    console.log("Down.");
   } else if (event.keyCode === 32) {
     if (inPlay === true) {
-      console.log(' ');
       console.log('Game is in play. No cheating, fool!');
     } else {
       puckDrop();
