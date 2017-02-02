@@ -209,7 +209,7 @@ Puck.prototype.update = function() {
 function puckDrop() {
   angle = (Math.floor(Math.random() * 50) + 155); // Randomized angle in degrees. Always shoots at Computer side.
   let side = (Math.floor(Math.random() * 2)); // Randomize side to drop towards.
-  // angle += (180 * side); // If 1, shoots to Computer. If 2, shoots to Player.
+  angle += (180 * side); // If 1, shoots to Computer. If 2, shoots to Player.
 
   if (angle > 360) {
     angle -= 360;
