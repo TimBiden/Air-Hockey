@@ -80,9 +80,7 @@ Computer.prototype.render = function(x, y, color) {
  * @param {int} y Y Coordinate.
  * @returns {void}
  */
-function Puck(x, y) {
-  this.x = x;
-  this.y = y;
+function Puck() {
   this.radius = 8;
   this.startAngle = 0 * Math.PI;
   this.endAngle = 2 * Math.PI;
@@ -99,7 +97,7 @@ function Puck(x, y) {
 Puck.prototype.render = function(x, y) {
   context.strokeStyle = 'black';
   context.beginPath();
-  context.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
+  context.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
   context.lineWidth = 15;
   context.stroke();
 
@@ -156,7 +154,7 @@ function render() {
   CenterLine();
   computerGoal = new Goal(0);
   playerGoal = new Goal(492);
-  hockeyPuck.render(this.x, this.y);
+  hockeyPuck.render();
 }
 
 // Call render to refresh
