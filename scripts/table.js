@@ -102,8 +102,16 @@ Puck.prototype.render = function(x, y) {
   context.arc(x, y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
   context.lineWidth = 15;
   context.stroke();
-  this.x += xCoordinate;
-  this.y += yCoordinate;
+
+  if (inPlay === true) {
+    puckAngle();
+    this.x += xCoordinate;
+    this.y += yCoordinate;
+    console.log('In Play!');
+  } else {
+    this.x = 250;
+    this.y = 125;
+  }
 };
 
 /**
@@ -184,19 +192,12 @@ Player.prototype.update = function() {
 
 /**
  * Make the puck move.
- * @param {int} angleRad Angle in radians.
  * @returns {void}
  */
-Puck.prototype.update = function () {
-  if (inPlay === true) {
-    puckAngle();
-    this.x += xCoordinate;
-    this.y += yCoordinate;
-    console.log('In Play!');
-  } else {
-    this.x = 250;
-    this.y = 125;
-  }
+Puck.prototype.update = function() {
+  this.x += xCoordinate;
+  this.y += yCoordinate;
+
   console.log(' ');
   console.log(`Puck x coordinate = ${this.x}`);
   console.log(`Puck y coordinate = ${this.y}`);
