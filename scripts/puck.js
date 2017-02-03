@@ -13,6 +13,10 @@ let puckSpeed = 0; // Set initial speed of puck before puckDrop
 let xCoordinate = 0;
 let yCoordinate = 0;
 let angle = 0;
+const playerLeftX = 460; // Player Paddle coordinates
+const playerRightX = 490; // Player Paddle coordinates
+const computerLeftX = 10; // Player Paddle coordinates
+const computerRightX = 25; // Player Paddle coordinates
 
 // =============================================================================
 //
@@ -55,7 +59,6 @@ Puck.prototype.render = function(x, y) {
     puckAngle();
     this.x += xCoordinate;
     this.y += yCoordinate;
-    console.log('In Play!');
   } else {
     this.x = 250;
     this.y = 150;
@@ -153,20 +156,11 @@ function collisionDetect(puckX, puckY) {
     sideCollisionAngle();
   }
 
-  console.log(`playerLeftX is ${playerLeftX}. playerTopY is ${playerTopY}. playerBottomY is ${playerBottomY}.`);
+  // Detect Player Paddle Front
+  if (puckX <= (computerRightX + 8) && puckY >= computerTopY && puckY <= computerBottomY) {
+    sideCollisionAngle();
+    console.log('Computer Blocked!!!');
+  }
 
-  // // Detect Player Paddle Top
-  // if (puckX >= playerLeftX && puckY >= playerTopY && playerBottomY <= 15) {
-  //   topBottomCollisionAngle();
-  // }
-  //
-  // // Detect Player Paddle Bottom
-  // if (puckX >= playerLeftX && puckY >= playerTopY && playerBottomY <= 15) {
-  //   topBottomCollisionAngle();
-  // }
-  //
-  // const playerLeftX = 475;
-  // const playerRightX = 490;
-  // const playerBottomY = playerTopY + 50;
-  // let playerTopY = 'Edit Me';
+  console.log(`computerRightX + 8 = ${computerRightX}. computerTopY = ${computerTopY}. computerBottomY = ${computerBottomY}.`);
 }

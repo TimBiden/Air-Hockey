@@ -1,9 +1,10 @@
 const player = new Player();
 const computer = new Computer();
 let movement = 0; // Move paddles by speed * movement
-const playerLeftX = 467;
-const playerRightX = 490;
 let playerTopY = 0;
+let  playerBottomY = 0;
+let computerTopY = 125;
+let computerBottomY = 175;
 
 /**
  * Configures variables for Paddles.
@@ -84,6 +85,4 @@ Player.prototype.update = function() {
 
   playerTopY = this.paddle.y - 8;
   playerBottomY = playerTopY + 64;
-
-  console.log(`playerTopY = ${playerTopY}`);
 };
