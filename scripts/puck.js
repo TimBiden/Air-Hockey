@@ -73,6 +73,12 @@ Puck.prototype.update = function() {
   } else if (this.x < 15) {
     this.x = 15;
   }
+  if (this.y > 285) { // Eliminate quiver action.
+    this.y = 285;
+  } else if (this.y < 15) {
+    this.y = 15;
+  }
+
   this.x += xCoordinate; // To move puck
   this.y += yCoordinate; // To move puck
 
@@ -130,21 +136,18 @@ function collisionDetect(puckX, puckY) {
     collisionAngle();
   }
 
-  // if (// Left paddle collision detected) {
-  //   collisionAngle();
-  // }
-  //
-  // if (// Right paddle collision detected) {
-  //   collisionAngle();
-  // }
+  if (puckY <= 15) { // Detect Top collisions
+    collisionAngle();
+  }
+
+  if (puckY >= 285) { // Detect Bottom collisions
+    collisionAngle();
+  }
 }
 
 function collisionAngle() {
-  angle = ((angle * 2) + 360);
-  if (angle > 360) {
-    angle -= 360;
-  }
+  angle = 180 - angle;
 
-  const randomizeAngle = (Math.floor(Math.random() * 10) - 5); // Randomized speed of puck.
-  angle += randomizeAngle;
+  // const randomizeAngle = (Math.floor(Math.random() * 10) - 5); // Randomized speed of puck.
+  // angle += randomizeAngle;
 }
