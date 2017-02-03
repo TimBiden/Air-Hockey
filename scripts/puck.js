@@ -139,12 +139,31 @@ function topBottomCollisionAngle() {
   angle = angle * -1;
 }
 
+function score() {
+  console.log(`computerScore = ${computerScore}`);
+  console.log(`playerScore = ${playerScore}`);
+  inPlay = false;
+  render();
+}
+
 function collisionDetect(puckX, puckY) {
   // Detect sides.
   if (puckX <= 15) { // Detect left side collisions
-    sideCollisionAngle();
+    if (puckY >= 110 && puckY <= 190) {
+      console.log('Player Scored!!!');
+      playerScore += 1;
+      score();
+    } else {
+      sideCollisionAngle();
+    }
   } else if (puckX >= 485) { // Detect right side collisions
-    sideCollisionAngle();
+    if (puckY >= 110 && puckY <= 190) {
+      console.log('Computer Scored!!!');
+      computerScore += 1;
+      score();
+    } else {
+      sideCollisionAngle();
+    }
   } else if (puckY <= 15) { // Detect Top collisions
     topBottomCollisionAngle();
   } else if (puckY >= 285) { // Detect Bottom collisions
@@ -159,8 +178,13 @@ function collisionDetect(puckX, puckY) {
   // Detect Player Paddle Front
   if (puckX <= (computerRightX + 8) && puckY >= computerTopY && puckY <= computerBottomY) {
     sideCollisionAngle();
-    console.log('Computer Blocked!!!');
   }
 
-  console.log(`computerRightX + 8 = ${computerRightX}. computerTopY = ${computerTopY}. computerBottomY = ${computerBottomY}.`);
+  // Detect Computer scoring against Player
+  if (puckX >= 490 && puckY >= 110 && puckY <= 190) {
+    console.log('Computer Scored!!!');
+  }
+
+  // Detect Computer scoring against Player
+
 }
