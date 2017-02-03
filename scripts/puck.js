@@ -68,19 +68,21 @@ Puck.prototype.render = function(x, y) {
  * @returns {void}
  */
 Puck.prototype.update = function() {
-  if (this.x > 485) { // Eliminate quiver action.
-    this.x = 485;
-  } else if (this.x < 15) {
-    this.x = 15;
-  }
-  if (this.y > 285) { // Eliminate quiver action.
-    this.y = 285;
-  } else if (this.y < 15) {
-    this.y = 15;
-  }
-
   this.x += xCoordinate; // To move puck
   this.y += yCoordinate; // To move puck
+
+  // if (this.x > 485) { // Eliminate quiver action.
+  //   this.x = 485;
+  // }
+  // if (this.x < 15) {
+  //   this.x = 15;
+  // }
+  // if (this.y > 285) { // Eliminate quiver action.
+  //   this.y = 285;
+  // }
+  // if (this.y < 15) {
+  //   this.y = 15;
+  // }
 
   console.log(' ');
   console.log(`Puck x coordinate = ${this.x}`);
@@ -127,27 +129,22 @@ function puckAngle() {
   yCoordinate = Math.sin(rads) * puckSpeed;
 }
 
-function collisionDetect(puckX, puckY) {
-  if (puckX <= 15) { // Detect left side collisions
-    collisionAngle();
-  }
-
-  if (puckX >= 485) { // Detect right side collisions
-    collisionAngle();
-  }
-
-  if (puckY <= 15) { // Detect Top collisions
-    collisionAngle();
-  }
-
-  if (puckY >= 285) { // Detect Bottom collisions
-    collisionAngle();
-  }
+function sideCollisionAngle() {
+  angle = 180 - angle;
 }
 
-function collisionAngle() {
-  angle = 180 - angle;
+function topBottomCollisionAngle() {
+  angle = angle * -1;
+}
 
-  // const randomizeAngle = (Math.floor(Math.random() * 10) - 5); // Randomized speed of puck.
-  // angle += randomizeAngle;
+function collisionDetect(puckX, puckY) {
+  if (puckX <= 15) { // Detect left side collisions
+    sideCollisionAngle();
+  } else if (puckX >= 485) { // Detect right side collisions
+    sideCollisionAngle();
+  } else if (puckY <= 15) { // Detect Top collisions
+    topBottomCollisionAngle();
+  } else if (puckY >= 285) { // Detect Bottom collisions
+    topBottomCollisionAngle();
+  }
 }
