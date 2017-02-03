@@ -1,9 +1,31 @@
+
+
+// =============================================================================
+//
+//   Variable Definitions and Initialization
+//
+// =============================================================================
+//
+
+// Put all of your `var foo = bar;` setup here.
+
 const hockeyPuck = new Puck();
 let inPlay = false; // Sets ability to puckDrop
 let puckSpeed = 0; // Set initial speed of puck before puckDrop
 let xCoordinate = 0;
 let yCoordinate = 0;
 let angle = 0;
+let collision = false;
+
+// =============================================================================
+//
+//   Object Constructor Definitions
+//
+// =============================================================================
+//
+
+// Put all of your `function Foo() {}` object constructor and prototype method
+// definitions here.
 
 /**
  * Puck values
@@ -56,6 +78,15 @@ Puck.prototype.update = function() {
   console.log(`Puck y coordinate = ${this.y}`);
 };
 
+// =============================================================================
+//
+//   Helper Function Definitions
+//
+// =============================================================================
+//
+
+// Put all of your `function bar() {}` helper function definitions here.
+
 /**
  * Randomizes both puck direction and speed.
  * Drop the puck.
@@ -84,4 +115,12 @@ function puckAngle() {
   const rads = angle * Math.PI / 180;
   xCoordinate = Math.cos(rads) * puckSpeed;
   yCoordinate = Math.sin(rads) * puckSpeed;
+}
+
+function collisionDetect() {
+
+}
+
+function newAngle() {
+
 }
