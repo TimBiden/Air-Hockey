@@ -7,8 +7,8 @@
 
 // Put all of your `var foo = bar;` setup here.
 
-const player = new Player();
-const computer = new Computer();
+const player = new Player(); // Used in table.js
+const computer = new Computer(); // Used in table.js
 let movement = 0; // Move paddles by speed * movement
 let playerTopY = 0;
 let playerBottomY = 0;

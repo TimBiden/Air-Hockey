@@ -185,12 +185,4 @@ function collisionDetect(puckX, puckY) {
   if (puckX <= (computerRightX + 8) && puckY >= computerTopY && puckY <= computerBottomY) {
     sideCollisionAngle();
   }
-
-  // Detect Computer scoring against Player
-  if (puckX >= 490 && puckY >= 110 && puckY <= 190) {
-    console.log('Computer Scored!!!');
-  }
-
-  // Detect Computer scoring against Player
-
 }
