@@ -7,7 +7,7 @@
 
 // Put all of your `var foo = bar;` setup here.
 
-const hockeyPuck = new Puck();
+const hockeyPuck = new Puck(); // Used in table.js
 let inPlay = false; // Sets ability to puckDrop
 let puckSpeed = 0; // Set initial speed of puck before puckDrop
 let xCoordinate = 0;
@@ -146,6 +146,12 @@ function score() {
   render();
 }
 
+/**
+ * Detects collisions with walls, paddles, and scoring.
+ * @param {int} puckX Puck's X Coordinate.
+ * @param {int} puckY Puck's Y Coordinate.
+ * @returns {void}
+ */
 function collisionDetect(puckX, puckY) {
   // Detect sides.
   if (puckX <= 15) { // Detect left side collisions
