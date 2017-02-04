@@ -169,4 +169,22 @@ function collisionDetect(puckX, puckY) {
   } else if (puckY >= 285) { // Detect Bottom collisions
     topBottomCollisionAngle();
   }
+
+  // Detect Player Paddle Front
+  if (puckX >= playerLeftX && puckY >= playerTopY && puckY <= playerBottomY) {
+    sideCollisionAngle();
+  }
+
+  // Detect Player Paddle Front
+  if (puckX <= (computerRightX + 8) && puckY >= computerTopY && puckY <= computerBottomY) {
+    sideCollisionAngle();
+  }
+
+  // Detect Computer scoring against Player
+  if (puckX >= 490 && puckY >= 110 && puckY <= 190) {
+    console.log('Computer Scored!!!');
+  }
+
+  // Detect Computer scoring against Player
+
 }
