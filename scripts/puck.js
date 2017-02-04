@@ -86,9 +86,9 @@ Puck.prototype.update = function() {
   //   this.y = 15;
   // }
 
-  console.log(' ');
-  console.log(`Puck x coordinate = ${this.x}`);
-  console.log(`Puck y coordinate = ${this.y}`);
+  // console.log(' ');
+  // console.log(`Puck x coordinate = ${this.x}`);
+  // console.log(`Puck y coordinate = ${this.y}`);
   collisionDetect(this.x, this.y);
 };
 
@@ -119,10 +119,10 @@ function puckDrop() {
 
   inPlay = true;
 
-  console.log(' ');
-  console.log('side is ' + side);
-  console.log('Angle is ' + angle);
-  console.log('Puck speed is ' + puckSpeed);
+  // console.log(' ');
+  // console.log('side is ' + side);
+  // console.log('Angle is ' + angle);
+  // console.log('Puck speed is ' + puckSpeed);
 }
 
 function puckAngle() {
@@ -164,7 +164,7 @@ function collisionDetect(puckX, puckY) {
     }
   } else if (puckX >= 485) { // Detect right side collisions
     if (puckY >= 110 && puckY <= 190) {
-      console.log('Computer Scored!!!');
+      // console.log('Computer Scored!!!');
       computerScore += 1; // Defined in score.js
       score(); // Defined in score.js
     } else {

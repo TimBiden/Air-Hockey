@@ -88,10 +88,10 @@ window.addEventListener('keydown', function(event) {
     movement = 1;
   } else if (event.keyCode === 32) {
     if (inPlay === true) {
-      console.log('Game is in play. No cheating, fool!');
+      // console.log('Game is in play. No cheating, fool!');
     } else {
       puckDrop();
-      console.log('Center Ice. Puck Drop!!!');
+      // console.log('Center Ice. Puck Drop!!!');
     }
   } else {
     movement = 0;
