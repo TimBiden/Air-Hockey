@@ -131,19 +131,20 @@ function puckAngle() {
   yCoordinate = Math.sin(rads) * puckSpeed;
 }
 
+/**
+ * Changes puck direction after side collisions.
+ * @returns {void}
+ */
 function sideCollisionAngle() {
   angle = 180 - angle;
 }
 
+/**
+ * Changes puck direction after top/bottom collisions.
+ * @returns {void}
+ */
 function topBottomCollisionAngle() {
   angle = angle * -1;
-}
-
-function score() {
-  console.log(`computerScore = ${computerScore}`);
-  console.log(`playerScore = ${playerScore}`);
-  inPlay = false;
-  render();
 }
 
 /**
@@ -156,9 +157,8 @@ function collisionDetect(puckX, puckY) {
   // Detect sides.
   if (puckX <= 15) { // Detect left side collisions
     if (puckY >= 110 && puckY <= 190) {
-      console.log('Player Scored!!!');
-      playerScore += 1;
-      score();
+      playerScore += 1; // Defined in score.js
+      score(); // Defined in score.js
     } else {
       sideCollisionAngle();
     }
