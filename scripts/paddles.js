@@ -1,10 +1,29 @@
+// =============================================================================
+//
+//   Variable Definitions and Initialization
+//
+// =============================================================================
+//
+
+// Put all of your `var foo = bar;` setup here.
+
 const player = new Player();
 const computer = new Computer();
 let movement = 0; // Move paddles by speed * movement
 let playerTopY = 0;
-let  playerBottomY = 0;
+let playerBottomY = 0;
 let computerTopY = 125;
 let computerBottomY = 175;
+
+// =============================================================================
+//
+//   Object Constructor Definitions
+//
+// =============================================================================
+//
+
+// Put all of your `function Foo() {}` object constructor and prototype method
+// definitions here.
 
 /**
  * Configures variables for Paddles.
@@ -70,6 +89,9 @@ function Computer() {
  */
 Computer.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
+
+  computerTopY = this.paddle.y - 8; // Buffer for puck.
+  computerBottomY = playerTopY + 64; // Buffer for puck.
 };
 
 // Make Player move
@@ -83,6 +105,15 @@ Player.prototype.update = function() {
     this.paddle.y = 250;
   }
 
-  playerTopY = this.paddle.y - 8;
-  playerBottomY = playerTopY + 64;
+  playerTopY = this.paddle.y - 8; // Buffer for puck.
+  playerBottomY = playerTopY + 64; // Buffer for puck.
 };
+
+// =============================================================================
+//
+//   Helper Function Definitions
+//
+// =============================================================================
+//
+
+// Put all of your `function bar() {}` helper function definitions here.
