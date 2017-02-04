@@ -165,8 +165,8 @@ function collisionDetect(puckX, puckY) {
   } else if (puckX >= 485) { // Detect right side collisions
     if (puckY >= 110 && puckY <= 190) {
       console.log('Computer Scored!!!');
-      computerScore += 1;
-      score();
+      computerScore += 1; // Defined in score.js
+      score(); // Defined in score.js
     } else {
       sideCollisionAngle();
     }
