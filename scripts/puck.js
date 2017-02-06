@@ -103,7 +103,7 @@ Puck.prototype.update = function() {
  * Drop the puck.
  * @returns {void}
  */
-function puckDrop() {
+function puckDrop() { // Called in table.js
   angle = (Math.floor(Math.random() * 50) + 155);
   // Randomized angle in degrees. Always shoots at Computer side.
   const side = (Math.floor(Math.random() * 2));
@@ -118,11 +118,6 @@ function puckDrop() {
   puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
 
   inPlay = true;
-
-  // console.log(' ');
-  // console.log('side is ' + side);
-  // console.log('Angle is ' + angle);
-  // console.log('Puck speed is ' + puckSpeed);
 }
 
 /**
@@ -148,7 +143,7 @@ function sideCollisionAngle() {
  * @returns {void}
  */
 function topBottomCollisionAngle() {
-  angle = angle * -1;
+  angle *= -1;
 }
 
 /**
@@ -185,8 +180,8 @@ function collisionDetect(puckX, puckY) {
     sideCollisionAngle();
   }
 
-  // Detect Player Paddle Front
-  if (puckX <= (computerRightX + 8) && puckY >= computerTopY && puckY <= computerBottomY) {
+  // Detect Computer Paddle Front
+  if (puckX <= (computerRightX + 8) && puckY >= (computerTopY + 8) && puckY <= (computerBottomY + 8)) {
     sideCollisionAngle();
   }
 }
