@@ -14,8 +14,6 @@ let xCoordinate = 0;
 let yCoordinate = 0;
 let angle = 0;
 const playerLeftX = 460; // Player Paddle coordinates
-const playerRightX = 490; // Player Paddle coordinates
-const computerLeftX = 10; // Player Paddle coordinates
 const computerRightX = 25; // Player Paddle coordinates
 
 // =============================================================================
@@ -49,6 +47,8 @@ function Puck() {
  * @returns {void}
  */
 Puck.prototype.render = function(x, y) {
+  // Check if game is in play. If it is, puck to center ice.
+  // Otherwise, puck is at location dictated by speed and direction.
   if (inPlay === true) {
     puckAngle();
     this.x += xCoordinate;
@@ -57,8 +57,6 @@ Puck.prototype.render = function(x, y) {
     this.x = 250;
     this.y = 150;
   }
-  console.log(`X i ${this.x}`);
-  console.log(`X i ${this.y}`);
 
   context.strokeStyle = 'black';
   context.beginPath();
@@ -75,22 +73,19 @@ Puck.prototype.update = function() {
   this.x += xCoordinate; // To move puck
   this.y += yCoordinate; // To move puck
 
-  // if (this.x > 485) { // Eliminate quiver action.
-  //   this.x = 485;
-  // }
-  // if (this.x < 15) {
-  //   this.x = 15;
-  // }
-  // if (this.y > 285) { // Eliminate quiver action.
-  //   this.y = 285;
-  // }
-  // if (this.y < 15) {
-  //   this.y = 15;
-  // }
+  if (this.x > 485) { // Eliminate quiver action.
+    this.x = 485;
+  }
+  if (this.x < 15) {
+    this.x = 15;
+  }
+  if (this.y > 285) { // Eliminate quiver action.
+    this.y = 285;
+  }
+  if (this.y < 15) {
+    this.y = 15;
+  }
 
-  // console.log(' ');
-  // console.log(`Puck x coordinate = ${this.x}`);
-  // console.log(`Puck y coordinate = ${this.y}`);
   collisionDetect(this.x, this.y);
 };
 
@@ -109,9 +104,12 @@ Puck.prototype.update = function() {
  * @returns {void}
  */
 function puckDrop() {
-  angle = (Math.floor(Math.random() * 50) + 155); // Randomized angle in degrees. Always shoots at Computer side.
-  let side = (Math.floor(Math.random() * 2)); // Randomize side to drop towards.
-  angle += (180 * side); // If 1, shoots to Computer. If 2, shoots to Player.
+  angle = (Math.floor(Math.random() * 50) + 155);
+  // Randomized angle in degrees. Always shoots at Computer side.
+  const side = (Math.floor(Math.random() * 2));
+  // Randomize side to drop towards.
+  angle += (180 * side);
+  // If 1, shoots to Computer. If 2, shoots to Player.
 
   if (angle > 360) {
     angle -= 360;
@@ -127,8 +125,12 @@ function puckDrop() {
   // console.log('Puck speed is ' + puckSpeed);
 }
 
+/**
+ * Takes angle and speed to calculate X & Y coordinates.
+ * @returns {void}
+ */
 function puckAngle() {
-  const rads = angle * Math.PI / 180;
+  const rads = (angle * Math.PI) / 180;
   xCoordinate = Math.cos(rads) * puckSpeed;
   yCoordinate = Math.sin(rads) * puckSpeed;
 }
