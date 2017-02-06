@@ -91,7 +91,7 @@ Computer.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
 
   computerTopY = this.paddle.y - 8; // Buffer for puck.
-  computerBottomY = playerTopY + 64; // Buffer for puck.
+  computerBottomY = computerTopY + 64; // Buffer for puck.
 };
 
 // Make Player move
