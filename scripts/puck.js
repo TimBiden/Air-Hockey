@@ -49,12 +49,6 @@ function Puck() {
  * @returns {void}
  */
 Puck.prototype.render = function(x, y) {
-  context.strokeStyle = 'black';
-  context.beginPath();
-  context.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
-  context.lineWidth = 15;
-  context.stroke();
-
   if (inPlay === true) {
     puckAngle();
     this.x += xCoordinate;
@@ -63,6 +57,14 @@ Puck.prototype.render = function(x, y) {
     this.x = 250;
     this.y = 150;
   }
+  console.log(`X i ${this.x}`);
+  console.log(`X i ${this.y}`);
+
+  context.strokeStyle = 'black';
+  context.beginPath();
+  context.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.counterClockwise);
+  context.lineWidth = 15;
+  context.stroke();
 };
 
 /**
