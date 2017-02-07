@@ -137,7 +137,7 @@ function puckAngle() {
  */
 function sideCollisionAngle() {
   angle = 180 - angle;
-  // direction(angle);
+  puckDirection(); // Defined and used in computerAI.js
 }
 
 /**
