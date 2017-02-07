@@ -20,6 +20,7 @@
 // Make Player paddle update
 function update() {
   player.update();
+  computer.update();
   hockeyPuck.update();
 }
 
@@ -66,7 +67,7 @@ const hockeyCanvas = document.getElementById('hockey');
 const context = hockeyCanvas.getContext('2d');
 
 // General variables
-const y = 125; // Paddle height begin
+let y = 125; // Paddle height begin
 
 // New object instances
 
