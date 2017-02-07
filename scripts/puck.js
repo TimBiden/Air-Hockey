@@ -137,7 +137,16 @@ function puckAngle() {
  */
 function sideCollisionAngle() {
   angle = 180 - angle;
-  puckDirection(); // Defined and used in computerAI.js
+  if (angle < 0){
+    console.log(`The angle is ${angle}`);
+    angle += 360;
+      console.log(`The angle is ${angle}`);
+  } else if (angle >= 360) {
+    console.log(`The angle is ${angle}`);
+    angle -= 360;
+  }
+  console.log('Check the direction.');
+  puckDirection(angle); // Defined and used in computerAI.js
 }
 
 /**

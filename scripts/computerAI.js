@@ -17,9 +17,15 @@ function blockThePuck() {
 function blockOrNot() {
   randomizer();
   if (randomizer === 1) {
+    console.log(' ');
+    console.log('Block the puck');
+    console.log(' ');
     blockThePuck();
   } else {
-    dontBlockPuck();
+    console.log(' ');
+    console.log('Dont Block the puck');
+    console.log(' ');
+    // dontBlockPuck();
   }
 }
 
@@ -28,8 +34,12 @@ function blockOrNot() {
  * @returns {void}
  */
 function puckDirection() {
-  if (puckAngle > 90 && puckAngle < 270) {
+  if (angle > 90 && angle < 270) {
+    console.log('Check if the puck will be blocked');
+    console.log(`Angle = ${angle}.`);
     blockOrNot();
+  } else {
+    console.log('Heading to Player.');
   }
 }
 
