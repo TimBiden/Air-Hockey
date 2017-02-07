@@ -138,14 +138,11 @@ function puckAngle() {
 function sideCollisionAngle() {
   angle = 180 - angle;
   if (angle < 0){
-    console.log(`The angle is ${angle}`);
     angle += 360;
-      console.log(`The angle is ${angle}`);
   } else if (angle >= 360) {
-    console.log(`The angle is ${angle}`);
     angle -= 360;
   }
-  console.log('Check the direction.');
+
   puckDirection(angle); // Defined and used in computerAI.js
 }
 
@@ -174,7 +171,6 @@ function collisionDetect(puckX, puckY) {
     }
   } else if (puckX >= 485) { // Detect right side collisions
     if (puckY >= 110 && puckY <= 190) {
-      // console.log('Computer Scored!!!');
       computerScore += 1; // Defined in score.js
       score(); // Defined in score.js
     } else {
