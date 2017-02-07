@@ -109,6 +109,20 @@ Player.prototype.update = function() {
   playerBottomY = playerTopY + 64; // Buffer for puck.
 };
 
+// Make Player move
+Computer.prototype.update = function updateTheComputerPaddle(computerYValue) {
+  this.paddle.y = computerYValue;
+
+  if (this.paddle.y < 0) {
+    this.paddle.y = 0;
+  } else if (this.paddle.y > 250) {
+    this.paddle.y = 250;
+  }
+
+  playerTopY = this.paddle.y - 8; // Buffer for puck.
+  playerBottomY = playerTopY + 64; // Buffer for puck.
+};
+
 // =============================================================================
 //
 //   Helper Function Definitions

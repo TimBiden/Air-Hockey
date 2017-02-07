@@ -13,6 +13,7 @@ let puckSpeed = 0; // Set initial speed of puck before puckDrop
 let xCoordinate = 0;
 let yCoordinate = 0;
 let angle = 0;
+let puckYValue = 0;
 const playerLeftX = 460; // Player Paddle coordinates
 const computerRightX = 25; // Player Paddle coordinates
 
@@ -28,8 +29,6 @@ const computerRightX = 25; // Player Paddle coordinates
 
 /**
  * Puck values
- * @param {int} x X Coordinate.
- * @param {int} y Y Coordinate.
  * @returns {void}
  */
 function Puck() {
@@ -57,6 +56,8 @@ Puck.prototype.render = function(x, y) {
     this.x = 250;
     this.y = 150;
   }
+
+  puckYValue = this.y;
 
   context.strokeStyle = 'black';
   context.beginPath();
@@ -136,6 +137,7 @@ function puckAngle() {
  */
 function sideCollisionAngle() {
   angle = 180 - angle;
+  // direction(angle);
 }
 
 /**
