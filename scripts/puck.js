@@ -143,6 +143,16 @@ function sideCollisionAngle() {
     angle -= 360;
   }
 
+  let randomizer = (Math.floor(Math.random() * 15) + 5);
+
+  const positiveNegative = (Math.floor(Math.random() * 2) + 1);
+
+  if (positiveNegative === 2) {
+    randomizer *= -1;
+  }
+
+  angle += randomizer;
+
   puckDirection(angle); // Defined and used in computerAI.js
 }
 
