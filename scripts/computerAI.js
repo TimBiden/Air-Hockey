@@ -62,11 +62,9 @@ function blockOrNot() {
  */
 function puckDirection() {
   if (angle > 90 && angle < 270) {
-    console.log('Heading to computer.');
     blockDirection = true;
     blockOrNot();
   } else {
   blockDirection = false;
-    console.log('Heading to Player.');
   }
 }
