@@ -32,6 +32,7 @@ function render() {
   computerGoal = new Goal(0);
   playerGoal = new Goal(492);
   hockeyPuck.render();
+  showScore();
 }
 
 // Call render to refresh
