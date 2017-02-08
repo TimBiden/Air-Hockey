@@ -18,14 +18,25 @@ function blockThePuck() {
  * If false, no movement necessary.
  */
 function dontBlockPuck() {
-  const randomizer = (Math.floor(Math.random() * 2) + 1);
+  let variant = 1;
+  let computerYValue = 0;
+
+  const randomizer = (Math.floor(Math.random() * 4) + 1);
+
   if (randomizer === 1) {
-    let variant = 1.1;
+    variant = 0.8;
+  } else if (randomizer === 2) {
+    variant = 0.9;
+  } else if (randomizer === 3) {
+    variant = 1.1;
   } else {
-    let variant = 0.9;
+    variant = 1.2;
   }
 
-  let computerYValue = puckYValue * variant;
+  if (computerYValue <= (puckYValue - 5) || computerYValue >= (puckYValue + 50)) {
+    computerYValue = puckYValue * variant;
+  }
+
   changeComputerY(computerYValue);
 }
 

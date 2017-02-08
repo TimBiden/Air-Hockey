@@ -122,9 +122,12 @@ function changeComputerY(computerYValue) {
 Computer.prototype.update = function updateTheComputerPaddle() {
   if (toBlock && blockDirection) {
     blockThePuck();
+  } else if (blockDirection && !toBlock) {
+    dontBlockPuck();
   } else {
-
+    console.log('nothing to see here.');
   }
+  
   this.paddle.y = computerTopY;
 
   if (this.paddle.y < 0) {
