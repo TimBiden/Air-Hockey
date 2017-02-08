@@ -118,8 +118,13 @@ function changeComputerY(computerYValue) {
   computerTopY = computerYValue;
 }
 
-// Make Player move
+// Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
+  if (toBlock && blockDirection) {
+    blockThePuck();
+  } else {
+
+  }
   this.paddle.y = computerTopY;
 
   if (this.paddle.y < 0) {

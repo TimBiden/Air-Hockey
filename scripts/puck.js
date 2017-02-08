@@ -137,7 +137,7 @@ function puckAngle() {
  */
 function sideCollisionAngle() {
   angle = 180 - angle;
-  if (angle < 0){
+  if (angle < 0) {
     angle += 360;
   } else if (angle >= 360) {
     angle -= 360;
