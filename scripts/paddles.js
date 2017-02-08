@@ -77,7 +77,7 @@ Player.prototype.render = function(x, y, color) {
  * @returns {void}
  */
 function Computer() {
-  if (inPlay === false) {
+  if (inPlay !== true) {
     y = 125;
   } else {
     y = computerYValue;

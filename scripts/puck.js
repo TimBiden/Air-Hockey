@@ -163,10 +163,10 @@ function sideCollisionAngle() {
 function topBottomCollisionAngle() {
   angle *= -1;
 
-  if (angle > 260 && angle < 270) {
-    angle -= 15;
-  } else if (angle > 270 && angle < 280) {
-    angle += 15;
+  if (angle > 255 && angle <= 270) {
+    angle -= 30;
+  } else if (angle >= 271 && angle < 285) {
+    angle += 30;
   }
 }
 
