@@ -1,5 +1,6 @@
 let toBlock = true;
 let blockDirection = true;
+let blockCheck = true;
 
 /**
  * Is the puck heading toward the computer's side?
@@ -20,10 +21,16 @@ function blockThePuck() {
 function dontBlockPuck() {
   let variant = 1;
   let computerYValue = 0;
+  randomizer = 0;
 
-  const randomizer = (Math.floor(Math.random() * 4) + 1);
+  if (blockCheck) {
+    randomizer = (Math.floor(Math.random() * 4) + 1);
+  }
+  blockCheck = false;
 
-  if (randomizer === 1) {
+  if (randomizer === 0) {
+    variant = 1;
+  } else if (randomizer === 1) {
     variant = 0.8;
   } else if (randomizer === 2) {
     variant = 0.9;
@@ -50,6 +57,7 @@ function blockOrNot() {
   const randomizer = (Math.floor(Math.random() * 2) + 1);
 
   if (randomizer === 1) {
+    blockCheck = true;
     toBlock = true;
   } else {
     toBlock = false;
