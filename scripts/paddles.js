@@ -122,8 +122,6 @@ function changeComputerY(computerYValue) {
 Computer.prototype.update = function updateTheComputerPaddle() {
   this.paddle.y = computerTopY;
 
- console.log(`this.paddle.y = ${this.paddle.y}`);
-
   if (this.paddle.y < 0) {
     this.paddle.y = 0;
   } else if (this.paddle.y > 250) {

@@ -4,7 +4,7 @@
  * If false, no movement necessary.
  */
 function blockThePuck() {
-  let computerYValue = puckYValue - 32;
+  let computerYValue = puckYValue - 20;
   changeComputerY(computerYValue);
 }
 
@@ -18,8 +18,12 @@ function blockOrNot() {
   const randomizer = (Math.floor(Math.random() * 2) + 1);
 
   if (randomizer === 1) {
+    console.log(' ');
+    console.log('Block the puck.');
     blockThePuck();
   } else {
+    console.log(' ');
+    console.log('Dont block the puck.');
     // dontBlockPuck();
   }
 }
