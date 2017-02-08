@@ -65,6 +65,6 @@ function puckDirection() {
     blockDirection = true;
     blockOrNot();
   } else {
-  blockDirection = false;
+    blockDirection = false;
   }
 }
