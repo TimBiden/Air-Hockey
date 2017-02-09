@@ -105,20 +105,23 @@ Puck.prototype.update = function() {
  * @returns {void}
  */
 function puckDrop() { // Called in table.js
-  angle = (Math.floor(Math.random() * 50) + 155);
-  // Randomized angle in degrees. Always shoots at Computer side.
-  const side = (Math.floor(Math.random() * 2));
-  // Randomize side to drop towards.
-  angle += (180 * side);
-  // If 1, shoots to Computer. If 2, shoots to Player.
+  if (gameOver === false) {
+    angle = (Math.floor(Math.random() * 50) + 155);
+    // Randomized angle in degrees. Always shoots at Computer side.
+    const side = (Math.floor(Math.random() * 2));
+    // Randomize side to drop towards.
+    angle += (180 * side);
+    // If 1, shoots to Computer. If 2, shoots to Player.
 
-  if (angle > 360) {
-    angle -= 360;
-  } // Fix for angle > 360 degrees.
+    if (angle > 360) {
+      angle -= 360;
+    } // Fix for angle > 360 degrees.
 
-  puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
+    puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
 
-  inPlay = true;
+    inPlay = true;
+  }
+
 }
 
 /**

@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let gameOver = false;
 
 function score() {
   console.log(' ');
@@ -27,6 +28,7 @@ function showScore() {
     context.font = '30px Verdana';
     context.fillStyle = 'black';
     context.fillText('Reload page to play again.', 50, 280);
+    gameOver = true;
   }
 
   if (computerScore >= 11) {
@@ -37,5 +39,6 @@ function showScore() {
     context.font = '30px Verdana';
     context.fillStyle = 'black';
     context.fillText('Reload page to play again.', 50, 280);
+    gameOver = true;
   }
 }
