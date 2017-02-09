@@ -113,8 +113,8 @@ Player.prototype.update = function() {
   playerTopY = this.paddle.y; // Buffer for puck.
   playerBottomY = playerTopY + 50; // Buffer for puck.
 
-  console.log(`Paddle Top Y = ${playerTopY}`);
-  console.log(`Paddle Bottom Y = ${playerBottomY}`);
+  // console.log(`Paddle Top Y = ${playerTopY}`);
+  // console.log(`Paddle Bottom Y = ${playerBottomY}`);
 };
 
 function changeComputerY(computerYValue) {

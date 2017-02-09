@@ -87,9 +87,9 @@ Puck.prototype.update = function() {
   if (this.y < buffer) {
     this.y = buffer;
   }
-  console.log(`Puck Y = ${this.y}`);
-  console.log(`Puck X = ${this.x}`);
-  console.log(`Puck angle = ${angle}`);
+  // console.log(`Puck Y = ${this.y}`);
+  // console.log(`Puck X = ${this.x}`);
+  // console.log(`Puck angle = ${angle}`);
 
   collisionDetect(this.x, this.y);
 };
@@ -215,7 +215,7 @@ function collisionDetect(puckX, puckY) {
   }
 
   // Detect Computer Paddle Front
-  if (puckX <= (computerRightX + buffer) && puckY >= (computerTopY + buffer) && puckY <= (computerBottomY + buffer)) {
+  if (puckX <= 40 && puckY >= (computerTopY - buffer) && puckY <= (computerBottomY + buffer)) {
     sideCollisionAngle();
   }
 
