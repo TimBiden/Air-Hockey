@@ -16,7 +16,26 @@ function showScore() {
   context.fillText(`${computerScore}`, 100, 170);
 
   context.fillStyle = '#00C90D';
-  context.font = '40px Verdana';
   context.fillText('Player!', 310, 80);
   context.fillText(`${playerScore}`, 350, 170);
+
+  if (playerScore >= 11) {
+    context.fillStyle = '#00C90D';
+    context.fillText('You Won!', 285, 230);
+    context.fillStyle = '#FF0700';
+    context.fillText('Lost.', 70, 230);
+    context.font = '30px Verdana';
+    context.fillStyle = 'black';
+    context.fillText('Reload page to play again.', 50, 280);
+  }
+
+  if (computerScore >= 11) {
+    context.fillStyle = '#00C90D';
+    context.fillText('You lost.', 280, 230);
+    context.fillStyle = '#FF0700';
+    context.fillText('Won.', 75, 230);
+    context.font = '30px Verdana';
+    context.fillStyle = 'black';
+    context.fillText('Reload page to play again.', 50, 280);
+  }
 }
