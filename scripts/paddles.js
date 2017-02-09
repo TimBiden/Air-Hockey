@@ -95,8 +95,8 @@ function Computer() {
 Computer.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
 
-  // computerTopY = this.paddle.y - 8; // Buffer for puck.
-  computerBottomY = computerTopY + 64; // Buffer for puck.
+  // computerTopY = this.paddle.y - 15; // Buffer for puck.
+  // computerBottomY = computerTopY + 80; // Buffer for puck.
 };
 
 // Make Player move
@@ -110,8 +110,11 @@ Player.prototype.update = function() {
     this.paddle.y = 250;
   }
 
-  playerTopY = this.paddle.y - 8; // Buffer for puck.
-  playerBottomY = playerTopY + 64; // Buffer for puck.
+  playerTopY = this.paddle.y; // Buffer for puck.
+  playerBottomY = playerTopY + 50; // Buffer for puck.
+
+  console.log(`Paddle Top Y = ${playerTopY}`);
+  console.log(`Paddle Bottom Y = ${playerBottomY}`);
 };
 
 function changeComputerY(computerYValue) {
@@ -134,9 +137,6 @@ Computer.prototype.update = function updateTheComputerPaddle() {
   } else if (this.paddle.y > 250) {
     this.paddle.y = 250;
   }
-
-  // playerTopY = this.paddle.y - 8; // Buffer for puck.
-  // playerBottomY = playerTopY + 64; // Buffer for puck.
 };
 
 // =============================================================================

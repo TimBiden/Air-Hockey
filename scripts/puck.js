@@ -14,6 +14,7 @@ let xCoordinate = 0;
 let yCoordinate = 0;
 let angle = 0;
 let puckYValue = 0;
+const buffer = 15;
 const playerLeftX = 460; // Player Paddle coordinates
 const computerRightX = 25; // Player Paddle coordinates
 
@@ -77,15 +78,18 @@ Puck.prototype.update = function() {
   if (this.x > 485) { // Eliminate quiver action.
     this.x = 485;
   }
-  if (this.x < 15) {
-    this.x = 15;
+  if (this.x < buffer) {
+    this.x = buffer;
   }
   if (this.y > 285) { // Eliminate quiver action.
     this.y = 285;
   }
-  if (this.y < 15) {
-    this.y = 15;
+  if (this.y < buffer) {
+    this.y = buffer;
   }
+  console.log(`Puck Y = ${this.y}`);
+  console.log(`Puck X = ${this.x}`);
+  console.log(`Puck angle = ${angle}`);
 
   collisionDetect(this.x, this.y);
 };
@@ -117,7 +121,11 @@ function puckDrop() { // Called in table.js
       angle -= 360;
     } // Fix for angle > 360 degrees.
 
+    // angle = 320; // Delete after testing.
+
     puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
+
+    // puckSpeed = 2; // Delete after testing.
 
     inPlay = true;
   }
@@ -185,7 +193,7 @@ function topBottomCollisionAngle() {
  */
 function collisionDetect(puckX, puckY) {
   // Detect sides.
-  if (puckX <= 15) { // Detect left side collisions
+  if (puckX <= buffer) { // Detect left side collisions
     if (puckY >= 110 && puckY <= 190) {
       playerScore += 1; // Defined in score.js
       score(); // Defined in score.js
@@ -199,10 +207,6 @@ function collisionDetect(puckX, puckY) {
     } else {
       sideCollisionAngle();
     }
-  } else if (puckY <= 15) { // Detect Top collisions
-    topBottomCollisionAngle();
-  } else if (puckY >= 285) { // Detect Bottom collisions
-    topBottomCollisionAngle();
   }
 
   // Detect Player Paddle Front
@@ -211,7 +215,42 @@ function collisionDetect(puckX, puckY) {
   }
 
   // Detect Computer Paddle Front
-  if (puckX <= (computerRightX + 8) && puckY >= (computerTopY + 8) && puckY <= (computerBottomY + 8)) {
+  if (puckX <= (computerRightX + buffer) && puckY >= (computerTopY + buffer) && puckY <= (computerBottomY + buffer)) {
     sideCollisionAngle();
+  }
+
+  // Detect top & bottom collisions
+  if (puckY <= buffer) { // Detect Top collisions
+    topBottomCollisionAngle();
+  } else if (puckY >= (300 - buffer)) { // Detect Bottom collisions
+    topBottomCollisionAngle();
+  }
+
+  // Detect player paddle bottom puck collisions
+  if (angle > 180 && angle < 360) {
+    if (puckX >= 460 && puckY <= (playerBottomY + buffer) && puckY >= playerBottomY) {
+      topBottomCollisionAngle();
+    }
+  }
+
+  // Detect player paddle top puck collisions
+  if (angle > 0 && angle < 180) {
+    if (puckX >= 460 && puckY >= (playerTopY - buffer) && puckY <= playerTopY) {
+      topBottomCollisionAngle();
+    }
+  }
+
+  // Detect Computer paddle bottom puck collisions
+  if (angle > 180 && angle < 360) {
+    if (puckX <= 40 && puckY <= (computerBottomY + buffer) && puckY >= computerBottomY) {
+      topBottomCollisionAngle();
+    }
+  }
+
+  // Detect Computer paddle top puck collisions
+  if (angle > 0 && angle < 180) {
+    if (puckX <= 40 && puckY >= (computerTopY - buffer) && puckY <= computerTopY) {
+      topBottomCollisionAngle();
+    }
   }
 }
