@@ -25,10 +25,8 @@ function showScore() {
     context.fillText('You Won!', 285, 230);
     context.fillStyle = '#FF0700';
     context.fillText('Lost.', 70, 230);
-    context.font = '30px Verdana';
-    context.fillStyle = 'black';
-    context.fillText('Reload page to play again.', 50, 280);
     gameOver = true;
+    showhide()
   }
 
   if (computerScore >= 11) {
@@ -36,9 +34,12 @@ function showScore() {
     context.fillText('You lost.', 280, 230);
     context.fillStyle = '#FF0700';
     context.fillText('Won.', 75, 230);
-    context.font = '30px Verdana';
-    context.fillStyle = 'black';
-    context.fillText('Reload page to play again.', 50, 280);
     gameOver = true;
+    showhide()
   }
+}
+
+function showhide() {
+  var div = document.getElementById("newpost");
+    div.style.visibility = 'visible';
 }
