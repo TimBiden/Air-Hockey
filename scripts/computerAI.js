@@ -9,7 +9,6 @@ let blockCheck = true;
  */
 function blockThePuck() {
   let computerYValue = puckYValue - 20;
-  changeComputerY(computerYValue);
 }
 
 /**
@@ -43,8 +42,6 @@ function dontBlockPuck() {
   if (computerYValue <= (puckYValue - 5) || computerYValue >= (puckYValue + 50)) {
     computerYValue = puckYValue * variant;
   }
-
-  changeComputerY(computerYValue);
 }
 
 /**
