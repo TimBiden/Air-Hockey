@@ -192,13 +192,21 @@ function topBottomCollisionAngle() {
  * @returns {void}
  */
 function collisionDetect(puckX, puckY) {
+
+  if (puckX < 40) {
+    console.log(' ');
+    console.log(`puckX = ${puckX}`);
+    console.log(`puckY = ${puckY}`);
+    console.log(`computerTopY - buffer = ${computerTopY - buffer}`);
+    console.log(`computerBottomY + buffer = ${computerBottomY + buffer}`);
+  }
+
   // Detect sides.
   if (puckX <= buffer) { // Detect left side collisions
     if (puckY >= 110 && puckY <= 190) {
       playerScore += 1; // Defined in score.js
       score(); // Defined in score.js
     } else {
-      puckX = buffer;
       sideCollisionAngle();
     }
   } else if (puckX >= 485) { // Detect right side collisions
