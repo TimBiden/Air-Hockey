@@ -31,13 +31,13 @@ function dontBlockPuck() {
   if (randomizer === 0) {
     variant = 1;
   } else if (randomizer === 1) {
-    variant = 0.8;
+    variant = 0.7;
   } else if (randomizer === 2) {
-    variant = 0.9;
+    variant = 0.8;
   } else if (randomizer === 3) {
-    variant = 1.1;
-  } else {
     variant = 1.2;
+  } else {
+    variant = 1.3;
   }
 
   if (computerYValue <= (puckYValue - 5) || computerYValue >= (puckYValue + 50)) {
@@ -56,11 +56,14 @@ function dontBlockPuck() {
 function blockOrNot() {
   const randomizer = (Math.floor(Math.random() * 2) + 1);
 
+  console.log(`${blockCheck}`);
+
   if (randomizer === 1) {
     blockCheck = true;
     toBlock = true;
   } else {
     toBlock = false;
+    dontBlockPuck();
   }
 }
 

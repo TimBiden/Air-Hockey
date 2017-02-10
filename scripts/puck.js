@@ -125,7 +125,7 @@ function puckDrop() { // Called in table.js
 
     puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
 
-    // puckSpeed = 2; // Delete after testing.
+    puckSpeed = 2; // Delete after testing.
 
     inPlay = true;
   }
@@ -192,6 +192,15 @@ function topBottomCollisionAngle() {
  * @returns {void}
  */
 function collisionDetect(puckX, puckY) {
+
+  if (puckX < 40) {
+    console.log(' ');
+    console.log(`puckX = ${puckX}`);
+    console.log(`puckY = ${puckY}`);
+    console.log(`computerTopY - buffer = ${computerTopY - buffer}`);
+    console.log(`computerBottomY + buffer = ${computerBottomY + buffer}`);
+  }
+
   // Detect sides.
   if (puckX <= buffer) { // Detect left side collisions
     if (puckY >= 110 && puckY <= 190) {
@@ -216,6 +225,12 @@ function collisionDetect(puckX, puckY) {
 
   // Detect Computer Paddle Front
   if (puckX <= 40 && puckY >= (computerTopY - buffer) && puckY <= (computerBottomY + buffer)) {
+    // console.log(' ');
+    // console.log(`computerTopY - buffer = ${computerTopY - buffer}`);
+    // console.log(`computerBottomY + buffer = ${computerBottomY + buffer}`);
+    // console.log(`puckX = ${puckX}`);
+    // console.log(`puckY = ${puckY}`);
+    puckX = 40;
     sideCollisionAngle();
   }
 
