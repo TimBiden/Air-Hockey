@@ -77,6 +77,11 @@ Player.prototype.render = function(x, y, color) {
  * @returns {void}
  */
 function Computer() {
+  if (inPlay !== true) {
+    y = 125;
+  } else {
+    y = computerYValue;
+  }
   this.paddle = new Paddle(10, y, '#FF0700');
 }
 
@@ -90,8 +95,8 @@ function Computer() {
 Computer.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
 
-  computerTopY = this.paddle.y - 8; // Buffer for puck.
-  computerBottomY = computerTopY + 64; // Buffer for puck.
+  computerTopY = this.paddle.y;
+  computerBottomY = computerTopY + 50;
 };
 
 // Make Player move
@@ -105,8 +110,33 @@ Player.prototype.update = function() {
     this.paddle.y = 250;
   }
 
-  playerTopY = this.paddle.y - 8; // Buffer for puck.
-  playerBottomY = playerTopY + 64; // Buffer for puck.
+  playerTopY = this.paddle.y; // Buffer for puck.
+  playerBottomY = playerTopY + 50; // Buffer for puck.
+
+  // console.log(`Paddle Top Y = ${playerTopY}`);
+  // console.log(`Paddle Bottom Y = ${playerBottomY}`);
+};
+
+function changeComputerY(computerYValue) {
+  computerTopY = computerYValue;
+}
+
+// Make Computer move
+Computer.prototype.update = function updateTheComputerPaddle() {
+  if (toBlock && blockDirection) {
+    blockThePuck();
+  }
+  if (blockDirection && !toBlock) {
+    dontBlockPuck();
+  }
+
+  this.paddle.y = computerTopY;
+
+  if (this.paddle.y < 0) {
+    this.paddle.y = 0;
+  } else if (this.paddle.y > 250) {
+    this.paddle.y = 250;
+  }
 };
 
 // =============================================================================
