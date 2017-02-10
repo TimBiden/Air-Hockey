@@ -53,8 +53,6 @@ function dontBlockPuck() {
 function blockOrNot() {
   const randomizer = (Math.floor(Math.random() * 2) + 1);
 
-  console.log(`${blockCheck}`);
-
   if (randomizer === 1) {
     blockCheck = true;
     toBlock = true;

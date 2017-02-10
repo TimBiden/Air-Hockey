@@ -77,10 +77,10 @@ Player.prototype.render = function(x, y, color) {
  * @returns {void}
  */
 function Computer() {
-  if (inPlay !== true) {
-    y = 125;
-  } else {
+  if (inPlay) {
     y = computerYValue;
+  } else {
+    y = 125;
   }
   this.paddle = new Paddle(10, y, '#FF0700');
 }
