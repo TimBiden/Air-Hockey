@@ -117,6 +117,10 @@ Player.prototype.update = function() {
   // console.log(`Paddle Bottom Y = ${playerBottomY}`);
 };
 
+function changeComputerY(computerYValue) {
+  computerTopY = computerYValue;
+}
+
 // Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
   if (toBlock && blockDirection) {
