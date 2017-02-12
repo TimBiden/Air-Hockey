@@ -9,7 +9,7 @@ let computerYValue = 0;
  * If false, no movement necessary.
  */
 function blockThePuck() {
-  console.log('Block the puck!');
+  // console.log('Block the puck!');
   computerYValue = puckYValue - 20;
   // changeComputerY(computerYValue);
   computerTopY = computerYValue;
@@ -23,14 +23,13 @@ function blockThePuck() {
  */
 function dontBlockPuck() {
   console.log('The puck shouldnt get blocked.');
-  let variant = 1;
+  let variant = 0;
   // let computerYValue = 0;
   let randomizer = 0;
 
-  if (blockCheck) {
-    randomizer = (Math.floor(Math.random() * 4) + 1);
-  }
-  blockCheck = false;
+  randomizer = (Math.floor(Math.random() * 4) + 1);
+
+  // blockCheck = false;
 
   if (randomizer === 0) {
     variant = 0;
@@ -44,9 +43,13 @@ function dontBlockPuck() {
     variant = -30;
   }
 
-  computerYValue = puckYValue + variant;
+  computerTopY = puckYValue + variant;
 
-  computerTopY = computerYValue
+  console.log(' ');
+  console.log(`randomizer = ${randomizer}`);
+  console.log(`puckYValue = ${puckYValue}`);
+  console.log(`variant = ${variant}`);
+  console.log(`computerTopY = ${computerTopY}`);
 
   // changeComputerY(computerYValue);
 }
@@ -75,11 +78,21 @@ function blockOrNot() {
  * Is the puck hearing toward the computer's side?
  * @returns {void}
  */
-function puckDirection() {
+let puckDirection = function puckDirection(nothing) {
   if (angle > 90 && angle < 270) {
     blockDirection = true;
     blockOrNot();
   } else {
     blockDirection = false;
+  }
+}
+
+function runOncePerSideCollision() {
+  puckDirection();
+  console.log(puckDirection(nothing));
+  if (puckDirection){
+    console.log('puckDirection =  true.');
+  } else {
+    console.log('puckDirection =  false.');
   }
 }

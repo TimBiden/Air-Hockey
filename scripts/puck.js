@@ -164,8 +164,7 @@ function sideCollisionAngle() {
 
   angle += randomizer;
 
-  puckDirection(angle); // Defined and used in computerAI.js
-}
+  runOncePerSideCollision();
 
 /**
  * Changes puck direction after top/bottom collisions.
