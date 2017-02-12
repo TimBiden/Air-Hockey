@@ -1,6 +1,7 @@
 let toBlock = true;
 let blockDirection = true;
 let blockCheck = true;
+let computerYValue = 0;
 
 /**
  * Is the puck heading toward the computer's side?
@@ -8,8 +9,10 @@ let blockCheck = true;
  * If false, no movement necessary.
  */
 function blockThePuck() {
-  let computerYValue = puckYValue - 20;
-  changeComputerY(computerYValue);
+  console.log('Block the puck!');
+  computerYValue = puckYValue - 20;
+  // changeComputerY(computerYValue);
+  computerTopY = computerYValue;
 }
 
 /**
@@ -19,9 +22,10 @@ function blockThePuck() {
  * If false, no movement necessary.
  */
 function dontBlockPuck() {
+  console.log('The puck shouldnt get blocked.');
   let variant = 1;
-  let computerYValue = 0;
-  randomizer = 0;
+  // let computerYValue = 0;
+  let randomizer = 0;
 
   if (blockCheck) {
     randomizer = (Math.floor(Math.random() * 4) + 1);
@@ -29,22 +33,22 @@ function dontBlockPuck() {
   blockCheck = false;
 
   if (randomizer === 0) {
-    variant = 1;
+    variant = 0;
   } else if (randomizer === 1) {
-    variant = 0.7;
+    variant = 60;
   } else if (randomizer === 2) {
-    variant = 0.8;
+    variant = 70;
   } else if (randomizer === 3) {
-    variant = 1.2;
+    variant = -20;
   } else {
-    variant = 1.3;
+    variant = -30;
   }
 
-  if (computerYValue <= (puckYValue - 5) || computerYValue >= (puckYValue + 50)) {
-    computerYValue = puckYValue * variant;
-  }
+  computerYValue = puckYValue + variant;
 
-  changeComputerY(computerYValue);
+  computerTopY = computerYValue
+
+  // changeComputerY(computerYValue);
 }
 
 /**
@@ -56,7 +60,7 @@ function dontBlockPuck() {
 function blockOrNot() {
   const randomizer = (Math.floor(Math.random() * 2) + 1);
 
-  console.log(`${blockCheck}`);
+  // console.log(`${blockCheck}`);
 
   if (randomizer === 1) {
     blockCheck = true;

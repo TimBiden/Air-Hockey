@@ -193,13 +193,13 @@ function topBottomCollisionAngle() {
  */
 function collisionDetect(puckX, puckY) {
 
-  if (puckX < 40) {
-    console.log(' ');
-    console.log(`puckX = ${puckX}`);
-    console.log(`puckY = ${puckY}`);
-    console.log(`computerTopY - buffer = ${computerTopY - buffer}`);
-    console.log(`computerBottomY + buffer = ${computerBottomY + buffer}`);
-  }
+  // if (puckX < 40) {
+  //   console.log(' ');
+  //   console.log(`puckX = ${puckX}`);
+  //   console.log(`puckY = ${puckY}`);
+  //   console.log(`computerTopY - buffer = ${computerTopY - buffer}`);
+  //   console.log(`computerBottomY + buffer = ${computerBottomY + buffer}`);
+  // }
 
   // Detect sides.
   if (puckX <= buffer) { // Detect left side collisions
