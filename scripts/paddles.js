@@ -80,7 +80,7 @@ function Computer() {
   if (inPlay !== true) {
     y = 125;
   } else {
-    y = computerYValue;
+    y = computerTopY;
   }
   this.paddle = new Paddle(10, y, '#FF0700');
 }
@@ -112,14 +112,7 @@ Player.prototype.update = function() {
 
   playerTopY = this.paddle.y; // Buffer for puck.
   playerBottomY = playerTopY + 50; // Buffer for puck.
-
-  // console.log(`Paddle Top Y = ${playerTopY}`);
-  // console.log(`Paddle Bottom Y = ${playerBottomY}`);
 };
-
-function changeComputerY(computerYValue) {
-  computerTopY = computerYValue;
-}
 
 // Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
