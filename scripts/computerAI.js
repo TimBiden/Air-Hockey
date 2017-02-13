@@ -25,7 +25,7 @@ function puckVariance() {
   if (blockCheck) {
     randomizer = (Math.floor(Math.random() * 5) + 1);
   }
-  blockCheck = false;
+  // blockCheck = false;
 
   if (randomizer === 1) {
     variant = 0;
@@ -39,7 +39,7 @@ function puckVariance() {
     variant = 40;
   }
 
-  computerTopY = puckYValue * variant;
+  computerTopY = puckYValue + variant;
   console.log(`variant = ${variant}`);
   console.log(`computerTopY = ${computerTopY}`);
 
