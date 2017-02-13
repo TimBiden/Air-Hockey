@@ -123,7 +123,7 @@ Computer.prototype.update = function updateTheComputerPaddle() {
     dontBlockPuck();
   }
 
-  this.paddle.y = computerTopY;
+  this.paddle.y = puckYValue + variant;
 
   if (this.paddle.y < 0) {
     this.paddle.y = 0;
