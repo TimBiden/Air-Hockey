@@ -69,6 +69,7 @@ const context = hockeyCanvas.getContext('2d');
 
 // General variables
 let y = 125; // Paddle height begin
+let inPlay = false; // Sets ability to puckDrop
 
 // New object instances
 

@@ -8,7 +8,6 @@
 // Put all of your `var foo = bar;` setup here.
 
 const hockeyPuck = new Puck(); // Used in table.js
-let inPlay = false; // Sets ability to puckDrop
 let puckSpeed = 0; // Set initial speed of puck before puckDrop
 let xCoordinate = 0;
 let yCoordinate = 0;
@@ -129,8 +128,7 @@ function puckDrop() { // Called in table.js
 
     inPlay = true;
   }
-
-}
+};
 
 /**
  * Takes angle and speed to calculate X & Y coordinates.
@@ -165,12 +163,13 @@ function sideCollisionAngle() {
   angle += randomizer;
 
   runOncePerSideCollision();
+}
 
 /**
  * Changes puck direction after top/bottom collisions.
  * @returns {void}
  */
-function topBottomCollisionAngle() {
+topBottomCollisionAngle = function topBottomCollisionAngle() {
   angle *= -1;
 
   if (angle < 0) {
@@ -182,7 +181,7 @@ function topBottomCollisionAngle() {
   } else if (angle >= 271 && angle < 285) {
     angle += 30;
   }
-}
+};
 
 /**
  * Detects collisions with walls, paddles, and scoring.
@@ -190,7 +189,7 @@ function topBottomCollisionAngle() {
  * @param {int} puckY Puck's Y Coordinate.
  * @returns {void}
  */
-function collisionDetect(puckX, puckY) {
+collisionDetect = function collisionDetect(puckX, puckY) {
 
   // if (puckX < 40) {
   //   console.log(' ');
@@ -267,4 +266,4 @@ function collisionDetect(puckX, puckY) {
       topBottomCollisionAngle();
     }
   }
-}
+};

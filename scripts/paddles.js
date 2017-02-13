@@ -123,22 +123,24 @@ Player.prototype.update = function() {
 
 // Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
-  if (toBlock && blockDirection) {
+
+  if (toBlock) {
+    console.log('blockThePuck');
     blockThePuck();
-  }
-  if (blockDirection && !toBlock) {
+  } else {
+    console.log('dontBlockPuck');
     dontBlockPuck();
   }
 
-  computerTopY = computerYValue;
+computerTopY = computerYValue;
 
-  this.paddle.y = computerTopY;
+this.paddle.y = computerTopY;
 
-  if (this.paddle.y < 0) {
-    this.paddle.y = 0;
-  } else if (this.paddle.y > 250) {
-    this.paddle.y = 250;
-  }
+if (this.paddle.y < 0) {
+  this.paddle.y = 0;
+} else if (this.paddle.y > 250) {
+  this.paddle.y = 250;
+}
 };
 
 // =============================================================================
