@@ -1,6 +1,7 @@
 let toBlock = true;
 let blockDirection = true;
 let blockCheck = true;
+let variant = 0;
 
 /**
  * Is the puck heading toward the computer's side?
@@ -9,7 +10,6 @@ let blockCheck = true;
  */
 function blockThePuck() {
   let computerYValue = puckYValue - 20;
-  changeComputerY(computerYValue);
 }
 
 /**
@@ -18,33 +18,41 @@ function blockThePuck() {
  * @returns {boolean} // If true AI must move paddle.
  * If false, no movement necessary.
  */
-function dontBlockPuck() {
-  let variant = 1;
-  let computerYValue = 0;
-  randomizer = 0;
+function puckVariance() {
+  // let computerYValue = 0;
+  let randomizer = -25;
 
-  if (blockCheck) {
-    randomizer = (Math.floor(Math.random() * 4) + 1);
-  }
-  blockCheck = false;
+  randomizer = (Math.floor(Math.random() * 6));
 
-  if (randomizer === 0) {
-    variant = 1;
-  } else if (randomizer === 1) {
-    variant = 0.7;
+  console.log(' ');
+
+  if (randomizer === 1) {
+    variant = -72;
+    console.log(`Miss the puck.`);
   } else if (randomizer === 2) {
-    variant = 0.8;
+    variant = -77;
+    console.log(`Miss the puck.`);
   } else if (randomizer === 3) {
-    variant = 1.2;
+    variant = 16;
+    console.log(`Miss the puck.`);
+  } else if (randomizer === 4) {
+    variant = 20;
+    console.log(`Miss the puck.`);
   } else {
-    variant = 1.3;
+    variant = -25;
   }
 
-  if (computerYValue <= (puckYValue - 5) || computerYValue >= (puckYValue + 50)) {
-    computerYValue = puckYValue * variant;
-  }
+  // Miss it by going under
+  // variant = 15;
 
-  changeComputerY(computerYValue);
+  // Miss it by going over
+  // variant = -70;
+
+  // computerTopY = puckYValue + variant;
+  // console.log(`puck`);
+  console.log(`variant = ${variant}`);
+  // console.log(`computerTopY = ${computerTopY}`);
+
 }
 
 /**
@@ -67,15 +75,19 @@ function blockOrNot() {
   }
 }
 
-/**
- * Is the puck hearing toward the computer's side?
- * @returns {void}
- */
-function puckDirection() {
-  if (angle > 90 && angle < 270) {
-    blockDirection = true;
-    blockOrNot();
-  } else {
-    blockDirection = false;
-  }
+// /**
+//  * Is the puck hearing toward the computer's side?
+//  * @returns {void}
+//  */
+// function puckDirection() {
+//   if (angle > 90 && angle < 270) {
+//     blockDirection = true;
+//     blockOrNot();
+//   } else {
+//     blockDirection = false;
+//   }
+// }
+
+function runOncePerSiceCollision() {
+  puckVariance();
 }
