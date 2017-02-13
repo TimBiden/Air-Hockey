@@ -125,7 +125,7 @@ function puckDrop() { // Called in table.js
 
     puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
 
-    puckSpeed = 2; // Delete after testing.
+    // puckSpeed = 2; // Delete after testing.
 
     inPlay = true;
   }

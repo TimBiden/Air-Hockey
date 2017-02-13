@@ -19,26 +19,38 @@ function blockThePuck() {
  * If false, no movement necessary.
  */
 function puckVariance() {
-  let computerYValue = 0;
-  let randomizer = 0;
+  // let computerYValue = 0;
+  let randomizer = -25;
 
-  randomizer = (Math.floor(Math.random() * 5) + 1);
+  randomizer = (Math.floor(Math.random() * 6));
+
+  console.log(' ');
 
   if (randomizer === 1) {
-    variant = 0;
+    variant = -72;
+    console.log(`Miss the puck.`);
   } else if (randomizer === 2) {
-    variant = -30;
+    variant = -77;
+    console.log(`Miss the puck.`);
   } else if (randomizer === 3) {
-    variant = -40;
+    variant = 16;
+    console.log(`Miss the puck.`);
   } else if (randomizer === 4) {
-    variant = 30;
+    variant = 20;
+    console.log(`Miss the puck.`);
   } else {
-    variant = 40;
+    variant = -25;
   }
+
+  // Miss it by going under
+  // variant = 15;
+
+  // Miss it by going over
+  // variant = -70;
 
   // computerTopY = puckYValue + variant;
   // console.log(`puck`);
-  // console.log(`variant = ${variant}`);
+  console.log(`variant = ${variant}`);
   // console.log(`computerTopY = ${computerTopY}`);
 
 }
