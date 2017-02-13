@@ -164,7 +164,7 @@ function sideCollisionAngle() {
 
   angle += randomizer;
 
-  puckDirection(angle); // Defined and used in computerAI.js
+  // puckDirection(angle); // Defined and used in computerAI.js
 }
 
 /**

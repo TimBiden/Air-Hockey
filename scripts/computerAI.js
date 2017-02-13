@@ -65,18 +65,18 @@ function blockOrNot() {
   }
 }
 
-/**
- * Is the puck hearing toward the computer's side?
- * @returns {void}
- */
-function puckDirection() {
-  if (angle > 90 && angle < 270) {
-    blockDirection = true;
-    blockOrNot();
-  } else {
-    blockDirection = false;
-  }
-}
+// /**
+//  * Is the puck hearing toward the computer's side?
+//  * @returns {void}
+//  */
+// function puckDirection() {
+//   if (angle > 90 && angle < 270) {
+//     blockDirection = true;
+//     blockOrNot();
+//   } else {
+//     blockDirection = false;
+//   }
+// }
 
 function runOncePerSiceCollision() {
   puckVariance();
