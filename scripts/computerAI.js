@@ -1,6 +1,7 @@
 let toBlock = true;
 let blockDirection = true;
 let blockCheck = true;
+let variant = 0;
 
 /**
  * Is the puck heading toward the computer's side?
@@ -17,31 +18,31 @@ function blockThePuck() {
  * @returns {boolean} // If true AI must move paddle.
  * If false, no movement necessary.
  */
-function dontBlockPuck() {
-  let variant = 1;
+function puckVariance() {
   let computerYValue = 0;
   randomizer = 0;
 
   if (blockCheck) {
-    randomizer = (Math.floor(Math.random() * 4) + 1);
+    randomizer = (Math.floor(Math.random() * 5) + 1);
   }
   blockCheck = false;
 
-  if (randomizer === 0) {
-    variant = 1;
-  } else if (randomizer === 1) {
-    variant = 0.7;
+  if (randomizer === 1) {
+    variant = 0;
   } else if (randomizer === 2) {
-    variant = 0.8;
+    variant = -30;
   } else if (randomizer === 3) {
-    variant = 1.2;
+    variant = -40;
+  } else if (randomizer === 4) {
+    variant = 30;
   } else {
-    variant = 1.3;
+    variant = 40;
   }
 
-  if (computerYValue <= (puckYValue - 5) || computerYValue >= (puckYValue + 50)) {
-    computerTopY = puckYValue * variant;
-  }
+  computerTopY = puckYValue * variant;
+  console.log(`variant = ${variant}`);
+  console.log(`computerTopY = ${computerTopY}`);
+
 }
 
 /**
@@ -75,4 +76,8 @@ function puckDirection() {
   } else {
     blockDirection = false;
   }
+}
+
+function runOncePerSiceCollision() {
+  puckVariance();
 }
