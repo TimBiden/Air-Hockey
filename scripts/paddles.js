@@ -111,6 +111,14 @@ Player.prototype.update = function() {
   } else if (playerMovement < -2) {
     this.paddle.y -= 3;
     playerMovement += 3;
+  } else if (this.paddle.y > 250) {
+    playerMovement = 0;
+  } else if (this.paddle.y < 50) {
+    playerMovement = 0;
+  }
+
+  if (puckX < 15 && puckY < 20 || puckX > 15 && puckY > 280){
+    buffer = 25;
   }
 
   if (this.paddle.y < 0) {
