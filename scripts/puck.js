@@ -123,7 +123,7 @@ function puckDrop() { // Called in table.js
 
     // angle = 320; // Delete after testing.
 
-    puckSpeed = (Math.floor(Math.random() * 5) + 3); // Randomized speed of puck.
+    puckSpeed = (Math.floor(Math.random() * 3) + 3); // Randomized speed of puck.
 
     // puckSpeed = 2; // Delete after testing.
 

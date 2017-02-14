@@ -105,12 +105,12 @@ Player.prototype.update = function() {
   playerMovement += (movement * this.paddle.speed);
   movement = 0;
 
-  if (playerMovement > 1) {
-    this.paddle.y += 2;
-    playerMovement -= 2;
-  } else if (playerMovement < -1) {
-    this.paddle.y -= 2;
-    playerMovement += 2;
+  if (playerMovement > 2) {
+    this.paddle.y += 3;
+    playerMovement -= 3;
+  } else if (playerMovement < -2) {
+    this.paddle.y -= 3;
+    playerMovement += 3;
   }
 
   if (this.paddle.y < 0) {
