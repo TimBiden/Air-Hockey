@@ -14,6 +14,7 @@ let playerTopY = 0;
 let playerBottomY = 0;
 let computerTopY = 125;
 let computerBottomY = 175;
+let playerMovement = 0;
 
 // =============================================================================
 //
@@ -101,8 +102,16 @@ Computer.prototype.render = function(x, y, color) {
 
 // Make Player move
 Player.prototype.update = function() {
-  this.paddle.y += movement * this.paddle.speed;
+  playerMovement += (movement * this.paddle.speed);
   movement = 0;
+
+  if (playerMovement > 1) {
+    this.paddle.y += 2;
+    playerMovement -= 2;
+  } else if (playerMovement < -1) {
+    this.paddle.y -= 2;
+    playerMovement += 2;
+  }
 
   if (this.paddle.y < 0) {
     this.paddle.y = 0;
