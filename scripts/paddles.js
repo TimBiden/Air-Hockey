@@ -78,11 +78,6 @@ Player.prototype.render = function(x, y, color) {
  * @returns {void}
  */
 function Computer() {
-  if (inPlay !== true) {
-    y = 125;
-  } else {
-    y = computerTopY;
-  }
   this.paddle = new Paddle(10, y, '#FF0700');
 }
 
@@ -94,6 +89,7 @@ function Computer() {
  * @returns {void}
  */
 Computer.prototype.render = function(x, y, color) {
+  y = 125;
   this.paddle.render(x, y, color);
 
   computerTopY = this.paddle.y;
@@ -105,20 +101,21 @@ Player.prototype.update = function() {
   playerMovement += (movement * this.paddle.speed);
   movement = 0;
 
+  let paddleBuffer = 0;
+  if (passX < 15 && passY < 20 || passY > 15 && passY > 280) {
+    paddleBuffer = 20;
+  }
+
   if (playerMovement > 2) {
     this.paddle.y += 3;
     playerMovement -= 3;
   } else if (playerMovement < -2) {
     this.paddle.y -= 3;
     playerMovement += 3;
-  } else if (this.paddle.y > 250) {
+  } else if (this.paddle.y > 250 - paddleBuffer) {
     playerMovement = 0;
-  } else if (this.paddle.y < 50) {
+  } else if (this.paddle.y < 50 + paddleBuffer) {
     playerMovement = 0;
-  }
-
-  if (puckX < 15 && puckY < 20 || puckX > 15 && puckY > 280){
-    buffer = 25;
   }
 
   if (this.paddle.y < 0) {
@@ -133,11 +130,9 @@ Player.prototype.update = function() {
 
 // Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
-  if (toBlock && blockDirection) {
-    blockThePuck();
-  }
-  if (blockDirection && !toBlock) {
-    dontBlockPuck();
+
+  if (!inPlay) {
+    variant = -25;
   }
 
   this.paddle.y = puckYValue + variant;
