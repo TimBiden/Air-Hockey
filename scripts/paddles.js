@@ -103,7 +103,10 @@ Player.prototype.update = function() {
 
   let paddleBuffer = 0;
   if (passX < 15 && passY < 20 || passY > 15 && passY > 280) {
-    paddleBuffer = 20;
+    paddleBuffer = 35;
+    if (this.paddle.y < 33) {
+      this.paddle.y = paddleBuffer;
+    }
   }
 
   if (playerMovement > 2) {

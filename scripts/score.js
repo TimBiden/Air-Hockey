@@ -3,9 +3,6 @@ let computerScore = 0;
 let gameOver = false;
 
 function score() {
-  // console.log(' ');
-  // console.log(`computerScore = ${computerScore}`);
-  // console.log(`playerScore = ${playerScore}`);
   inPlay = false;
   render();
 }
