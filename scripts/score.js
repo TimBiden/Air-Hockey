@@ -37,6 +37,6 @@ function showScore() {
 }
 
 function showhide() {
-  var div = document.getElementById("newpost");
+  var div = document.getElementById("reload");
     div.style.visibility = 'visible';
 }
