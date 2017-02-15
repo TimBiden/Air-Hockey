@@ -148,18 +148,32 @@ function puckAngle() {
  * @returns {void}
  */
 function sideCollisionAngle(puckX, puckY) {
-  angle = 180 - angle;
-  if (angle < 0) {
-    angle += 360;
-  } else if (angle >= 360) {
-    angle -= 360;
+
+  if (puckX < 40 && angle > 90 && angle < 270) {
+    angle = 180 - angle;
+  } else if (puckX < 40 && angle < 90 || angle > 270) {
+    if (angle < 0) {
+      angle += 360;
+    } else if (angle >= 360) {
+      angle -= 360;
+    }
   }
 
-  if(puckX > 485){
+  if (puckX> 460 && angle < 90 || angle > 270) {
+    angle = 180 - angle;
+  } else if (puckX > 460 && angle > 90 || angle < 270) {
+    if (angle < 0) {
+      angle += 360;
+    } else if (angle >= 360) {
+      angle -= 360;
+    }
+  }
+
+  if (puckX > 485) {
     puckX = 483;
   }
 
-  if(puckX < 15){
+  if (puckX < 15) {
     puckX = 18;
   }
 
@@ -193,11 +207,11 @@ function topBottomCollisionAngle(puckX, puckY) {
     angle += 30;
   }
 
-  if(puckX > 485){
+  if (puckX > 485) {
     puckX = 483;
   }
 
-  if(puckX < 15){
+  if (puckX < 15) {
     puckX = 18;
   }
 }
