@@ -133,9 +133,29 @@ Player.prototype.update = function() {
 
 // Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
+  let paddleBuffer = 35;
 
   if (!inPlay) {
     variant = -25;
+  }
+
+  if (inPlay) {
+    if (passX < 40) {
+      if (passY < 20 || passY > 280) {
+        playerMovement = 0;
+        console.log(' ');
+        console.log('Enemy territory');
+        console.log(`passX = ${passX}`);
+        console.log(`passY = ${passY}`);
+        console.log(`this.paddle.y = ${this.paddle.y}`);
+        if (this.paddle.y < 33) {
+          this.paddle.y = paddleBuffer;
+        } else if (this.paddle.y > 215) {
+          this.paddle.y -= paddleBuffer;
+        }
+        console.log(`this.paddle.y = ${this.paddle.y}`);
+      }
+    }
   }
 
   this.paddle.y = puckYValue + variant;
