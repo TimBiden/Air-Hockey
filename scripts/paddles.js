@@ -101,23 +101,15 @@ Player.prototype.update = function() {
   playerMovement += (movement * this.paddle.speed);
   movement = 0;
 
-  let paddleBuffer = 0;
-  if (passX < 15 && passY < 20 || passY > 15 && passY > 280) {
-    paddleBuffer = 35;
-    if (this.paddle.y < 33) {
-      this.paddle.y = paddleBuffer;
-    }
-  }
-
   if (playerMovement > 2) {
     this.paddle.y += 3;
     playerMovement -= 3;
   } else if (playerMovement < -2) {
     this.paddle.y -= 3;
     playerMovement += 3;
-  } else if (this.paddle.y > 250 - paddleBuffer) {
+  } else if (this.paddle.y > 250) {
     playerMovement = 0;
-  } else if (this.paddle.y < 50 + paddleBuffer) {
+  } else if (this.paddle.y < 50) {
     playerMovement = 0;
   }
 
