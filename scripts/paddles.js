@@ -133,8 +133,6 @@ Player.prototype.update = function() {
 
 // Make Computer move
 Computer.prototype.update = function updateTheComputerPaddle() {
-  let paddleBuffer = 40;
-
   if (!inPlay) {
     variant = -25;
   }
@@ -155,17 +153,23 @@ Computer.prototype.update = function updateTheComputerPaddle() {
 
 let newYValue = function preventCornerMashUps() {
   // Prevent paddle from repeatedly smashing puck when in corners.
-  if (inPlay) {
-    if (passX < 40) {
-      if (passY < 20 || passY > 280) {
-        playerMovement = 0;
+
+  let paddleBuffer = 40; // How much buffer to give puck
+
+  if (inPlay) { // Don't activate if the puck isn't in play.
+    if (passX < 40) { // Don't activate if the puck isn't past the paddle.
+      if (passY < 20 || passY > 280) { // Is the puck either at the top or bottom corner?
+        playerMovement = 0; // Stop paddle from moving
         if (computerTopY < 33) {
+          // Paddle is too high. Give the puck some buffer space.
           computerTopY = paddleBuffer;
         } else if (computerTopY > 215) {
+          // Paddle is too low. Give the puck some buffer space.
           computerTopY -= paddleBuffer;
         }
       }
     } else {
+      // If not in the corners, act normally.
       computerTopY = puckYValue + variant;
     }
   }
