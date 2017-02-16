@@ -141,12 +141,8 @@ Computer.prototype.update = function updateTheComputerPaddle() {
 
   this.paddle.y = newYValue();
 
-  // Prevent paddles from going outside bounds of playing surface.
-  if (this.paddle.y < 0) {
-    this.paddle.y = 0;
-  } else if (this.paddle.y > 250) {
-    this.paddle.y = 250;
-  }
+
+    this.paddle.y = computerBoundary();
 };
 
 // =============================================================================
@@ -173,6 +169,16 @@ let newYValue = function preventCornerMashUps() {
     } else {
       computerTopY = puckYValue + variant;
     }
+  }
+  return computerTopY;
+};
+
+let computerBoundary = function dontPassZero() {
+// Prevent paddles from going outside bounds of playing surface.
+  if (computerTopY < 0) {
+    computerTopY = 0;
+  } else if (computerTopY > 250) {
+    computerTopY = 250;
   }
   return computerTopY;
 };
