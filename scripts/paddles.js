@@ -139,16 +139,11 @@ Computer.prototype.update = function updateTheComputerPaddle() {
     variant = -25;
   }
 
+  // Prevent paddle from repeatedly smashing puck when in corners.
   if (inPlay) {
     if (passX < 40) {
       if (passY < 20 || passY > 280) {
-        console.log(' ');
-        console.log(`this.paddle.y = ${this.paddle.y}`);
         playerMovement = 0;
-        console.log('Enemy territory');
-        console.log(`passX = ${passX}`);
-        console.log(`passY = ${passY}`);
-        console.log(`this.paddle.y = ${this.paddle.y}`);
         if (this.paddle.y < 33) {
           this.paddle.y = paddleBuffer;
         } else if (this.paddle.y > 215) {
@@ -158,15 +153,14 @@ Computer.prototype.update = function updateTheComputerPaddle() {
     } else {
       this.paddle.y = puckYValue + variant;
     }
-    console.log(`this.paddle.y = ${this.paddle.y}`);
   }
 
+  // Prevent paddles from going outside bounds of playing surface.
   if (this.paddle.y < 0) {
     this.paddle.y = 0;
   } else if (this.paddle.y > 250) {
     this.paddle.y = 250;
   }
-  console.log(`this.paddle.y = ${this.paddle.y}`);
 };
 
 // =============================================================================
