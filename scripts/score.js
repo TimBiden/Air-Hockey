@@ -3,9 +3,6 @@ let computerScore = 0;
 let gameOver = false;
 
 function score() {
-  // console.log(' ');
-  // console.log(`computerScore = ${computerScore}`);
-  // console.log(`playerScore = ${playerScore}`);
   inPlay = false;
   render();
 }
@@ -40,6 +37,6 @@ function showScore() {
 }
 
 function showhide() {
-  var div = document.getElementById("newpost");
+  var div = document.getElementById("reload");
     div.style.visibility = 'visible';
 }
