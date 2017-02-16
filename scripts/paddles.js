@@ -141,8 +141,7 @@ Computer.prototype.update = function updateTheComputerPaddle() {
 
   this.paddle.y = newYValue();
 
-
-    this.paddle.y = computerBoundary();
+  this.paddle.y = computerBoundary();
 };
 
 // =============================================================================
@@ -174,7 +173,7 @@ let newYValue = function preventCornerMashUps() {
 };
 
 let computerBoundary = function dontPassZero() {
-// Prevent paddles from going outside bounds of playing surface.
+  // Prevent paddles from going outside bounds of playing surface.
   if (computerTopY < 0) {
     computerTopY = 0;
   } else if (computerTopY > 250) {
