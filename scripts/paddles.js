@@ -139,21 +139,7 @@ Computer.prototype.update = function updateTheComputerPaddle() {
     variant = -25;
   }
 
-  // Prevent paddle from repeatedly smashing puck when in corners.
-  if (inPlay) {
-    if (passX < 40) {
-      if (passY < 20 || passY > 280) {
-        playerMovement = 0;
-        if (this.paddle.y < 33) {
-          this.paddle.y = paddleBuffer;
-        } else if (this.paddle.y > 215) {
-          this.paddle.y -= paddleBuffer;
-        }
-      }
-    } else {
-      this.paddle.y = puckYValue + variant;
-    }
-  }
+  this.paddle.y = newYValue();
 
   // Prevent paddles from going outside bounds of playing surface.
   if (this.paddle.y < 0) {
@@ -171,3 +157,22 @@ Computer.prototype.update = function updateTheComputerPaddle() {
 //
 
 // Put all of your `function bar() {}` helper function definitions here.
+
+let newYValue = function preventCornerMashUps() {
+  // Prevent paddle from repeatedly smashing puck when in corners.
+  if (inPlay) {
+    if (passX < 40) {
+      if (passY < 20 || passY > 280) {
+        playerMovement = 0;
+        if (computerTopY < 33) {
+          computerTopY = paddleBuffer;
+        } else if (computerTopY > 215) {
+          computerTopY -= paddleBuffer;
+        }
+      }
+    } else {
+      computerTopY = puckYValue + variant;
+    }
+  }
+  return computerTopY;
+};
