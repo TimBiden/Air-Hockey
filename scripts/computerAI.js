@@ -1,6 +1,3 @@
-let toBlock = true;
-let blockDirection = true;
-let blockCheck = true;
 let variant = 0;
 
 /**
@@ -36,37 +33,6 @@ function puckVariance() {
     variant = -25;
   }
 }
-
-/**
- * Will the computer block the puck?
- * @returns {void}
- * If false, no movement necessary.
- * direction is called from sideCollisionAngle in puck.js
- */
-function blockOrNot() {
-  const randomizer = (Math.floor(Math.random() * 2) + 1);
-
-  if (randomizer === 1) {
-    blockCheck = true;
-    toBlock = true;
-  } else {
-    toBlock = false;
-    dontBlockPuck();
-  }
-}
-
-// /**
-//  * Is the puck hearing toward the computer's side?
-//  * @returns {void}
-//  */
-// function puckDirection() {
-//   if (angle > 90 && angle < 270) {
-//     blockDirection = true;
-//     blockOrNot();
-//   } else {
-//     blockDirection = false;
-//   }
-// }
 
 function runOncePerSiceCollision() {
   puckVariance();
