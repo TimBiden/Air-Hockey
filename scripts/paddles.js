@@ -101,17 +101,8 @@ Player.prototype.update = function() {
   playerMovement += (movement * this.paddle.speed);
   movement = 0;
 
-  if (playerMovement > 2) {
-    this.paddle.y += 3;
-    playerMovement -= 3;
-  } else if (playerMovement < -2) {
-    this.paddle.y -= 3;
-    playerMovement += 3;
-  } else if (this.paddle.y > 250) {
-    playerMovement = 0;
-  } else if (this.paddle.y < 50) {
-    playerMovement = 0;
-  }
+  const y = this.paddle.y;
+  this.paddle.y = movePlayerPaddle(y);
 
   if (this.paddle.y < 0) {
     this.paddle.y = 0;
@@ -151,7 +142,7 @@ let newYValue = function preventCornerMashUps() {
   if (inPlay) { // Don't activate if the puck isn't in play.
     if (passX < 40) { // Don't activate if the puck isn't past the paddle.
       if (passY < 20 || passY > 280) { // Is the puck either at the top or bottom corner?
-        playerMovement = 0; // Stop paddle from moving
+        // playerMovement = 0; // Stop paddle from moving
         if (computerTopY < 33) {
           // Paddle is too high. Give the puck some buffer space.
           computerTopY = paddleBuffer;
@@ -177,3 +168,18 @@ let computerBoundary = function dontPassZero() {
   }
   return computerTopY;
 };
+
+let movePlayerPaddle = function playerMovementFunction(y) {
+  if (playerMovement > 2) {
+    y += 3;
+    playerMovement -= 3;
+  } else if (playerMovement < -2) {
+    y -= 3;
+    playerMovement += 3;
+  } else if (y > 250) {
+    playerMovement = 0;
+  } else if (y < 50) {
+    playerMovement = 0;
+  }
+  return y;
+}
