@@ -177,7 +177,34 @@ function sideCollisionAngle(puckX, puckY) {
 }
 
 /**
+ * Moves puck outside collision detection area after top/bottom collisions.
+ * @returns {void}
+ */
+let puckRandom = function randomizePuckAngle(puckX) {
+  const randSide = (Math.floor(Math.random() * 25) + 5);
+  return randSide;
+};
+
+/**
+ * Moves puck outside collision detection area after top/bottom collisions.
+ * @param {int} puckX Puck X Coordinate.
+ * @returns {void}
+ */
+let newPuckX = function movePuckAway(puckX) {
+  if (puckX > 485) {
+    puckX = 483;
+  }
+
+  if (puckX < 15) {
+    puckX = 18;
+  }
+  return puckX;
+}
+
+/**
  * Changes puck direction after top/bottom collisions.
+ * @param {int} puckX Puck X Coordinate.
+ * @param {int} puckY Puck Y Coordinate.
  * @returns {void}
  */
 function topBottomCollisionAngle(puckX, puckY) {
@@ -188,18 +215,12 @@ function topBottomCollisionAngle(puckX, puckY) {
   }
 
   if (angle > 255 && angle <= 270) {
-    angle -= 30;
+    angle -= puckRandom();
   } else if (angle >= 271 && angle < 285) {
-    angle += 30;
+    angle += puckRandom();
   }
 
-  if (puckX > 485) {
-    puckX = 483;
-  }
-
-  if (puckX < 15) {
-    puckX = 18;
-  }
+  puckX = newPuckX();
 }
 
 /**
@@ -266,21 +287,27 @@ function collisionDetect(puckX, puckY) {
 
   // Detect player paddle top puck collisions
   if (angle > 0 && angle < 180) {
+    // Detect direction of puck
     if (puckX >= 460 && puckY >= (playerTopY - buffer) && puckY <= playerTopY) {
+      // Detect location of puck in relation to paddle
       topBottomCollisionAngle(puckX, puckY);
     }
   }
 
   // Detect Computer paddle bottom puck collisions
   if (angle > 180 && angle < 360) {
+    // Detect direction of puck
     if (puckX <= 40 && puckY <= (computerBottomY + buffer) && puckY >= computerBottomY) {
+      // Detect location of puck in relation to paddle
       topBottomCollisionAngle(puckX, puckY);
     }
   }
 
   // Detect Computer paddle top puck collisions
   if (angle > 0 && angle < 180) {
+    // Detect direction of puck
     if (puckX <= 40 && puckY >= (computerTopY - buffer) && puckY <= computerTopY) {
+      // Detect location of puck in relation to paddle
       topBottomCollisionAngle(puckX, puckY);
     }
   }
