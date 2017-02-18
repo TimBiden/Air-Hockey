@@ -11,7 +11,9 @@ const player = new Player(); // Used in table.js
 const computer = new Computer(); // Used in table.js
 let movement = 0; // Move paddles by speed * movement
 let playerTopY = 0;
+let playerBottomY = 0;
 let computerTopY = 125;
+let computerBottomY = 175;
 let playerMovement = 0;
 
 // =============================================================================
