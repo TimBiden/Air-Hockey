@@ -38,5 +38,5 @@ function showScore() {
 
 function showhide() {
   var div = document.getElementById("reload");
-    div.style.visibility = 'visible';
+  div.style.visibility = 'visible';
 }
