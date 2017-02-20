@@ -9,14 +9,7 @@ function blockThePuck() {
   let computerYValue = puckYValue - 20;
 }
 
-/**
- * Is the puck heading toward the computer's side?
- * Is toBlock = false? This will make the paddle miss.
- * @returns {boolean} // If true AI must move paddle.
- * If false, no movement necessary.
- */
-function puckVariance() {
-  // let computerYValue = 0;
+function runOncePerSiceCollision() {
   let randomizer = -25;
 
   randomizer = (Math.floor(Math.random() * 6));
@@ -32,8 +25,4 @@ function puckVariance() {
   } else {
     variant = -25;
   }
-}
-
-function runOncePerSiceCollision() {
-  puckVariance();
 }
