@@ -57,12 +57,13 @@ Puck.prototype.render = function(x, y) {
     this.y += yCoordinate;
     passX = this.x;
     passY = this.y;
-    stopOrganAudio();
-    playBgAudio();
+    pauseAudio(organ);
+    playAudio(background);
   } else {
     this.x = 250;
     this.y = 150;
-    pauseBgAudio();
+    pauseAudio(background);
+    playAudio(organ);
   }
 
   puckYValue = this.y;
@@ -142,29 +143,21 @@ function puckDrop() {
     // puckSpeed = 2; // Delete after testing.
 
     inPlay = true;
-    playBgAudio();
+    // pauseAudio(organ);
+    // playAudio(background);
   }
 }
 
-var bga = document.getElementById("BgAudio");
-var organIntro = document.getElementById("Organ");
+var background = document.getElementById("BgAudio");
+var organ = document.getElementById("Organ");
 
-// Background Audio Play & Pause
-function playBgAudio() {
-  bga.play();
+// Audio Play & Pause
+function playAudio(audioTrack) {
+  audioTrack.play(audioTrack);
 }
 
-function pauseBgAudio() {
-  bga.pause();
-}
-
-// Someone Scored Audio Play & Pause
-function playOrganAudio() {
-  organIntro.play();
-}
-
-function stopOrganAudio() {
-  organIntro.stop();
+function pauseAudio(audioTrack) {
+  audioTrack.pause(audioTrack);
 }
 
 /**
@@ -248,7 +241,6 @@ function collisionDetect(puckX, puckY) {
     // Detect left side collisions
     if (puckY >= 110 && puckY <= 190) {
       playerScore += 1; // Defined in score.js
-      playOrganAudio();
       score(); // Defined in score.js
     } else {
       sideCollisionAngle(puckX, puckY);
@@ -257,7 +249,6 @@ function collisionDetect(puckX, puckY) {
     // Detect right side collisions
     if (puckY >= 110 && puckY <= 190) {
       computerScore += 1; // Defined in score.js
-      playOrganAudio();
       score(); // Defined in score.js
     } else {
       sideCollisionAngle(puckX, puckY);
