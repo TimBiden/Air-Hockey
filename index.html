@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Let's Play Air Hockey!</title>
-    <link rel="stylesheet" type="text/css" href="style/normalize.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="style/normalize.css" />
+  </head>
 
-<body>
+  <body>
+    <audio id="BgAudio">
+      <!-- <audio id="BgAudio" muted="muted"> -->
+      <source src="backgroundTrack.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="Organ">
+      <!-- <audio id="Organ" muted="muted"> -->
+      <source src="OrganIntro.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
     <h1>Let's Play Some Air Hockey!</h1>
 
     <h3>Instructions:</h3>
     <ul>
-        <li>The game is won when either the computer or player reach 11 points.</li>
-        <li>Press the Spacebar to drop the puck.</li>
-        <li>Use your arrow keys to move your paddle up and down.</li>
+      <li>
+        The game is won when either the computer or player reach 11 points.
+      </li>
+      <li>Press the Spacebar to drop the puck.</li>
+      <li>Use your arrow keys to move your paddle up and down.</li>
     </ul>
 
-    <canvas id="hockey" width="500" height="300" style="border:5px solid #FFD500; background:white"></canvas>
+    <canvas
+      id="hockey"
+      width="500"
+      height="300"
+      style="border:5px solid #FFD500; background:white"
+    ></canvas>
 
     <div id="reload" style="visibility: hidden;">
-        <h2>Reload page to play again.</h2>
+      <h2>Reload page to play again.</h2>
     </div>
 
-    <!-- <h3>Shortcomings:</h3>
-    <ul>
-        <li>Some that I just haven't listed yet.</li>
-        <li>This project is still a work in progress.</li>
-    </ul> -->
+    <!--
+      <h3>Shortcomings:</h3>
+      <ul>
+          <li>Some that I just haven't listed yet.</li>
+          <li>This project is still a work in progress.</li>
+      </ul>
+    -->
 
-    <!-- <h3>Ideas to implement later:</h3>
-    <ul>
-        <li>Control the position of the paddles with a mouse.</li>
-        <li>Choice to use the keyboard or mouse for paddle control.</li>
-        <li>Choice between three difficulty levels: beginner, intermediate, expert.</li>
-        <li>I want to play against a human player.</li>
-        <li>I want to hear a sound when the ball hits a paddle or someone scores.</li>
-    </ul> -->
+    <!--
+      <h3>Ideas to implement later:</h3>
+      <ul>
+          <li>Control the position of the paddles with a mouse.</li>
+          <li>Choice to use the keyboard or mouse for paddle control.</li>
+          <li>Choice between three difficulty levels: beginner, intermediate, expert.</li>
+          <li>Play against a human player.</li>
+          <li>Hear a sound when the ball hits a paddle or someone scores.</li>
+      </ul>
+    -->
 
     <script src="scripts/table.js"></script>
     <script src="scripts/score.js"></script>
@@ -43,7 +65,5 @@
     <script src="scripts/paddles.js"></script>
     <script src="scripts/stationary.js"></script>
     <script src="scripts/computerAI.js"></script>
-
-</body>
-
+  </body>
 </html>

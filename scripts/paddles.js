@@ -59,7 +59,7 @@ Paddle.prototype.render = function(x, y, color) {
  * @returns {void}
  */
 function Player() {
-  this.paddle = new Paddle(475, y, '#00C90D');
+  this.paddle = new Paddle(475, y, "#00C90D");
 }
 
 /**
@@ -78,7 +78,7 @@ Player.prototype.render = function(x, y, color) {
  * @returns {void}
  */
 function Computer() {
-  this.paddle = new Paddle(10, y, '#FF0700');
+  this.paddle = new Paddle(10, y, "#FF0700");
 }
 
 /**
@@ -98,11 +98,11 @@ Computer.prototype.render = function(x, y, color) {
 
 // Make Player move
 Player.prototype.update = function() {
-  playerMovement += (movement * this.paddle.speed);
+  playerMovement += movement * this.paddle.speed;
   movement = 0;
 
   let paddleBuffer = 0;
-  if (passX < 15 && passY < 20 || passY > 15 && passY > 280) {
+  if ((passX < 15 && passY < 20) || (passY > 15 && passY > 280)) {
     paddleBuffer = 35;
     if (this.paddle.y < 33) {
       this.paddle.y = paddleBuffer;
@@ -142,13 +142,13 @@ Computer.prototype.update = function updateTheComputerPaddle() {
   if (inPlay) {
     if (passX < 40) {
       if (passY < 20 || passY > 280) {
-        console.log(' ');
-        console.log(`this.paddle.y = ${this.paddle.y}`);
+        // console.log(' ');
+        // console.log(`this.paddle.y = ${this.paddle.y}`);
         playerMovement = 0;
-        console.log('Enemy territory');
-        console.log(`passX = ${passX}`);
-        console.log(`passY = ${passY}`);
-        console.log(`this.paddle.y = ${this.paddle.y}`);
+        // console.log('Enemy territory');
+        // console.log(`passX = ${passX}`);
+        // console.log(`passY = ${passY}`);
+        // console.log(`this.paddle.y = ${this.paddle.y}`);
         if (this.paddle.y < 33) {
           this.paddle.y = paddleBuffer;
         } else if (this.paddle.y > 215) {
@@ -158,7 +158,7 @@ Computer.prototype.update = function updateTheComputerPaddle() {
     } else {
       this.paddle.y = puckYValue + variant;
     }
-    console.log(`this.paddle.y = ${this.paddle.y}`);
+    // console.log(`this.paddle.y = ${this.paddle.y}`);
   }
 
   if (this.paddle.y < 0) {
@@ -166,7 +166,7 @@ Computer.prototype.update = function updateTheComputerPaddle() {
   } else if (this.paddle.y > 250) {
     this.paddle.y = 250;
   }
-  console.log(`this.paddle.y = ${this.paddle.y}`);
+  // console.log(`this.paddle.y = ${this.paddle.y}`);
 };
 
 // =============================================================================
