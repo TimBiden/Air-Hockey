@@ -36,6 +36,11 @@
       style="border:5px solid #FFD500; background:white"
     ></canvas>
 
+    <div class="slidecontainer">
+      <p>Sound Volume</p>
+      <input type="range" min="1" max="100" value="0" id="soundLevel" />
+    </div>
+
     <div id="reload" style="visibility: hidden;">
       <h2>Reload page to play again.</h2>
     </div>
@@ -59,6 +64,7 @@
       </ul>
     -->
 
+    <script src="scripts/audio.js"></script>
     <script src="scripts/table.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/puck.js"></script>

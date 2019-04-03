@@ -148,18 +148,6 @@ function puckDrop() {
   }
 }
 
-var background = document.getElementById("BgAudio");
-var organ = document.getElementById("Organ");
-
-// Audio Play & Pause
-function playAudio(audioTrack) {
-  audioTrack.play(audioTrack);
-}
-
-function pauseAudio(audioTrack) {
-  audioTrack.pause(audioTrack);
-}
-
 /**
  * Takes angle and speed to calculate X & Y coordinates.
  * @returns {void}
