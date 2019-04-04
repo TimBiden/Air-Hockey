@@ -4,6 +4,8 @@ var audioLevel = 0.0;
 
 // Audio Play & Pause
 function playAudio(audioTrack) {
+  background.volume = audioLevel;
+  organ.volume = audioLevel;
   audioTrack.play(audioTrack);
 }
 
@@ -18,6 +20,3 @@ slider.oninput = function() {
   audioLevel = this.value / 100;
   console.log("soundLevel = " + audioLevel);
 };
-
-background.volume = audioLevel;
-organ.volume = audioLevel;
