@@ -161,7 +161,7 @@ function sideCollisionAngle(puckX, puckY) {
 
   angle += randomizer;
 
-  runOncePerSiceCollision();
+  runOncePerSideCollision();
 }
 
 // Changes puck direction after top/bottom collisions.

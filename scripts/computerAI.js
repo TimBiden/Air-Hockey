@@ -43,6 +43,6 @@ function blockOrNot() {
   }
 }
 
-function runOncePerSiceCollision() {
+function runOncePerSideCollision() {
   puckVariance();
 }
