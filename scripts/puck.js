@@ -5,8 +5,6 @@
 // =============================================================================
 //
 
-// Put all of your `var foo = bar;` setup here.
-
 const hockeyPuck = new Puck(); // Used in table.js
 let inPlay = false; // Sets ability to puckDrop
 let puckSpeed = 0; // Set initial speed of puck before puckDrop
@@ -27,13 +25,7 @@ const computerRightX = 25; // Player Paddle coordinates
 // =============================================================================
 //
 
-// Put all of your `function Foo() {}` object constructor and prototype method
-// definitions here.
-
-/**
- * Puck values
- * @returns {void}
- */
+// Puck values
 function Puck() {
   this.radius = 8;
   this.startAngle = 0 * Math.PI;
@@ -42,15 +34,10 @@ function Puck() {
   this.speed = 0;
 }
 
-/**
- * Render Puck prototype
- * @param {int} x X Coordinate.
- * @param {int} y Y Coordinate.
- * @returns {void}
- */
+// Render Puck prototype
+// Check if game is in play. If it is, puck to center ice.
+// Otherwise, puck is at location dictated by speed and direction.
 Puck.prototype.render = function(x, y) {
-  // Check if game is in play. If it is, puck to center ice.
-  // Otherwise, puck is at location dictated by speed and direction.
   if (inPlay) {
     puckAngle();
     this.x += xCoordinate;
@@ -84,10 +71,7 @@ Puck.prototype.render = function(x, y) {
   context.stroke();
 };
 
-/**
- * Make the puck move.
- * @returns {void}
- */
+// Make the puck move.
 Puck.prototype.update = function() {
   this.x += xCoordinate; // To move puck
   this.y += yCoordinate; // To move puck
@@ -117,13 +101,8 @@ Puck.prototype.update = function() {
 // =============================================================================
 //
 
-// Put all of your `function bar() {}` helper function definitions here.
-
-/**
- * Randomizes both puck direction and speed.
- * Drop the puck.
- * @returns {void}
- */
+// Randomizes both puck direction and speed.
+// Drop the puck.
 function puckDrop() {
   // Called in table.js
   if (gameOver === false) {
@@ -148,20 +127,14 @@ function puckDrop() {
   }
 }
 
-/**
- * Takes angle and speed to calculate X & Y coordinates.
- * @returns {void}
- */
+// Takes angle and speed to calculate X & Y coordinates.
 function puckAngle() {
   const rads = (angle * Math.PI) / 180;
   xCoordinate = Math.cos(rads) * puckSpeed;
   yCoordinate = Math.sin(rads) * puckSpeed;
 }
 
-/**
- * Changes puck direction after side collisions.
- * @returns {void}
- */
+// Changes puck direction after side collisions.
 function sideCollisionAngle(puckX, puckY) {
   angle = 180 - angle;
   if (angle < 0) {
@@ -191,10 +164,7 @@ function sideCollisionAngle(puckX, puckY) {
   runOncePerSiceCollision();
 }
 
-/**
- * Changes puck direction after top/bottom collisions.
- * @returns {void}
- */
+// Changes puck direction after top/bottom collisions.
 function topBottomCollisionAngle(puckX, puckY) {
   angle *= -1;
 
@@ -217,12 +187,7 @@ function topBottomCollisionAngle(puckX, puckY) {
   }
 }
 
-/**
- * Detects collisions with walls, paddles, and scoring.
- * @param {int} puckX Puck's X Coordinate.
- * @param {int} puckY Puck's Y Coordinate.
- * @returns {void}
- */
+// Detects collisions with walls, paddles, and scoring.
 function collisionDetect(puckX, puckY) {
   // Detect sides.
   if (puckX <= buffer) {
