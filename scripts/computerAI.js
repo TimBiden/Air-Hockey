@@ -3,26 +3,19 @@ let blockDirection = true;
 let blockCheck = true;
 let variant = 0;
 
-/**
- * Is the puck heading toward the computer's side?
- * @returns {boolean} // If true AI must move paddle.
- * If false, no movement necessary.
- */
+// Is the puck heading toward the computer's side?
+// If true AI must move paddle.
 function blockThePuck() {
   let computerYValue = puckYValue - 20;
 }
 
-/**
- * Is the puck heading toward the computer's side?
- * Is toBlock = false? This will make the paddle miss.
- * @returns {boolean} // If true AI must move paddle.
- * If false, no movement necessary.
- */
+// Is the puck heading toward the computer's side?
+// If true AI must move paddle.
 function puckVariance() {
   // let computerYValue = 0;
   let randomizer = -25;
 
-  randomizer = (Math.floor(Math.random() * 6));
+  randomizer = Math.floor(Math.random() * 6);
 
   if (randomizer === 1) {
     variant = -72;
@@ -37,14 +30,9 @@ function puckVariance() {
   }
 }
 
-/**
- * Will the computer block the puck?
- * @returns {void}
- * If false, no movement necessary.
- * direction is called from sideCollisionAngle in puck.js
- */
+// Will the computer block the puck?
 function blockOrNot() {
-  const randomizer = (Math.floor(Math.random() * 2) + 1);
+  const randomizer = Math.floor(Math.random() * 2) + 1;
 
   if (randomizer === 1) {
     blockCheck = true;
@@ -54,19 +42,6 @@ function blockOrNot() {
     dontBlockPuck();
   }
 }
-
-// /**
-//  * Is the puck hearing toward the computer's side?
-//  * @returns {void}
-//  */
-// function puckDirection() {
-//   if (angle > 90 && angle < 270) {
-//     blockDirection = true;
-//     blockOrNot();
-//   } else {
-//     blockDirection = false;
-//   }
-// }
 
 function runOncePerSiceCollision() {
   puckVariance();
