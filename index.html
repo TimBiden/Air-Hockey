@@ -27,7 +27,15 @@
       </li>
       <li>Press the Spacebar to drop the puck.</li>
       <li>Use your arrow keys to move your paddle up and down.</li>
+      <li>Move the volume slider to add sound.</li>
     </ul>
+
+    <div class="slidecontainer">
+      <p>Sound Volume</p>
+      <input type="range" min="0" max="100" value="0" id="soundLevel" />
+    </div>
+
+    <p></p>
 
     <canvas
       id="hockey"
@@ -59,6 +67,7 @@
       </ul>
     -->
 
+    <script src="scripts/audio.js"></script>
     <script src="scripts/table.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/puck.js"></script>
