@@ -62,8 +62,10 @@ Puck.prototype.render = function(x, y) {
   } else {
     this.x = 250;
     this.y = 150;
-    pauseAudio(background);
-    playAudio(organ);
+    if (!muted) {
+      pauseAudio(background);
+      playAudio(organ);
+    }
   }
 
   puckYValue = this.y;
@@ -143,8 +145,6 @@ function puckDrop() {
     // puckSpeed = 2; // Delete after testing.
 
     inPlay = true;
-    // pauseAudio(organ);
-    // playAudio(background);
   }
 }
 
