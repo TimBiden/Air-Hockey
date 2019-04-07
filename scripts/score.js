@@ -24,7 +24,7 @@ function showScore() {
     context.fillStyle = "#FF0700";
     context.fillText("Lost.", 70, 230);
     gameOver = true;
-    showhide();
+    showhidden();
   }
 
   if (computerScore >= 11) {
@@ -33,11 +33,11 @@ function showScore() {
     context.fillStyle = "#FF0700";
     context.fillText("Won.", 75, 230);
     gameOver = true;
-    showhide();
+    showhidden();
   }
 }
 
-function showhide() {
+function showhidden() {
   var div = document.getElementById("reload");
   div.style.visibility = "visible";
 }
