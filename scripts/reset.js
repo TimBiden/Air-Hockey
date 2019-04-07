@@ -3,6 +3,7 @@ function resetGame() {
   computerScore = 0;
   audioLevel = 0.0;
   inPlay = false;
+  gameOver = false;
   hideHidden();
 }
 
