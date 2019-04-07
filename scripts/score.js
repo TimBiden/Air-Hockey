@@ -18,7 +18,7 @@ function showScore() {
   context.fillText("Player!", 310, 80);
   context.fillText(`${playerScore}`, 350, 170);
 
-  if (playerScore >= 11) {
+  if (playerScore >= 3) {
     context.fillStyle = "#00C90D";
     context.fillText("You Won!", 285, 230);
     context.fillStyle = "#FF0700";
@@ -27,7 +27,7 @@ function showScore() {
     showhidden();
   }
 
-  if (computerScore >= 11) {
+  if (computerScore >= 3) {
     context.fillStyle = "#00C90D";
     context.fillText("You lost.", 280, 230);
     context.fillStyle = "#FF0700";

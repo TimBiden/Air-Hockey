@@ -1,7 +1,8 @@
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
-  volume = 0;
+  audioLevel = 0.0;
+  inPlay = false;
   hideHidden();
 }
 
