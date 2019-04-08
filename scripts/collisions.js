@@ -1,3 +1,12 @@
+function invertAngle() {
+  angle = 180 - angle;
+  if (angle < 0) {
+    angle += 360;
+  } else if (angle >= 360) {
+    angle -= 360;
+  }
+}
+
 function randomizeAngle() {
   let randomizer = Math.floor(Math.random() * 15) + 5;
 
@@ -20,13 +29,6 @@ function angleIn360() {
 
 // Changes puck direction after side collisions.
 function sideCollisionAngle(puckX, puckY) {
-  angle = 180 - angle;
-  if (angle < 0) {
-    angle += 360;
-  } else if (angle >= 360) {
-    angle -= 360;
-  }
-
   if (puckX > 485) {
     puckX = 483;
   } else if (puckX > 460) {
@@ -39,7 +41,8 @@ function sideCollisionAngle(puckX, puckY) {
     puckX = 27;
   }
 
-  // randomizeAngle();
+  invertAngle();
+  randomizeAngle();
   angleIn360();
   runOncePerSideCollision();
 }
