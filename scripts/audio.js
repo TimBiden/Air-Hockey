@@ -20,5 +20,5 @@ var slider = document.getElementById("soundLevel");
 slider.oninput = function() {
   muted = false;
   audioLevel = this.value / 100;
-  console.log("soundLevel = " + audioLevel);
+  // console.log("soundLevel = " + audioLevel);
 };
