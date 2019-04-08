@@ -3,11 +3,13 @@ var level = "Medium";
 
 // Remove all "btn-primary" classes.
 function removeAllPrimaries() {
-  document.getElementById("EasyButton").classList.remove("btn", "btn-primary");
-  document
-    .getElementById("MediumButton")
-    .classList.remove("btn", "btn-primary");
-  document.getElementById("HardButton").classList.remove("btn", "btn-primary");
+  document.getElementById("EasyButton").classList.remove("btn-primary");
+  document.getElementById("MediumButton").classList.remove("btn-primary");
+  document.getElementById("HardButton").classList.remove("btn-primary");
+
+  document.getElementById("EasyButton").classList.add("btn-secondary");
+  document.getElementById("MediumButton").classList.add("btn-secondary");
+  document.getElementById("HardButton").classList.add("btn-secondary");
 }
 
 // Set game to Easy
@@ -16,11 +18,9 @@ function difficultyEasy() {
 
   removeAllPrimaries();
 
-  document
-    .getElementById("EasyButton")
-    .classList.remove("btn", "btn-secondary");
+  document.getElementById("EasyButton").classList.remove("btn-secondary");
 
-  document.getElementById("EasyButton").classList.add("btn", "btn-primary");
+  document.getElementById("EasyButton").classList.add("btn-primary");
 }
 
 // Set game to Medium
@@ -29,11 +29,9 @@ function difficultyMedium() {
 
   removeAllPrimaries();
 
-  document
-    .getElementById("MediumButton")
-    .classList.remove("btn", "btn-secondary");
+  document.getElementById("MediumButton").classList.remove("btn-secondary");
 
-  document.getElementById("MediumButton").classList.add("btn", "btn-primary");
+  document.getElementById("MediumButton").classList.add("btn-primary");
 }
 
 // Set game to Hard
@@ -42,9 +40,7 @@ function difficultyHard() {
 
   removeAllPrimaries();
 
-  document
-    .getElementById("HardButton")
-    .classList.remove("btn", "btn-secondary");
+  document.getElementById("HardButton").classList.remove("btn-secondary");
 
-  document.getElementById("HardButton").classList.add("btn", "btn-primary");
+  document.getElementById("HardButton").classList.add("btn-primary");
 }
