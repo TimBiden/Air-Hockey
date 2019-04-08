@@ -29,13 +29,17 @@ function sideCollisionAngle(puckX, puckY) {
 
   if (puckX > 485) {
     puckX = 483;
+  } else if (puckX > 460) {
+    puckX = 458;
   }
 
   if (puckX < 15) {
-    puckX = 18;
+    puckX = 17;
+  } else if (puckX < 25) {
+    puckX = 27;
   }
 
-  randomizeAngle();
+  // randomizeAngle();
   angleIn360();
   runOncePerSideCollision();
 }
