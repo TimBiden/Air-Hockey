@@ -1,3 +1,4 @@
+// Invert angles upon collisionDetect
 function invertAngle() {
   angle = 180 - angle;
   if (angle < 0) {
@@ -7,8 +8,10 @@ function invertAngle() {
   }
 }
 
+// Randomize angles
 function randomizeAngle() {
-  let randomizer = Math.floor(Math.random() * 15) + 5;
+  let randomizer = Math.floor(Math.random() * 10) + 5;
+  console.log(randomizer);
 
   const positiveNegative = Math.floor(Math.random() * 2) + 1;
 
@@ -38,6 +41,22 @@ function sideCollisionAngle(puckX, puckY) {
   if (puckX < 15) {
     puckX = 17;
   } else if (puckX < 25) {
+    puckX = 27;
+  }
+
+  invertAngle();
+  randomizeAngle();
+  angleIn360();
+  runOncePerSideCollision();
+}
+
+// Changes puck direction after side collisions.
+function paddleCollisionAngle(puckX, puckY) {
+  if (puckX > 460) {
+    puckX = 458;
+  }
+
+  if (puckX < 25) {
     puckX = 27;
   }
 
@@ -95,7 +114,7 @@ function collisionDetect(puckX, puckY) {
 
   // Detect Player Paddle Front
   if (puckX >= playerLeftX && puckY >= playerTopY && puckY <= playerBottomY) {
-    sideCollisionAngle(puckX, puckY);
+    paddleCollisionAngle(puckX, puckY);
   }
 
   // Detect Computer Paddle Front
@@ -104,8 +123,7 @@ function collisionDetect(puckX, puckY) {
     puckY >= computerTopY - buffer &&
     puckY <= computerBottomY + buffer
   ) {
-    puckX = 40;
-    sideCollisionAngle(puckX, puckY);
+    paddleCollisionAngle(puckX, puckY);
   }
 
   // Detect top & bottom collisions
