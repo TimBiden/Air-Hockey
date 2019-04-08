@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Let's Play Air Hockey!</title>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="style/normalize.css" />
   </head>
 
@@ -49,6 +50,18 @@
       </li>
     </ul>
 
+    <button type="button" class="btn btn-secondary" onclick="difficultyEasy()">
+      Easy
+    </button>
+    <button type="button" class="btn btn-primary" onclick="difficultyMedium()">
+      Medium
+    </button>
+    <button type="button" class="btn btn-secondary" onclick="difficultyHard()">
+      Hard
+    </button>
+
+    <br /><br />
+
     <canvas
       id="hockey"
       width="500"
@@ -88,8 +101,8 @@
 
     <script src="scripts/audio.js"></script>
     <script src="scripts/collisions.js"></script>
+    <script src="scripts/difficulty.js"></script>
     <script src="scripts/reset.js"></script>
-
     <script src="scripts/table.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/puck.js"></script>
