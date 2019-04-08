@@ -100,7 +100,7 @@ function puckDrop() {
       angle += 360;
     } // Fix for angle < 360 degrees.
 
-    let levelAddOn = 4;
+    let levelAddOn = 2;
 
     if (level === "Easy") {
       levelAddOn = 2;
