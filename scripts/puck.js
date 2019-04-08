@@ -117,6 +117,10 @@ function puckDrop() {
       angle -= 360;
     } // Fix for angle > 360 degrees.
 
+    if (angle < 0) {
+      angle += 360;
+    } // Fix for angle < 360 degrees.
+
     // angle = 320; // Delete after testing.
 
     puckSpeed = Math.floor(Math.random() * 3) + 3; // Randomized speed of puck.
