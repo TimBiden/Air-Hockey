@@ -1,13 +1,4 @@
-let toBlock = true;
-let blockDirection = true;
-let blockCheck = true;
 let variant = 0;
-
-// Is the puck heading toward the computer's side?
-// If true AI must move paddle.
-function blockThePuck() {
-  let computerYValue = puckYValue - 20;
-}
 
 // Is the puck heading toward the computer's side?
 // If true AI must move paddle.
@@ -27,19 +18,6 @@ function puckVariance() {
     variant = 20;
   } else {
     variant = -25;
-  }
-}
-
-// Will the computer block the puck?
-function blockOrNot() {
-  const randomizer = Math.floor(Math.random() * 2) + 1;
-
-  if (randomizer === 1) {
-    blockCheck = true;
-    toBlock = true;
-  } else {
-    toBlock = false;
-    dontBlockPuck();
   }
 }
 

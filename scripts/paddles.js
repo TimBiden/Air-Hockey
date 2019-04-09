@@ -1,12 +1,3 @@
-// =============================================================================
-//
-//   Variable Definitions and Initialization
-//
-// =============================================================================
-//
-
-// Put all of your `var foo = bar;` setup here.
-
 const player = new Player(); // Used in table.js
 const computer = new Computer(); // Used in table.js
 let movement = 0; // Move paddles by speed * movement
@@ -16,23 +7,7 @@ let computerTopY = 125;
 let computerBottomY = 175;
 let playerMovement = 0;
 
-// =============================================================================
-//
-//   Object Constructor Definitions
-//
-// =============================================================================
-//
-
-// Put all of your `function Foo() {}` object constructor and prototype method
-// definitions here.
-
-/**
- * Configures variables for Paddles.
- * @param {int} x X Coordinate.
- * @param {int} y Y Coordinate.
- * @param {string} color sets the color of the paddle.
- * @returns {void}
- */
+// Configures variables for Paddles.
 function Paddle(x, y, color) {
   this.x = x;
   this.y = y;
@@ -42,52 +17,28 @@ function Paddle(x, y, color) {
   this.speed = 15;
 }
 
-/**
- * Render Paddle prototype
- * @param {int} x X Coordinate.
- * @param {int} y Y Coordinate.
- * @param {string} color sets the color of the paddle.
- * @returns {void}
- */
+// Render Paddle prototype
 Paddle.prototype.render = function(x, y, color) {
   context.fillStyle = color;
   context.fillRect(this.x, this.y, this.width, this.height);
 };
 
-/**
- * Create Player function
- * @returns {void}
- */
+//Create Player function
 function Player() {
   this.paddle = new Paddle(475, y, "#00C90D");
 }
 
-/**
- * Render Player prototype
- * @param {int} x X Coordinate.
- * @param {int} y Y Coordinate.
- * @param {string} color Sets color for Player.
- * @returns {void}
- */
+// Render Player prototype
 Player.prototype.render = function(x, y, color) {
   this.paddle.render(x, y, color);
 };
 
-/**
- * Create Computer function
- * @returns {void}
- */
+// Create Computer function
 function Computer() {
   this.paddle = new Paddle(10, y, "#FF0700");
 }
 
-/**
- * Render Computer prototype
- * @param {int} x X Coordinate.
- * @param {int} y Y Coordinate.
- * @param {string} color Sets color for Computer.
- * @returns {void}
- */
+// Render Computer prototype
 Computer.prototype.render = function(x, y, color) {
   y = 125;
   this.paddle.render(x, y, color);
@@ -168,12 +119,3 @@ Computer.prototype.update = function updateTheComputerPaddle() {
   }
   // console.log(`this.paddle.y = ${this.paddle.y}`);
 };
-
-// =============================================================================
-//
-//   Helper Function Definitions
-//
-// =============================================================================
-//
-
-// Put all of your `function bar() {}` helper function definitions here.
