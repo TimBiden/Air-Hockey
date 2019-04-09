@@ -1,6 +1,6 @@
 // Create Goal functions
 function Goal(xPoint) {
-  context.fillStyle = "#3B14AF";
+  context.fillStyle = "blue";
   context.fillRect(xPoint, 110, 8, 80);
 }
 
