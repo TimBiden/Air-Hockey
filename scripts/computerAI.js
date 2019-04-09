@@ -1,4 +1,6 @@
 let variant = 0;
+let missPuck = 0;
+let randomizer = 0;
 
 // Is the puck heading toward the computer's side?
 // If true AI must move paddle.
@@ -19,8 +21,31 @@ function puckVariance() {
   } else {
     variant = -25;
   }
+
+  console.log("variant = " + variant);
+}
+
+function missOrNot() {
+  if (level === "Easy") {
+    missPuck = 3;
+  } else if (level === "Hard") {
+    missPuck = 10;
+  } else {
+    missPuck = 6;
+  }
+
+  randomizer = Math.floor(Math.random() * missPuck);
+  console.log(" ");
+  console.log("missPuck = " + missPuck);
+  console.log("randomizer = " + randomizer);
 }
 
 function runOncePerSideCollision() {
-  puckVariance();
+  missOrNot();
+  if (randomizer === 1) {
+    console.log("puckVariance");
+    puckVariance();
+  } else {
+    console.log("Don't miss!!!");
+  }
 }
