@@ -34,8 +34,8 @@ function angleIn360() {
 function sideCollisionAngle(puckX, puckY) {
   if (puckX > 485) {
     puckX = 483;
-  } else if (puckX > 460) {
-    puckX = 458;
+  } else if (puckX > 454) {
+    puckX = 452;
   }
 
   if (puckX < 15) {
