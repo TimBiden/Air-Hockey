@@ -7,7 +7,6 @@ let randomizer = 0;
 function puckVariance() {
   // let computerYValue = 0;
   let randomizer = -25;
-
   randomizer = Math.floor(Math.random() * 6);
 
   if (randomizer === 1) {
@@ -25,6 +24,7 @@ function puckVariance() {
   console.log("variant = " + variant);
 }
 
+// Likelihood of computer missing puck
 function missOrNot() {
   if (level === "Easy") {
     missPuck = 3;
@@ -35,17 +35,12 @@ function missOrNot() {
   }
 
   randomizer = Math.floor(Math.random() * missPuck);
-  console.log(" ");
-  console.log("missPuck = " + missPuck);
-  console.log("randomizer = " + randomizer);
 }
 
+// Should it miss or not, and by how much?
 function runOncePerSideCollision() {
   missOrNot();
   if (randomizer === 1) {
-    console.log("puckVariance");
     puckVariance();
-  } else {
-    console.log("Don't miss!!!");
   }
 }
