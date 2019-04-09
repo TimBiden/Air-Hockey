@@ -2,25 +2,23 @@
 <html>
   <head>
     <title>Let's Play Air Hockey!</title>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="style/normalize.css" />
   </head>
 
   <body>
     <audio id="BgAudio">
-      <!-- <audio id="BgAudio" muted="muted"> -->
       <source src="backgroundTrack.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
 
     <audio id="Organ">
-      <!-- <audio id="Organ" muted="muted"> -->
       <source src="OrganIntro.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+    <!-- <h2>Let's Play Some Air Hockey!</h2> -->
 
-    <h1>Let's Play Some Air Hockey!</h1>
-
-    <h3>Instructions:</h3>
+    <!-- <h3>Instructions:</h3> -->
     <ul>
       <li>
         The game is won when either the computer or player reach 11 points.
@@ -30,12 +28,51 @@
       <li>Move the volume slider to add sound.</li>
     </ul>
 
-    <div class="slidecontainer">
-      <p>Sound Volume</p>
-      <input type="range" min="0" max="100" value="0" id="soundLevel" />
-    </div>
+    <!-- <h3>Choose Your Difficulty Level:</h3> -->
+    <ul>
+      <li>
+        <strong>Easy:</strong> Puck moves slowly and the computer has a
+        <strong>1:3</strong> chance of missing the puck.
+      </li>
+      <li>
+        <strong>Medium:</strong> Puck moves at a medium pace and the computer
+        has a <strong>1:6</strong> chance of missing the puck.
+      </li>
+      <li>
+        <strong>Hard:</strong> Puck moves quickly and the computer has a
+        <strong>1:10</strong> chance of missing the puck.
+      </li>
+      <li>
+        <strong>Default setting:</strong> Medium chance of missing the puck.
+      </li>
+    </ul>
 
-    <p></p>
+    <button
+      type="button"
+      id="EasyButton"
+      class="btn btn-secondary"
+      onclick="difficultyEasy()"
+    >
+      Easy
+    </button>
+    <button
+      type="button"
+      id="MediumButton"
+      class="btn btn-primary"
+      onclick="difficultyMedium()"
+    >
+      Medium
+    </button>
+    <button
+      type="button"
+      id="HardButton"
+      class="btn btn-secondary"
+      onclick="difficultyHard()"
+    >
+      Hard
+    </button>
+
+    <br /><br />
 
     <canvas
       id="hockey"
@@ -44,21 +81,16 @@
       style="border:5px solid #FFD500; background:white"
     ></canvas>
 
-    <p></p>
+    <br />
 
-    <button onclick="resetGame()">New Game</button>
-
-    <div id="reload" style="visibility: hidden;">
-      <h2>Reload page to play again.</h2>
+    <div class="slidecontainer">
+      <p>Sound Volume</p>
+      <input type="range" min="0" max="100" value="0" id="soundLevel" />
     </div>
 
-    <!--
-      <h3>Shortcomings:</h3>
-      <ul>
-          <li>Some that I just haven't listed yet.</li>
-          <li>This project is still a work in progress.</li>
-      </ul>
-    -->
+    <div id="reload" style="visibility: hidden;">
+      <button onclick="resetGame()">New Game</button>
+    </div>
 
     <!--
       <h3>Ideas to implement later:</h3>
@@ -73,8 +105,8 @@
 
     <script src="scripts/audio.js"></script>
     <script src="scripts/collisions.js"></script>
+    <script src="scripts/difficulty.js"></script>
     <script src="scripts/reset.js"></script>
-
     <script src="scripts/table.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/puck.js"></script>

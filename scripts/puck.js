@@ -1,10 +1,3 @@
-// =============================================================================
-//
-//   Variable Definitions and Initialization
-//
-// =============================================================================
-//
-
 const hockeyPuck = new Puck(); // Used in table.js
 let inPlay = false; // Sets ability to puckDrop
 let puckSpeed = 0; // Set initial speed of puck before puckDrop
@@ -17,13 +10,6 @@ let puckYValue = 0;
 const buffer = 15;
 const playerLeftX = 460; // Player Paddle coordinates
 const computerRightX = 25; // Player Paddle coordinates
-
-// =============================================================================
-//
-//   Object Constructor Definitions
-//
-// =============================================================================
-//
 
 // Puck values
 function Puck() {
@@ -94,13 +80,6 @@ Puck.prototype.update = function() {
   collisionDetect(this.x, this.y);
 };
 
-// =============================================================================
-//
-//   Helper Function Definitions
-//
-// =============================================================================
-//
-
 // Randomizes both puck direction and speed.
 // Drop the puck.
 function puckDrop() {
@@ -121,11 +100,18 @@ function puckDrop() {
       angle += 360;
     } // Fix for angle < 360 degrees.
 
-    // angle = 320; // Delete after testing.
+    let levelAddOn = 2;
 
-    puckSpeed = Math.floor(Math.random() * 3) + 3; // Randomized speed of puck.
+    if (level === "Easy") {
+      levelAddOn = 2;
+    } else if (level === "Hard") {
+      levelAddOn = 6;
+    } else {
+      levelAddOn = 4;
+    }
 
-    // puckSpeed = 2; // Delete after testing.
+    puckSpeed = Math.floor(Math.random() * 2) + levelAddOn; // Randomized speed of puck.
+    console.log("puckSpeed = " + puckSpeed);
 
     inPlay = true;
   }

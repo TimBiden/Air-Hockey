@@ -1,20 +1,12 @@
-let toBlock = true;
-let blockDirection = true;
-let blockCheck = true;
 let variant = 0;
-
-// Is the puck heading toward the computer's side?
-// If true AI must move paddle.
-function blockThePuck() {
-  let computerYValue = puckYValue - 20;
-}
+let missPuck = 0;
+let randomizer = 0;
 
 // Is the puck heading toward the computer's side?
 // If true AI must move paddle.
 function puckVariance() {
   // let computerYValue = 0;
   let randomizer = -25;
-
   randomizer = Math.floor(Math.random() * 6);
 
   if (randomizer === 1) {
@@ -28,21 +20,27 @@ function puckVariance() {
   } else {
     variant = -25;
   }
+
+  console.log("variant = " + variant);
 }
 
-// Will the computer block the puck?
-function blockOrNot() {
-  const randomizer = Math.floor(Math.random() * 2) + 1;
-
-  if (randomizer === 1) {
-    blockCheck = true;
-    toBlock = true;
+// Likelihood of computer missing puck
+function missOrNot() {
+  if (level === "Easy") {
+    missPuck = 3;
+  } else if (level === "Hard") {
+    missPuck = 10;
   } else {
-    toBlock = false;
-    dontBlockPuck();
+    missPuck = 6;
   }
+
+  randomizer = Math.floor(Math.random() * missPuck);
 }
 
+// Should it miss or not, and by how much?
 function runOncePerSideCollision() {
-  puckVariance();
+  missOrNot();
+  if (randomizer === 1) {
+    puckVariance();
+  }
 }
