@@ -1,22 +1,3 @@
-// =============================================================================
-//
-//   Object Constructor Definitions
-//
-// =============================================================================
-//
-
-// Put all of your `function Foo() {}` object constructor and prototype method
-// definitions here.
-
-// =============================================================================
-//
-//   Helper Function Definitions
-//
-// =============================================================================
-//
-
-// Put all of your `function bar() {}` helper function definitions here.
-
 // Make Player paddle update
 function update() {
   player.update();
@@ -26,9 +7,12 @@ function update() {
 
 // Render created items
 function render() {
-  player.render(475, this.y, '#00C90D');
-  computer.render(10, this.y, '#FF0700');
+  player.render(475, this.y, "#00C90D");
+  computer.render(10, this.y, "#FF0700");
   CenterLine();
+  LeftLine();
+  RightLine();
+  CenterCircle();
   computerGoal = new Goal(0);
   playerGoal = new Goal(492);
   hockeyPuck.render();
@@ -44,7 +28,8 @@ function step() {
 }
 
 // Select animation method
-var animate = window.requestAnimationFrame ||
+var animate =
+  window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   window.oRequestAnimationFrame ||
@@ -64,8 +49,8 @@ var animate = window.requestAnimationFrame ||
 // Put all of your `var foo = bar;` setup here.
 
 // Allow drawing on canvas
-const hockeyCanvas = document.getElementById('hockey');
-const context = hockeyCanvas.getContext('2d');
+const hockeyCanvas = document.getElementById("hockey");
+const context = hockeyCanvas.getContext("2d");
 
 // General variables
 let y = 125; // Paddle height begin
@@ -83,7 +68,7 @@ let y = 125; // Paddle height begin
 // bindings).
 
 // Listen for arrow-keys to be released.
-window.addEventListener('keydown', function(event) {
+window.addEventListener("keydown", function(event) {
   if (event.keyCode === 38 || event.keyCode === 39) {
     movement = -1;
   } else if (event.keyCode === 37 || event.keyCode === 40) {
