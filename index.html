@@ -52,32 +52,41 @@
           </ul>
         </div>
       </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <button
+            type="button"
+            id="EasyButton"
+            class="btn btn-secondary"
+            onclick="difficultyEasy()"
+          >
+            Easy
+          </button>
+          <button
+            type="button"
+            id="MediumButton"
+            class="btn btn-primary"
+            onclick="difficultyMedium()"
+          >
+            Medium
+          </button>
+          <button
+            type="button"
+            id="HardButton"
+            class="btn btn-secondary"
+            onclick="difficultyHard()"
+          >
+            Hard
+          </button>
+      </div>
+        <div class="col">
+          <div class="slidecontainer">
+            <p>Sound Volume</p>
+            <input type="range" min="0" max="100" value="0" id="soundLevel" />
+          </div>
     </div>
-
-    <button
-      type="button"
-      id="EasyButton"
-      class="btn btn-secondary"
-      onclick="difficultyEasy()"
-    >
-      Easy
-    </button>
-    <button
-      type="button"
-      id="MediumButton"
-      class="btn btn-primary"
-      onclick="difficultyMedium()"
-    >
-      Medium
-    </button>
-    <button
-      type="button"
-      id="HardButton"
-      class="btn btn-secondary"
-      onclick="difficultyHard()"
-    >
-      Hard
-    </button>
+    </div>
 
     <br /><br />
 
@@ -87,13 +96,6 @@
       height="300"
       style="border:5px solid #FFD500; background:white"
     ></canvas>
-
-    <br />
-
-    <div class="slidecontainer">
-      <p>Sound Volume</p>
-      <input type="range" min="0" max="100" value="0" id="soundLevel" />
-    </div>
 
     <div id="reload" style="visibility: hidden;">
       <button onclick="resetGame()">New Game</button>
