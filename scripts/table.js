@@ -46,8 +46,6 @@ var animate =
 // =============================================================================
 //
 
-// Put all of your `var foo = bar;` setup here.
-
 // Allow drawing on canvas
 const hockeyCanvas = document.getElementById("hockey");
 const context = hockeyCanvas.getContext("2d");
