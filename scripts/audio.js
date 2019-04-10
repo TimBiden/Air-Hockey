@@ -11,6 +11,10 @@ function playAudio(audioTrack) {
 }
 
 function pauseAudio(audioTrack) {
+  if (audioTrack.id === "Organ") {
+    audioTrack.currentTime = 0;
+  }
+
   audioTrack.pause(audioTrack);
 }
 
@@ -20,5 +24,4 @@ var slider = document.getElementById("soundLevel");
 slider.oninput = function() {
   muted = false;
   audioLevel = this.value / 100;
-  // console.log("soundLevel = " + audioLevel);
 };
