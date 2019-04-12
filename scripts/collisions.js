@@ -47,7 +47,7 @@ function sideCollisionAngle(puckX, puckY) {
   invertAngle();
   randomizeAngle();
   angleIn360();
-  runOncePerSideCollision();
+  if (numPlayers === 1) runOncePerSideCollision();
 }
 
 // Changes puck direction after side collisions.
@@ -63,7 +63,7 @@ function paddleCollisionAngle(puckX, puckY) {
   invertAngle();
   randomizeAngle();
   angleIn360();
-  runOncePerSideCollision();
+  if (numPlayers === 1) runOncePerSideCollision();
 }
 
 // Changes puck direction after top/bottom collisions.

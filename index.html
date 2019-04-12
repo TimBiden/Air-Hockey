@@ -26,9 +26,9 @@
         <div class="col">
           <h4>Instructions:</h4>
           <ul>
+            <li>The game is won when either side reaches 11 points.</li>
             <li>
-              The game is won when either the computer or player reach 11
-              points.
+              If 2 players, left side (Player 1) plays with mouse or trackpad.
             </li>
             <li>Press the Spacebar to drop the puck.</li>
             <li>Use your arrow keys to move your paddle up and down.</li>
@@ -84,6 +84,29 @@
             </button>
           </div>
         </div>
+
+        <div class="col">
+          <div class="mx-auto" style="width: 250px;">
+            <br />
+            <button
+              type="button"
+              id="1-Player"
+              class="btn btn-primary"
+              onclick="players1()"
+            >
+              1 Player
+            </button>
+            <button
+              type="button"
+              id="2-Player"
+              class="btn btn-secondary"
+              onclick="players2()"
+            >
+              2 Players
+            </button>
+          </div>
+        </div>
+
         <div class="col">
           <div class="mx-auto" style="width: 100px;">
             <div class="slidecontainer">
@@ -126,6 +149,7 @@
     <script src="scripts/difficulty.js"></script>
     <script src="scripts/reset.js"></script>
     <script src="scripts/table.js"></script>
+    <script src="scripts/players.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/puck.js"></script>
     <script src="scripts/paddles.js"></script>

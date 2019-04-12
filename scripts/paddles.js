@@ -6,6 +6,8 @@ let playerBottomY = 0;
 let computerTopY = 125;
 let computerBottomY = 175;
 let playerMovement = 0;
+let playerMouseDown = 125;
+let tempMouse = 125;
 
 // Configures variables for Paddles.
 function Paddle(x, y, color) {
@@ -39,13 +41,15 @@ function Computer() {
 }
 
 // Render Computer prototype
-Computer.prototype.render = function(x, y, color) {
-  y = 125;
-  this.paddle.render(x, y, color);
+if (numPlayers === 1) {
+  Computer.prototype.render = function(x, y, color) {
+    y = 125;
+    this.paddle.render(x, y, color);
 
-  computerTopY = this.paddle.y;
-  computerBottomY = computerTopY + 50;
-};
+    computerTopY = this.paddle.y;
+    computerBottomY = computerTopY + 50;
+  };
+}
 
 // Make Player move
 Player.prototype.update = function() {
@@ -82,40 +86,53 @@ Player.prototype.update = function() {
   playerBottomY = playerTopY + 50; // Buffer for puck.
 };
 
-// Make Computer move
+// Move left player paddle
+function getPosition(event) {
+  playerMouseDown = event.offsetY;
+
+  console.log("y: " + playerMouseDown);
+}
+
 Computer.prototype.update = function updateTheComputerPaddle() {
-  let paddleBuffer = 40;
+  // Different movement depending on person or computer playing.
+  if (numPlayers === 1) {
+    let paddleBuffer = 40;
 
-  if (!inPlay) {
-    variant = -25;
-  }
-
-  if (inPlay) {
-    if (passX < 40) {
-      if (passY < 20 || passY > 280) {
-        // console.log(' ');
-        // console.log(`this.paddle.y = ${this.paddle.y}`);
-        playerMovement = 0;
-        // console.log('Enemy territory');
-        // console.log(`passX = ${passX}`);
-        // console.log(`passY = ${passY}`);
-        // console.log(`this.paddle.y = ${this.paddle.y}`);
-        if (this.paddle.y < 33) {
-          this.paddle.y = paddleBuffer;
-        } else if (this.paddle.y > 215) {
-          this.paddle.y -= paddleBuffer;
-        }
-      }
-    } else {
-      this.paddle.y = puckYValue + variant;
+    // Stop the puck
+    if (!inPlay) {
+      variant = -25;
     }
-    // console.log(`this.paddle.y = ${this.paddle.y}`);
-  }
 
-  if (this.paddle.y < 0) {
-    this.paddle.y = 0;
-  } else if (this.paddle.y > 250) {
-    this.paddle.y = 250;
+    if (inPlay) {
+      if (passX < 40) {
+        if (passY < 20 || passY > 280) {
+          playerMovement = 0;
+          if (this.paddle.y < 33) {
+            this.paddle.y = paddleBuffer;
+          } else if (this.paddle.y > 215) {
+            this.paddle.y -= paddleBuffer;
+          }
+        }
+      } else {
+        this.paddle.y = puckYValue + variant;
+      }
+    }
+
+    if (this.paddle.y < 0) {
+      this.paddle.y = 0;
+    } else if (this.paddle.y > 250) {
+      this.paddle.y = 250;
+    }
+  } else {
+    hockeyCanvas.addEventListener("mousedown", getPosition, false);
+    tempMouse = playerMouseDown - 25;
+
+    if (playerMouseDown < 25) {
+      tempMouse = 0;
+    } else if (playerMouseDown > 250) {
+      tempMouse = 250;
+    }
+
+    this.paddle.y = tempMouse;
   }
-  // console.log(`this.paddle.y = ${this.paddle.y}`);
 };
