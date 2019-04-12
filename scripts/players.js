@@ -1,12 +1,6 @@
 var numPlayers = 1;
 
 // Play against the computer
-function removeAllPrimaries() {
-  document.getElementById("MediumButton").classList.remove("btn-primary");
-  document.getElementById("HardButton").classList.remove("btn-primary");
-  document.getElementById("MediumButton").classList.add("btn-secondary");
-  document.getElementById("HardButton").classList.add("btn-secondary");
-}
 function players1() {
   numPlayers = 1;
   showScore();
