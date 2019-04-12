@@ -111,7 +111,6 @@ function puckDrop() {
     }
 
     puckSpeed = Math.floor(Math.random() * 2) + levelAddOn; // Randomized speed of puck.
-    console.log("puckSpeed = " + puckSpeed);
 
     inPlay = true;
   }

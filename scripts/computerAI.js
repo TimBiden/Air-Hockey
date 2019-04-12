@@ -20,8 +20,6 @@ function puckVariance() {
   } else {
     variant = -25;
   }
-
-  console.log("variant = " + variant);
 }
 
 // Likelihood of computer missing puck

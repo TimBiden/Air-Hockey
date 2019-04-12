@@ -89,8 +89,6 @@ Player.prototype.update = function() {
 // Move left player paddle
 function getPosition(event) {
   playerMouseDown = event.offsetY;
-
-  console.log("y: " + playerMouseDown);
 }
 
 Computer.prototype.update = function updateTheComputerPaddle() {

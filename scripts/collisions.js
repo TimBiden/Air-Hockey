@@ -11,7 +11,6 @@ function invertAngle() {
 // Randomize angles
 function randomizeAngle() {
   let randomizer = Math.floor(Math.random() * 10) + 5;
-  // console.log(randomizer);
 
   const positiveNegative = Math.floor(Math.random() * 2) + 1;
 
