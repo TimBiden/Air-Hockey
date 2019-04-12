@@ -5,7 +5,6 @@ let leftSidePlayer = "Computer!";
 let rightSidePlayer = "Player!";
 
 function score() {
-  // playAudio(organ);
   inPlay = false;
   render();
 }
@@ -18,7 +17,7 @@ function showScore() {
     leftSidePlayer = "Computer!";
     rightSidePlayer = "Player!";
   }
-  
+
   context.font = "40px Verdana";
   context.fillStyle = "#FF0700";
   context.fillText(leftSidePlayer, 15, 80);

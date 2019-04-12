@@ -2,6 +2,38 @@ let variant = 0;
 let missPuck = 0;
 let randomizer = 0;
 
+// Make Computer move
+Computer.prototype.update = function updateTheComputerPaddle() {
+  if (numPlayers === 1) {
+    let paddleBuffer = 40;
+
+    if (!inPlay) {
+      variant = -25;
+    }
+
+    if (inPlay) {
+      if (passX < 40) {
+        if (passY < 20 || passY > 280) {
+          playerMovement = 0;
+          if (this.paddle.y < 33) {
+            this.paddle.y = paddleBuffer;
+          } else if (this.paddle.y > 215) {
+            this.paddle.y -= paddleBuffer;
+          }
+        }
+      } else {
+        this.paddle.y = puckYValue + variant;
+      }
+    }
+
+    if (this.paddle.y < 0) {
+      this.paddle.y = 0;
+    } else if (this.paddle.y > 250) {
+      this.paddle.y = 250;
+    }
+  }
+};
+
 // Is the puck heading toward the computer's side?
 // If true AI must move paddle.
 function puckVariance() {
