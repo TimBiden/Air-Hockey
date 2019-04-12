@@ -93,6 +93,7 @@ function getPosition(event) {
 
 Computer.prototype.update = function updateTheComputerPaddle() {
   if (numPlayers === 1) {
+    let paddleBuffer = 40;
 
     if (!inPlay) {
       variant = -25;
