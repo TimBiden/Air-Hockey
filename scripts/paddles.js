@@ -39,13 +39,15 @@ function Computer() {
 }
 
 // Render Computer prototype
-Computer.prototype.render = function(x, y, color) {
-  y = 125;
-  this.paddle.render(x, y, color);
+if (numPlayers === 1) {
+  Computer.prototype.render = function(x, y, color) {
+    y = 125;
+    this.paddle.render(x, y, color);
 
-  computerTopY = this.paddle.y;
-  computerBottomY = computerTopY + 50;
-};
+    computerTopY = this.paddle.y;
+    computerBottomY = computerTopY + 50;
+  };
+}
 
 // Make Player move
 Player.prototype.update = function() {
@@ -83,33 +85,43 @@ Player.prototype.update = function() {
 };
 
 // Make Computer move
+function moveComputerPaddle() {
+  let paddleBuffer = 40;
+
+  if (!inPlay) {
+    variant = -25;
+  }
+
+  if (inPlay) {
+    if (passX < 40) {
+      if (passY < 20 || passY > 280) {
+        playerMovement = 0;
+        if (this.paddle.y < 33) {
+          this.paddle.y = paddleBuffer;
+        } else if (this.paddle.y > 215) {
+          this.paddle.y -= paddleBuffer;
+        }
+      }
+    } else {
+      this.paddle.y = puckYValue + variant;
+    }
+  }
+
+  if (this.paddle.y < 0) {
+    this.paddle.y = 0;
+  } else if (this.paddle.y > 250) {
+    this.paddle.y = 250;
+  }
+}
+
+function moveLeftPlayerPaddle() {
+  console.log("Left Player Moves");
+}
+
 Computer.prototype.update = function updateTheComputerPaddle() {
   if (numPlayers === 1) {
-    let paddleBuffer = 40;
-
-    if (!inPlay) {
-      variant = -25;
-    }
-
-    if (inPlay) {
-      if (passX < 40) {
-        if (passY < 20 || passY > 280) {
-          playerMovement = 0;
-          if (this.paddle.y < 33) {
-            this.paddle.y = paddleBuffer;
-          } else if (this.paddle.y > 215) {
-            this.paddle.y -= paddleBuffer;
-          }
-        }
-      } else {
-        this.paddle.y = puckYValue + variant;
-      }
-    }
-
-    if (this.paddle.y < 0) {
-      this.paddle.y = 0;
-    } else if (this.paddle.y > 250) {
-      this.paddle.y = 250;
-    }
+    moveComputerPaddle();
+  } else {
+    moveLeftPlayerPaddle();
   }
 };
