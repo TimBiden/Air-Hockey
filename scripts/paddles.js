@@ -6,6 +6,8 @@ let playerBottomY = 0;
 let computerTopY = 125;
 let computerBottomY = 175;
 let playerMovement = 0;
+let playerMouseDown = 125;
+let tempMouse = 125;
 
 // Configures variables for Paddles.
 function Paddle(x, y, color) {
@@ -86,15 +88,17 @@ Player.prototype.update = function() {
 
 // Move left player paddle
 function getPosition(event) {
-  let y = event.offsetY;
+  playerMouseDown = event.offsetY;
 
-  console.log("y: " + y);
+  console.log("y: " + playerMouseDown);
 }
 
 Computer.prototype.update = function updateTheComputerPaddle() {
+  // Different movement depending on person or computer playing.
   if (numPlayers === 1) {
     let paddleBuffer = 40;
 
+    // Stop the puck
     if (!inPlay) {
       variant = -25;
     }
@@ -120,6 +124,15 @@ Computer.prototype.update = function updateTheComputerPaddle() {
       this.paddle.y = 250;
     }
   } else {
-    hockeyCanvas.addEventListener("mouseup", getPosition, false);
+    hockeyCanvas.addEventListener("mousedown", getPosition, false);
+    tempMouse = playerMouseDown - 25;
+
+    if (playerMouseDown < 25) {
+      tempMouse = 0;
+    } else if (playerMouseDown > 250) {
+      tempMouse = 250;
+    }
+
+    this.paddle.y = tempMouse;
   }
 };
