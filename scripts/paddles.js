@@ -81,3 +81,35 @@ Player.prototype.update = function() {
   playerTopY = this.paddle.y; // Buffer for puck.
   playerBottomY = playerTopY + 50; // Buffer for puck.
 };
+
+// Make Computer move
+Computer.prototype.update = function updateTheComputerPaddle() {
+  if (numPlayers === 1) {
+    let paddleBuffer = 40;
+
+    if (!inPlay) {
+      variant = -25;
+    }
+
+    if (inPlay) {
+      if (passX < 40) {
+        if (passY < 20 || passY > 280) {
+          playerMovement = 0;
+          if (this.paddle.y < 33) {
+            this.paddle.y = paddleBuffer;
+          } else if (this.paddle.y > 215) {
+            this.paddle.y -= paddleBuffer;
+          }
+        }
+      } else {
+        this.paddle.y = puckYValue + variant;
+      }
+    }
+
+    if (this.paddle.y < 0) {
+      this.paddle.y = 0;
+    } else if (this.paddle.y > 250) {
+      this.paddle.y = 250;
+    }
+  }
+};
