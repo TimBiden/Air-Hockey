@@ -123,12 +123,13 @@ Computer.prototype.update = function updateTheComputerPaddle() {
     }
   } else {
     hockeyCanvas.addEventListener("mousedown", getPosition, false);
-    tempMouse = playerMouseDown - 25;
 
     if (playerMouseDown < 25) {
       tempMouse = 0;
     } else if (playerMouseDown > 250) {
       tempMouse = 250;
+    } else {
+      tempMouse = playerMouseDown - 25;
     }
 
     this.paddle.y = tempMouse;
